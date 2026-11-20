@@ -1,0 +1,7 @@
+# Standalone read-only planning pipeline. No full SciToolAgent/ToolsAgent runtime needed.
+numpy>=1.24,<3
+httpx>=0.27,<1
+python-dotenv>=1.0,<2
+neo4j>=5,<7
+# Required to build and query REAL BGE-M3 embeddings; offline --backend lexical does not use it.
+sentence-transformers>=3,<6

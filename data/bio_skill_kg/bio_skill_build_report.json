@@ -1,0 +1,60 @@
+{
+  "input_files": [
+    "samtools_skill.md"
+  ],
+  "output": "D:\\gitwork\\SciToolAgent_v5\\v5\\data\\bio_skill_kg\\bio_skill_graph.json",
+  "schema": "BioSkillKG-v2",
+  "normalization_version": "bioskillkg-semantic-normalization-v5.2",
+  "mode": "llm_incremental",
+  "graph": {
+    "nodes": 114,
+    "edges": 174,
+    "labels": {
+      "DataType": 34,
+      "FileFormat": 17,
+      "Operation": 21,
+      "Task": 20,
+      "Tool": 22
+    },
+    "relations": {
+      "DOCUMENTED_DOWNSTREAM": 15,
+      "DOCUMENTED_PREREQUISITE": 3,
+      "HAS_FORMAT": 37,
+      "HAS_OPERATION": 21,
+      "IS_SUBTYPE_OF": 15,
+      "PARTIALLY_ALTERNATIVE_TO": 9,
+      "PERFORMS": 21,
+      "PRODUCES": 21,
+      "RECOMMENDED_BEFORE": 10,
+      "REQUIRES_INPUT": 22
+    },
+    "review_items": 16
+  },
+  "changes": {
+    "new_nodes": 15,
+    "new_edges": 24,
+    "enriched_tools": [
+      "tool:samtools"
+    ],
+    "changed_properties": 11,
+    "added_review_items": 12
+  },
+  "llm": {
+    "api_calls": 0,
+    "cache_hits": 1,
+    "chunks": 1,
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6"
+  },
+  "extraction_files": [
+    {
+      "file": "samtools_skill.md",
+      "doc_id": "db30def5c4b712b3",
+      "path": "data\\bio_skill_kg\\extracted_skills\\samtools_skill_db30def5c4b712b3.json",
+      "operations": 6,
+      "data_types": 4,
+      "tool_relations": 8,
+      "review_items": 0
+    }
+  ]
+}

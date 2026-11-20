@@ -1,0 +1,1006 @@
+{
+  "tool": {
+    "name": "BWA (Burrows-Wheeler Aligner)",
+    "version": "0.7.17",
+    "category": "序列比对类",
+    "description": "高效的短读长序列比对工具，支持将FASTQ格式的测序数据比对到参考基因组，适用于全基因组、外显子组和目标区域测序数据的比对",
+    "source_url": "https://github.com/lh3/bwa",
+    "docker_image": "biocontainers/bwa:v0.7.17_cv1",
+    "evidence_quote": "**工具名称**: BWA (Burrows-Wheeler Aligner)"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "- **最小**: 1核",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 58,
+      "_end_line": 58
+    },
+    {
+      "name": "CPU推荐",
+      "value": 8,
+      "unit": "核",
+      "evidence_quote": "- **推荐**: 8核",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 59,
+      "_end_line": 59
+    },
+    {
+      "name": "CPU最大",
+      "value": 32,
+      "unit": "核",
+      "evidence_quote": "- **最大**: 32核",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 60,
+      "_end_line": 60
+    },
+    {
+      "name": "内存最小",
+      "value": 4,
+      "unit": "GB",
+      "evidence_quote": "- **最小**: 4GB",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 63,
+      "_end_line": 63
+    },
+    {
+      "name": "内存推荐",
+      "value": 16,
+      "unit": "GB",
+      "evidence_quote": "- **推荐**: 16GB",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 64,
+      "_end_line": 64
+    },
+    {
+      "name": "内存最大",
+      "value": 64,
+      "unit": "GB",
+      "evidence_quote": "- **最大**: 64GB",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 65,
+      "_end_line": 65
+    },
+    {
+      "name": "临时空间",
+      "value": "输入数据大小的1倍",
+      "unit": null,
+      "evidence_quote": "- **临时空间**: 输入数据大小的1倍",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 68,
+      "_end_line": 68
+    },
+    {
+      "name": "输出空间",
+      "value": "输入数据大小的2倍",
+      "unit": null,
+      "evidence_quote": "- **输出空间**: 输入数据大小的2倍",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 69,
+      "_end_line": 69
+    },
+    {
+      "name": "运行时间1G数据",
+      "value": "10-20分钟",
+      "unit": null,
+      "evidence_quote": "| 1G数据 | 10-20分钟 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.4 运行时间预估",
+      "_start_line": 74,
+      "_end_line": 74
+    },
+    {
+      "name": "运行时间10G数据",
+      "value": "1-2小时",
+      "unit": null,
+      "evidence_quote": "| 10G数据 | 1-2小时 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.4 运行时间预估",
+      "_start_line": 75,
+      "_end_line": 75
+    },
+    {
+      "name": "运行时间50G数据",
+      "value": "4-8小时",
+      "unit": null,
+      "evidence_quote": "| 50G数据 | 4-8小时 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 4. 资源需求配置 / 4.4 运行时间预估",
+      "_start_line": 76,
+      "_end_line": 76
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "比对算法",
+      "flag": "-a",
+      "description": "比对算法：mem/bwasw/backtrack/ssw",
+      "required": null,
+      "default": "mem",
+      "scope": "tool",
+      "evidence_quote": "| 比对算法 | -a | - | 字符串 | 比对算法：mem/bwasw/backtrack/ssw | mem | mem | 推荐 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 25,
+      "_end_line": 25
+    },
+    {
+      "name": "线程数",
+      "flag": "-t",
+      "description": "线程数",
+      "required": null,
+      "default": "1",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -t | - | 整数 | 线程数 | 1 | 1-32 | 推荐 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 26,
+      "_end_line": 26
+    },
+    {
+      "name": "输出文件",
+      "flag": "-o",
+      "description": "输出的SAM文件路径",
+      "required": null,
+      "default": "stdout",
+      "scope": "tool",
+      "evidence_quote": "| 输出文件 | -o | - | 文件路径 | 输出的SAM文件路径 | stdout | - | 推荐 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 27,
+      "_end_line": 27
+    },
+    {
+      "name": "质量值编码",
+      "flag": "-L",
+      "description": "质量值编码（33或64）",
+      "required": null,
+      "default": "自动检测",
+      "scope": "tool",
+      "evidence_quote": "| 质量值编码 | -L | - | 整数 | 质量值编码（33或64） | 自动检测 | 33/64 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 28,
+      "_end_line": 28
+    },
+    {
+      "name": "错配惩罚",
+      "flag": "-B",
+      "description": "错配惩罚值",
+      "required": null,
+      "default": "4",
+      "scope": "tool",
+      "evidence_quote": "| 错配惩罚 | -B | - | 整数 | 错配惩罚值 | 4 | 1-10 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 29,
+      "_end_line": 29
+    },
+    {
+      "name": "缺口打开惩罚",
+      "flag": "-O",
+      "description": "缺口打开惩罚值",
+      "required": null,
+      "default": "6",
+      "scope": "tool",
+      "evidence_quote": "| 缺口打开惩罚 | -O | - | 整数 | 缺口打开惩罚值 | 6 | 1-20 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 30,
+      "_end_line": 30
+    },
+    {
+      "name": "缺口延伸惩罚",
+      "flag": "-E",
+      "description": "缺口延伸惩罚值",
+      "required": null,
+      "default": "1",
+      "scope": "tool",
+      "evidence_quote": "| 缺口延伸惩罚 | -E | - | 整数 | 缺口延伸惩罚值 | 1 | 1-10 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 31,
+      "_end_line": 31
+    },
+    {
+      "name": "最小种子长度",
+      "flag": "-k",
+      "description": "最小种子长度",
+      "required": null,
+      "default": "19",
+      "scope": "tool",
+      "evidence_quote": "| 最小种子长度 | -k | - | 整数 | 最小种子长度 | 19 | 10-30 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 32,
+      "_end_line": 32
+    },
+    {
+      "name": "最大种子间隔",
+      "flag": "-w",
+      "description": "最大种子间隔",
+      "required": null,
+      "default": "100",
+      "scope": "tool",
+      "evidence_quote": "| 最大种子间隔 | -w | - | 整数 | 最大种子间隔 | 100 | 50-200 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 33,
+      "_end_line": 33
+    },
+    {
+      "name": "种子数",
+      "flag": "-d",
+      "description": "每个查询序列的最大种子数",
+      "required": null,
+      "default": "1000000",
+      "scope": "tool",
+      "evidence_quote": "| 种子数 | -d | - | 整数 | 每个查询序列的最大种子数 | 1000000 | - | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 34,
+      "_end_line": 34
+    },
+    {
+      "name": "匹配得分",
+      "flag": "-A",
+      "description": "匹配得分",
+      "required": null,
+      "default": "1",
+      "scope": "tool",
+      "evidence_quote": "| 匹配得分 | -A | - | 整数 | 匹配得分 | 1 | 1-5 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 35,
+      "_end_line": 35
+    },
+    {
+      "name": "不匹配得分",
+      "flag": "-B",
+      "description": "不匹配得分（负数）",
+      "required": null,
+      "default": "-4",
+      "scope": "tool",
+      "evidence_quote": "| 不匹配得分 | -B | - | 整数 | 不匹配得分（负数） | -4 | -10--1 | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 36,
+      "_end_line": 36
+    },
+    {
+      "name": "读取组信息",
+      "flag": "-R",
+      "description": "读取组信息，格式为\"@RG\\tID:id\\tSM:sample\\tLB:lib\\tPL:platform\"",
+      "required": null,
+      "default": "\"\"",
+      "scope": "tool",
+      "evidence_quote": "| 读取组信息 | -R | - | 字符串 | 读取组信息，格式为\"@RG\\tID:id\\tSM:sample\\tLB:lib\\tPL:platform\" | \"\" | - | 推荐 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 37,
+      "_end_line": 37
+    },
+    {
+      "name": "忽略质量值",
+      "flag": "-C",
+      "description": "忽略质量值",
+      "required": null,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 忽略质量值 | -C | - | 布尔值 | 忽略质量值 | false | false | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 38,
+      "_end_line": 38
+    },
+    {
+      "name": "软剪辑",
+      "flag": "-S",
+      "description": "软剪辑而不是硬剪辑",
+      "required": null,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 软剪辑 | -S | - | 布尔值 | 软剪辑而不是硬剪辑 | false | false | 可选 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 39,
+      "_end_line": 39
+    }
+  ],
+  "operations": [
+    {
+      "name": "bwa mem",
+      "description": "使用mem算法将短读长序列比对到参考基因组",
+      "task_name": "序列比对",
+      "inputs": [
+        {
+          "data_type": "参考基因组索引",
+          "description": "参考基因组的BWA索引文件前缀",
+          "role": "reference_index",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [],
+          "format_evidence": [],
+          "evidence_quote": "| 参考基因组索引 | - | - | 文件路径 | 参考基因组的BWA索引文件前缀 | 无 | 不支持 | 必填 |",
+          "condition": null,
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+          "_start_line": 18,
+          "_end_line": 18,
+          "_source_line_start": 18,
+          "_source_line_end": 18
+        },
+        {
+          "data_type": "测序读长数据",
+          "description": "单端FASTQ文件",
+          "role": "read1",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "single_end",
+          "scenario_name": "单端数据比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ.gz",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "bwa mem -t 4 reference_index input.fq.gz > output.sam",
+          "condition": null,
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 199,
+          "_end_line": 199,
+          "_source_line_start": 199,
+          "_source_line_end": 199
+        },
+        {
+          "data_type": "测序读长数据",
+          "description": "双端FASTQ文件read1",
+          "role": "read1",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "paired_end",
+          "scenario_name": "双端数据比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ.gz",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "bwa mem -t 8 reference_index input_1.fq.gz input_2.fq.gz > output.sam",
+          "condition": null,
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 204,
+          "_end_line": 204,
+          "_source_line_start": 204,
+          "_source_line_end": 204
+        },
+        {
+          "data_type": "测序读长数据",
+          "description": "双端FASTQ文件read2",
+          "role": "read2",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "paired_end",
+          "scenario_name": "双端数据比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ.gz",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "bwa mem -t 8 reference_index input_1.fq.gz input_2.fq.gz > output.sam",
+          "condition": null,
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 204,
+          "_end_line": 204,
+          "_source_line_start": 204,
+          "_source_line_end": 204
+        },
+        {
+          "data_type": "测序读段",
+          "description": "双端FASTQ测序读段",
+          "role": "read1",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "wgs",
+          "scenario_name": "全基因组重测序比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ_GZ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 双端FASTQ文件，人类参考基因组索引",
+          "_source_file": "bwa_skill.md",
+          "_source_line_start": 120,
+          "_source_line_end": 120
+        },
+        {
+          "data_type": "测序读段",
+          "description": "双端FASTQ测序读段的第二端",
+          "role": "read2",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "wgs",
+          "scenario_name": "全基因组重测序比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ_GZ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 双端FASTQ文件，人类参考基因组索引",
+          "_source_file": "bwa_skill.md",
+          "_source_line_start": 120,
+          "_source_line_end": 120
+        },
+        {
+          "data_type": "测序读段",
+          "description": "双端FASTQ测序读段",
+          "role": "read1",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "exome",
+          "scenario_name": "外显子组测序比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ_GZ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 双端FASTQ文件，人类参考基因组索引",
+          "_source_file": "bwa_skill.md",
+          "_source_line_start": 120,
+          "_source_line_end": 120
+        },
+        {
+          "data_type": "测序读段",
+          "description": "双端FASTQ测序读段的第二端",
+          "role": "read2",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "exome",
+          "scenario_name": "外显子组测序比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ_GZ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 双端FASTQ文件，人类参考基因组索引",
+          "_source_file": "bwa_skill.md",
+          "_source_line_start": 120,
+          "_source_line_end": 120
+        },
+        {
+          "data_type": "测序读段",
+          "description": "双端FASTQ测序读段",
+          "role": "read1",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "target_region",
+          "scenario_name": "目标区域测序比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ_GZ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 双端FASTQ文件，人类参考基因组索引",
+          "_source_file": "bwa_skill.md",
+          "_source_line_start": 120,
+          "_source_line_end": 120
+        },
+        {
+          "data_type": "测序读段",
+          "description": "双端FASTQ测序读段的第二端",
+          "role": "read2",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "target_region",
+          "scenario_name": "目标区域测序比对",
+          "formats": [
+            "FASTQ",
+            "FASTQ_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTQ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            },
+            {
+              "format": "FASTQ_GZ",
+              "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 双端FASTQ文件，人类参考基因组索引",
+          "_source_file": "bwa_skill.md",
+          "_source_line_start": 120,
+          "_source_line_end": 120
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "比对后的SAM文件",
+          "role": "alignment_output",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": null,
+          "condition": null,
+          "scenario_id": "single_end",
+          "scenario_name": "单端数据比对",
+          "formats": [
+            "SAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "SAM",
+              "evidence_quote": "| o1 | 比对结果 | SAM/BAM | {prefix}.sam | 序列比对结果，包含详细的比对信息 |"
+            }
+          ],
+          "evidence_quote": "bwa mem -t 4 reference_index input.fq.gz > output.sam",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 199,
+          "_end_line": 199,
+          "_source_line_start": 199,
+          "_source_line_end": 199
+        },
+        {
+          "data_type": "序列比对结果",
+          "description": "比对后的SAM文件",
+          "role": "alignment_output",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": null,
+          "condition": null,
+          "scenario_id": "paired_end",
+          "scenario_name": "双端数据比对",
+          "formats": [
+            "SAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "SAM",
+              "evidence_quote": "| o1 | 比对结果 | SAM/BAM | {prefix}.sam | 序列比对结果，包含详细的比对信息 |"
+            }
+          ],
+          "evidence_quote": "bwa mem -t 8 reference_index input_1.fq.gz input_2.fq.gz > output.sam",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 204,
+          "_end_line": 204,
+          "_source_line_start": 204,
+          "_source_line_end": 204
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "single_end",
+          "name": "单端数据比对",
+          "description": "单端FASTQ数据比对",
+          "evidence_quote": "**单端数据比对**:\n```bash\nbwa mem -t 4 reference_index input.fq.gz > output.sam\n```",
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 197,
+          "_end_line": 200,
+          "_source_line_start": 197,
+          "_source_line_end": 200
+        },
+        {
+          "scenario_id": "paired_end",
+          "name": "双端数据比对",
+          "description": "双端FASTQ数据比对",
+          "evidence_quote": "**双端数据比对**:\n```bash\nbwa mem -t 8 reference_index input_1.fq.gz input_2.fq.gz > output.sam\n```",
+          "_source_file": "bwa_skill.md",
+          "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 202,
+          "_end_line": 205,
+          "_source_line_start": 202,
+          "_source_line_end": 205
+        }
+      ],
+      "parameters": [],
+      "min_input_files": null,
+      "evidence_quote": "bwa mem -t 4 reference_index input.fq.gz > output.sam",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+      "_start_line": 199,
+      "_end_line": 199,
+      "_source_line_start": 199,
+      "_source_line_end": 199
+    }
+  ],
+  "data_types": [
+    {
+      "name": "测序读长数据",
+      "description": "单端或双端测序数据",
+      "formats": [
+        "FASTQ",
+        "FASTQ.gz"
+      ],
+      "format_evidence": [
+        {
+          "format": "FASTQ",
+          "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+        },
+        {
+          "format": "FASTQ.gz",
+          "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| FASTQ | 支持 | .fq, .fastq, .fq.gz, .fastq.gz | 单端或双端测序数据 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 84,
+      "_end_line": 84,
+      "_source_line_start": 84,
+      "_source_line_end": 84
+    },
+    {
+      "name": "参考基因组序列",
+      "description": "可作为参考基因组或输入序列",
+      "formats": [
+        "FASTA"
+      ],
+      "format_evidence": [
+        {
+          "format": "FASTA",
+          "evidence_quote": "| FASTA | 支持 | .fa, .fasta | 可作为参考基因组或输入序列 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| FASTA | 支持 | .fa, .fasta | 可作为参考基因组或输入序列 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 85,
+      "_end_line": 85,
+      "_source_line_start": 85,
+      "_source_line_end": 85
+    },
+    {
+      "name": "序列比对结果",
+      "description": "序列比对结果，包含详细的比对信息",
+      "formats": [
+        "SAM",
+        "BAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "SAM",
+          "evidence_quote": "| SAM | 文本格式 | 序列比对结果，包含详细的比对信息 |"
+        },
+        {
+          "format": "BAM",
+          "evidence_quote": "| BAM | 二进制格式 | SAM的二进制压缩格式，需使用samtools转换 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| SAM | 文本格式 | 序列比对结果，包含详细的比对信息 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 5. 数据类型兼容性 / 5.2 输出数据类型",
+      "_start_line": 93,
+      "_end_line": 93,
+      "_source_line_start": 93,
+      "_source_line_end": 93
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "fastp",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: fastp（数据质控）",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 100,
+      "_end_line": 100,
+      "_source_line_start": 100,
+      "_source_line_end": 100
+    },
+    {
+      "target_tool": "samtools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| samtools | 数据处理类 | SAM/BAM文件处理和排序 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "picard",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| picard | 数据处理类 | 标记重复序列 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 107,
+      "_end_line": 107,
+      "_source_line_start": 107,
+      "_source_line_end": 107
+    },
+    {
+      "target_tool": "GATK",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| GATK | 变异检测类 | 变异检测和重校准 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 108,
+      "_end_line": 108,
+      "_source_line_start": 108,
+      "_source_line_end": 108
+    },
+    {
+      "target_tool": "bcftools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| bcftools | 变异检测类 | VCF文件处理 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 109,
+      "_end_line": 109,
+      "_source_line_start": 109,
+      "_source_line_end": 109
+    },
+    {
+      "target_tool": "hisat2",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **互斥工具**: hisat2, STAR, bowtie2（功能重叠，选择一种即可）",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "STAR",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **互斥工具**: hisat2, STAR, bowtie2（功能重叠，选择一种即可）",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "bowtie2",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **互斥工具**: hisat2, STAR, bowtie2（功能重叠，选择一种即可）",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "minimap2",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **替代工具**: minimap2（长读长数据）",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 113,
+      "_end_line": 113,
+      "_source_line_start": 113,
+      "_source_line_end": 113
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "序列质量",
+      "description": "Q20 > 80%",
+      "evidence_quote": "| 序列质量 | Q20 > 80% | 输入数据质量应在可接受范围内 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 168,
+      "_end_line": 168
+    },
+    {
+      "name": "序列长度",
+      "description": "≥ 36bp",
+      "evidence_quote": "| 序列长度 | ≥ 36bp | 过短的序列可能导致比对率低 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 169,
+      "_end_line": 169
+    },
+    {
+      "name": "参考基因组",
+      "description": "已索引",
+      "evidence_quote": "| 参考基因组 | 已索引 | 参考基因组必须预先构建BWA索引 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 170,
+      "_end_line": 170
+    },
+    {
+      "name": "数据量",
+      "description": "≥ 1M reads",
+      "evidence_quote": "| 数据量 | ≥ 1M reads | 数据量过小可能导致统计结果不可靠 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 171,
+      "_end_line": 171
+    },
+    {
+      "name": "比对率",
+      "description": "samtools flagstat，> 80%",
+      "evidence_quote": "| 比对率 | samtools flagstat | > 80% |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 177,
+      "_end_line": 177
+    },
+    {
+      "name": "唯一比对率",
+      "description": "samtools view -F 4，> 70%",
+      "evidence_quote": "| 唯一比对率 | samtools view -F 4 | > 70% |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 178,
+      "_end_line": 178
+    },
+    {
+      "name": "配对率",
+      "description": "samtools flagstat，> 90%",
+      "evidence_quote": "| 配对率 | samtools flagstat | > 90% |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 179,
+      "_end_line": 179
+    },
+    {
+      "name": "平均比对质量",
+      "description": "samtools stats，> 30",
+      "evidence_quote": "| 平均比对质量 | samtools stats | > 30 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 180,
+      "_end_line": 180
+    },
+    {
+      "name": "覆盖度",
+      "description": "samtools depth，符合预期",
+      "evidence_quote": "| 覆盖度 | samtools depth | 符合预期 |",
+      "_source_file": "bwa_skill.md",
+      "_source_section": "BWA工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 181,
+      "_end_line": 181
+    }
+  ],
+  "review": [],
+  "metadata": {
+    "file": "bwa_skill.md",
+    "doc_id": "5eaffba0e1dd59c8",
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6",
+    "chunk_count": 1,
+    "chunk_ranges": [
+      {
+        "section": "BWA工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 全基因组重测序比对 / 7.2 场景2: 外显子组测序比对 / 7.3 场景3: 目标区域测序比对 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 9.2 高级用法 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+        "start_line": 1,
+        "end_line": 270,
+        "chunk_id": "5eaffba0e1dd59c8_llm_0001"
+      }
+    ]
+  }
+}

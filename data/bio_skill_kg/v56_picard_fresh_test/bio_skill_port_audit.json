@@ -1,0 +1,100 @@
+{
+  "total_ports": 96,
+  "curated_ports": 89,
+  "pending_ports": 7,
+  "errors": [],
+  "candidates": [
+    {
+      "candidate_type_id": "candidate:1219ea2074adbdcccbcd",
+      "count": 1,
+      "names": [
+        "重复序列统计结果"
+      ],
+      "formats": [
+        "TXT"
+      ],
+      "operations": [
+        "op:markduplicates"
+      ],
+      "suggested_parent_type_keys": []
+    },
+    {
+      "candidate_type_id": "candidate:1289bae00e4157aa09ec",
+      "count": 1,
+      "names": [
+        "添加读取组后的序列比对结果"
+      ],
+      "formats": [
+        "BAM"
+      ],
+      "operations": [
+        "op:addorreplacereadgroups"
+      ],
+      "suggested_parent_type_keys": [
+        "aligned_reads_bam"
+      ]
+    },
+    {
+      "candidate_type_id": "candidate:1a8ba34317712fb0f485",
+      "count": 1,
+      "names": [
+        "区域提取后的序列比对结果"
+      ],
+      "formats": [
+        "SAM"
+      ],
+      "operations": [
+        "op:viewsam"
+      ],
+      "suggested_parent_type_keys": []
+    },
+    {
+      "candidate_type_id": "candidate:89075afdbc205fd0cb42",
+      "count": 1,
+      "names": [
+        "全基因组测序指标结果"
+      ],
+      "formats": [
+        "TXT"
+      ],
+      "operations": [
+        "op:collectwgsmetrics"
+      ],
+      "suggested_parent_type_keys": []
+    },
+    {
+      "candidate_type_id": "candidate:abcb60df6541355e2dc5",
+      "count": 1,
+      "names": [
+        "合并后的序列比对结果"
+      ],
+      "formats": [
+        "BAM"
+      ],
+      "operations": [
+        "op:mergesamfiles"
+      ],
+      "suggested_parent_type_keys": [
+        "aligned_reads_bam"
+      ]
+    },
+    {
+      "candidate_type_id": "candidate:b87b49ffb67c5af1d2b0",
+      "count": 2,
+      "names": [
+        "标记重复后的序列比对结果"
+      ],
+      "formats": [
+        "BAM"
+      ],
+      "operations": [
+        "op:collectwgsmetrics",
+        "op:markduplicates"
+      ],
+      "suggested_parent_type_keys": [
+        "aligned_reads_bam"
+      ]
+    }
+  ],
+  "publish_ready": false
+}

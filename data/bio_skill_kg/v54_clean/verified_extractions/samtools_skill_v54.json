@@ -1,0 +1,1338 @@
+{
+  "tool": {
+    "name": "samtools",
+    "version": "1.17",
+    "category": "数据处理类",
+    "description": "用于处理SAM/BAM/CRAM格式文件的核心工具套件，提供排序、索引、统计、格式转换等多种功能，是生信分析流程中的基础工具",
+    "source_url": "https://github.com/samtools/samtools",
+    "docker_image": "biocontainers/samtools:v1.17_cv1",
+    "evidence_quote": "**工具名称**: samtools"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "- **最小**: 1核",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 57,
+      "_end_line": 57
+    },
+    {
+      "name": "CPU推荐",
+      "value": 4,
+      "unit": "核",
+      "evidence_quote": "- **推荐**: 4核",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 58,
+      "_end_line": 58
+    },
+    {
+      "name": "CPU最大",
+      "value": 32,
+      "unit": "核",
+      "evidence_quote": "- **最大**: 32核",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 59,
+      "_end_line": 59
+    },
+    {
+      "name": "内存最小",
+      "value": 1,
+      "unit": "GB",
+      "evidence_quote": "- **最小**: 1GB",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 62,
+      "_end_line": 62
+    },
+    {
+      "name": "内存推荐",
+      "value": 8,
+      "unit": "GB",
+      "evidence_quote": "- **推荐**: 8GB",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 63,
+      "_end_line": 63
+    },
+    {
+      "name": "内存最大",
+      "value": 64,
+      "unit": "GB",
+      "evidence_quote": "- **最大**: 64GB",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 64,
+      "_end_line": 64
+    },
+    {
+      "name": "临时空间",
+      "value": "输入文件大小的1-2倍",
+      "unit": null,
+      "evidence_quote": "- **临时空间**: 输入文件大小的1-2倍",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 67,
+      "_end_line": 67
+    },
+    {
+      "name": "输出空间",
+      "value": "输入文件大小的0.5-1倍",
+      "unit": null,
+      "evidence_quote": "- **输出空间**: 输入文件大小的0.5-1倍",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 68,
+      "_end_line": 68
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "命令",
+      "flag": null,
+      "description": "samtools子命令(view/sort/index/stats等)",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 命令 | - | - | 字符串 | samtools子命令(view/sort/index/stats等) | 无 | 不支持 | 必填 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 18,
+      "_end_line": 18
+    },
+    {
+      "name": "输入文件",
+      "flag": null,
+      "description": "输入的SAM/BAM/CRAM文件",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 输入文件 | - | - | 文件路径 | 输入的SAM/BAM/CRAM文件 | 无 | 支持 | 必填 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 19,
+      "_end_line": 19
+    },
+    {
+      "name": "输出文件",
+      "flag": "-o",
+      "description": "输出文件路径",
+      "required": false,
+      "default": "stdout",
+      "scope": "tool",
+      "evidence_quote": "| 输出文件 | -o | --output | 文件路径 | 输出文件路径 | stdout | - | 推荐 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 25,
+      "_end_line": 25
+    },
+    {
+      "name": "参考基因组",
+      "flag": "-T",
+      "description": "参考基因组FASTA文件",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 参考基因组 | -T | --reference | 文件路径 | 参考基因组FASTA文件 | 无 | - | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 26,
+      "_end_line": 26
+    },
+    {
+      "name": "线程数",
+      "flag": "-@",
+      "description": "线程数",
+      "required": false,
+      "default": "1",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -@ | --threads | 整数 | 线程数 | 1 | 1-32 | 推荐 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 27,
+      "_end_line": 27
+    },
+    {
+      "name": "压缩级别",
+      "flag": "-l",
+      "description": "输出压缩级别(0-9)",
+      "required": false,
+      "default": "6",
+      "scope": "tool",
+      "evidence_quote": "| 压缩级别 | -l | --compression-level | 整数 | 输出压缩级别(0-9) | 6 | 0-9 | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 28,
+      "_end_line": 28
+    },
+    {
+      "name": "区域过滤",
+      "flag": "-r",
+      "description": "区域过滤(如chr1:1000-2000)",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 区域过滤 | -r | --region | 字符串 | 区域过滤(如chr1:1000-2000) | 无 | - | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 29,
+      "_end_line": 29
+    },
+    {
+      "name": "质量过滤",
+      "flag": "-q",
+      "description": "最小映射质量",
+      "required": false,
+      "default": "0",
+      "scope": "tool",
+      "evidence_quote": "| 质量过滤 | -q | --min-MQ | 整数 | 最小映射质量 | 0 | 0-60 | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 30,
+      "_end_line": 30
+    },
+    {
+      "name": "标志过滤",
+      "flag": "-f",
+      "description": "要求的标志组合",
+      "required": false,
+      "default": "0",
+      "scope": "tool",
+      "evidence_quote": "| 标志过滤 | -f | --require-flags | 整数 | 要求的标志组合 | 0 | - | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 31,
+      "_end_line": 31
+    },
+    {
+      "name": "标志排除",
+      "flag": "-F",
+      "description": "排除的标志组合",
+      "required": false,
+      "default": "0",
+      "scope": "tool",
+      "evidence_quote": "| 标志排除 | -F | --excl-flags | 整数 | 排除的标志组合 | 0 | - | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 32,
+      "_end_line": 32
+    },
+    {
+      "name": "格式指定",
+      "flag": "-O",
+      "description": "输出格式(SAM/BAM/CRAM)",
+      "required": false,
+      "default": "自动",
+      "scope": "tool",
+      "evidence_quote": "| 格式指定 | -O | --output-fmt | 字符串 | 输出格式(SAM/BAM/CRAM) | 自动 | SAM/BAM/CRAM | 推荐 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 33,
+      "_end_line": 33
+    },
+    {
+      "name": "头信息",
+      "flag": "-H",
+      "description": "仅输出头信息",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 头信息 | -H | --header | 布尔值 | 仅输出头信息 | false | false | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 34,
+      "_end_line": 34
+    },
+    {
+      "name": "索引类型",
+      "flag": "-b",
+      "description": "生成BAI索引",
+      "required": false,
+      "default": "true",
+      "scope": "tool",
+      "evidence_quote": "| 索引类型 | -b | --bai | 布尔值 | 生成BAI索引 | true | true | 可选 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 35,
+      "_end_line": 35
+    }
+  ],
+  "operations": [
+    {
+      "name": "samtools sort",
+      "description": "比对后BAM文件的排序",
+      "task_name": "BAM文件排序",
+      "inputs": [
+        {
+          "data_type": "未排序的序列比对结果",
+          "description": "未排序的BAM文件",
+          "role": "input_bam",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "sort_and_index",
+          "scenario_name": "BAM文件排序和索引",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 未排序的BAM文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 未排序的BAM文件",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "samtools工具Skill / 7. 使用场景模板 / 7.1 场景1: BAM文件排序和索引",
+          "_start_line": 126,
+          "_end_line": 126,
+          "_source_line_start": 126,
+          "_source_line_end": 126
+        },
+        {
+          "data_type": "序列比对结果（BAM）",
+          "role": "input_bam",
+          "formats": [
+            "BAM"
+          ],
+          "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam",
+          "scenario_id": "general_bam_coordinate_sort",
+          "scenario_name": "BAM坐标排序（通用输入）",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": null,
+          "flag": null,
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam"
+            }
+          ],
+          "sorting_state_required": "any",
+          "provenance_kind": "curated_external_manual",
+          "external_validation_url": "https://www.htslib.org/doc/samtools-sort.html",
+          "_source_line_start": 130,
+          "_source_line_end": 130
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "排序后的序列比对结果",
+          "description": "排序后的BAM文件(sorted.bam)",
+          "role": "sorted_bam",
+          "flag": "-o",
+          "flag_evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "sort_and_index",
+          "scenario_name": "BAM文件排序和索引",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "- 排序后的BAM文件(sorted.bam)"
+            }
+          ],
+          "evidence_quote": "- 排序后的BAM文件(sorted.bam)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引",
+          "_start_line": 136,
+          "_end_line": 136,
+          "_source_line_start": 136,
+          "_source_line_end": 136
+        },
+        {
+          "data_type": "已排序BAM比对结果",
+          "role": "output_coordinate_sorted_bam",
+          "formats": [
+            "BAM"
+          ],
+          "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam",
+          "scenario_id": "general_bam_coordinate_sort",
+          "scenario_name": "BAM坐标排序（通用输入）",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": null,
+          "flag": "-o",
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam"
+            }
+          ],
+          "sorting_state": "coordinate_sorted",
+          "provenance_kind": "curated_external_manual",
+          "external_validation_url": "https://www.htslib.org/doc/samtools-sort.html",
+          "_source_line_start": 130,
+          "_source_line_end": 130
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "sort_and_index",
+          "name": "BAM文件排序和索引",
+          "description": "比对后BAM文件的排序和索引",
+          "evidence_quote": "**适用场景**: 比对后BAM文件的排序和索引",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "samtools工具Skill / 7. 使用场景模板 / 7.1 场景1: BAM文件排序和索引",
+          "_start_line": 125,
+          "_end_line": 125,
+          "_source_line_start": 125,
+          "_source_line_end": 125
+        },
+        {
+          "scenario_id": "general_bam_coordinate_sort",
+          "name": "BAM坐标排序（通用输入）",
+          "description": "通用 BAM 输入，默认坐标排序输出；不使用 -n/-N/-t 等替代排序模式",
+          "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam",
+          "provenance_kind": "curated_external_manual",
+          "external_validation_url": "https://www.htslib.org/doc/samtools-sort.html",
+          "_source_line_start": 130,
+          "_source_line_end": 130
+        }
+      ],
+      "parameters": [
+        {
+          "name": "线程数",
+          "flag": "-@",
+          "description": "线程数",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "排序",
+          "_start_line": 130,
+          "_end_line": 130,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "samtools sort -@ 8 -o sorted.bam unsorted.bam",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "排序",
+      "_start_line": 130,
+      "_end_line": 130,
+      "_source_line_start": 130,
+      "_source_line_end": 130
+    },
+    {
+      "name": "samtools index",
+      "description": "为排序后的BAM文件生成索引",
+      "task_name": "BAM文件索引",
+      "inputs": [
+        {
+          "data_type": "排序后的序列比对结果",
+          "description": "排序后的BAM文件",
+          "role": "sorted_bam",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "sort_and_index",
+          "scenario_name": "BAM文件排序和索引",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "samtools index -b sorted.bam"
+            }
+          ],
+          "evidence_quote": "samtools index -b sorted.bam",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引",
+          "_start_line": 133,
+          "_end_line": 133,
+          "_source_line_start": 133,
+          "_source_line_end": 133
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "序列比对索引",
+          "description": "BAM索引文件(sorted.bam.bai)",
+          "role": "bam_index",
+          "flag": "-b",
+          "flag_evidence_quote": "samtools index -b sorted.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "sort_and_index",
+          "scenario_name": "BAM文件排序和索引",
+          "formats": [
+            "BAI"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAI",
+              "evidence_quote": "- BAM索引文件(sorted.bam.bai)"
+            }
+          ],
+          "evidence_quote": "- BAM索引文件(sorted.bam.bai)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引",
+          "_start_line": 137,
+          "_end_line": 137,
+          "_source_line_start": 137,
+          "_source_line_end": 137
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "sort_and_index",
+          "name": "BAM文件排序和索引",
+          "description": "比对后BAM文件的排序和索引",
+          "evidence_quote": "**适用场景**: 比对后BAM文件的排序和索引",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "samtools工具Skill / 7. 使用场景模板 / 7.1 场景1: BAM文件排序和索引",
+          "_start_line": 125,
+          "_end_line": 125,
+          "_source_line_start": 125,
+          "_source_line_end": 125
+        }
+      ],
+      "parameters": [
+        {
+          "name": "索引类型",
+          "flag": "-b",
+          "description": "生成BAI索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools index -b sorted.bam",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引",
+          "_start_line": 133,
+          "_end_line": 133,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "samtools index -b sorted.bam",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引",
+      "_start_line": 133,
+      "_end_line": 133,
+      "_source_line_start": 133,
+      "_source_line_end": 133
+    },
+    {
+      "name": "samtools view",
+      "description": "过滤低质量比对和未比对的 reads",
+      "task_name": "质量和标志过滤",
+      "inputs": [
+        {
+          "data_type": "排序后的序列比对结果",
+          "description": "已排序的BAM文件",
+          "role": "input_bam",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "quality_flag_filter",
+          "scenario_name": "质量和标志过滤",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 已排序的BAM文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已排序的BAM文件",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 142,
+          "_end_line": 142,
+          "_source_line_start": 142,
+          "_source_line_end": 142
+        },
+        {
+          "data_type": "序列比对结果（SAM）",
+          "role": "input_sam",
+          "formats": [
+            "SAM"
+          ],
+          "evidence_quote": "samtools view -bS input.sam > output.bam",
+          "scenario_id": "sam_to_bam_conversion",
+          "scenario_name": "SAM转BAM格式转换",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": null,
+          "flag": null,
+          "format_evidence": [
+            {
+              "format": "SAM",
+              "evidence_quote": "samtools view -bS input.sam > output.bam"
+            }
+          ],
+          "sorting_state": "input_dependent",
+          "provenance_kind": "md_example",
+          "_source_line_start": 205,
+          "_source_line_end": 205
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "过滤后的序列比对结果",
+          "description": "过滤后的BAM文件，只包含高质量的比对reads",
+          "role": "filtered_bam",
+          "flag": "-o",
+          "flag_evidence_quote": "samtools view -@ 4 -q 20 -F 4 -f 2 -o filtered.bam sorted.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "quality_flag_filter",
+          "scenario_name": "质量和标志过滤",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "- 过滤后的BAM文件，只包含高质量的比对reads"
+            }
+          ],
+          "evidence_quote": "- 过滤后的BAM文件，只包含高质量的比对reads",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 148,
+          "_end_line": 148,
+          "_source_line_start": 148,
+          "_source_line_end": 148
+        },
+        {
+          "data_type": "序列比对结果（BAM）",
+          "role": "output_bam",
+          "formats": [
+            "BAM"
+          ],
+          "evidence_quote": "samtools view -bS input.sam > output.bam",
+          "scenario_id": "sam_to_bam_conversion",
+          "scenario_name": "SAM转BAM格式转换",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": null,
+          "flag": null,
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "samtools view -bS input.sam > output.bam"
+            }
+          ],
+          "sorting_state": "preserved_from_input",
+          "output_channel": "stdout_redirect",
+          "provenance_kind": "md_example",
+          "_source_line_start": 205,
+          "_source_line_end": 205
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "quality_flag_filter",
+          "name": "质量和标志过滤",
+          "description": "过滤低质量比对和未比对的 reads",
+          "evidence_quote": "**适用场景**: 过滤低质量比对和未比对的 reads",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 141,
+          "_end_line": 141,
+          "_source_line_start": 141,
+          "_source_line_end": 141
+        },
+        {
+          "scenario_id": "sam_to_bam_conversion",
+          "name": "SAM转BAM格式转换",
+          "description": "SAM转BAM；不推断 BAM 是否已排序",
+          "evidence_quote": "samtools view -bS input.sam > output.bam",
+          "provenance_kind": "md_example",
+          "_source_line_start": 205,
+          "_source_line_end": 205
+        }
+      ],
+      "parameters": [
+        {
+          "name": "线程数",
+          "flag": "-@",
+          "description": "线程数",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools view -@ 4 -q 20 -F 4 -f 2 -o filtered.bam sorted.bam",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 145,
+          "_end_line": 145,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "质量过滤",
+          "flag": "-q",
+          "description": "最小映射质量",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools view -@ 4 -q 20 -F 4 -f 2 -o filtered.bam sorted.bam",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 145,
+          "_end_line": 145,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "标志排除",
+          "flag": "-F",
+          "description": "排除的标志组合",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools view -@ 4 -q 20 -F 4 -f 2 -o filtered.bam sorted.bam",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 145,
+          "_end_line": 145,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "标志过滤",
+          "flag": "-f",
+          "description": "要求的标志组合",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools view -@ 4 -q 20 -F 4 -f 2 -o filtered.bam sorted.bam",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+          "_start_line": 145,
+          "_end_line": 145,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "samtools view -@ 4 -q 20 -F 4 -f 2 -o filtered.bam sorted.bam",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 7.2 场景2: 质量和标志过滤",
+      "_start_line": 145,
+      "_end_line": 145,
+      "_source_line_start": 145,
+      "_source_line_end": 145
+    },
+    {
+      "name": "samtools depth",
+      "description": "计算目标区域的覆盖度",
+      "task_name": "覆盖度统计",
+      "inputs": [
+        {
+          "data_type": "排序后的序列比对结果",
+          "description": "已排序的BAM文件",
+          "role": "input_bam",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "coverage_stats",
+          "scenario_name": "覆盖度统计",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 已排序的BAM文件，目标区域BED文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已排序的BAM文件，目标区域BED文件",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.3 场景3: 覆盖度统计",
+          "_start_line": 154,
+          "_end_line": 154,
+          "_source_line_start": 154,
+          "_source_line_end": 154
+        },
+        {
+          "data_type": "基因组区域数据",
+          "description": "目标区域BED文件",
+          "role": "target_regions",
+          "flag": "-b",
+          "flag_evidence_quote": "samtools depth -a -b targets.bed sorted.bam > coverage.txt",
+          "required": false,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "coverage_stats",
+          "scenario_name": "覆盖度统计",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "**输入数据**: 已排序的BAM文件，目标区域BED文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已排序的BAM文件，目标区域BED文件",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.3 场景3: 覆盖度统计",
+          "_start_line": 154,
+          "_end_line": 154,
+          "_source_line_start": 154,
+          "_source_line_end": 154
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "覆盖度深度信息",
+          "description": "覆盖度统计文件，包含每个位置的深度信息",
+          "role": "coverage_output",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "condition": null,
+          "scenario_id": "coverage_stats",
+          "scenario_name": "覆盖度统计",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "| o4 | 深度信息 | TXT | {prefix}.depth | 覆盖度深度信息 |"
+            }
+          ],
+          "evidence_quote": "- 覆盖度统计文件，包含每个位置的深度信息",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.3 场景3: 覆盖度统计",
+          "_start_line": 160,
+          "_end_line": 160,
+          "_source_line_start": 160,
+          "_source_line_end": 160
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "coverage_stats",
+          "name": "覆盖度统计",
+          "description": "计算目标区域的覆盖度",
+          "evidence_quote": "**适用场景**: 计算目标区域的覆盖度",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.3 场景3: 覆盖度统计",
+          "_start_line": 153,
+          "_end_line": 153,
+          "_source_line_start": 153,
+          "_source_line_end": 153
+        }
+      ],
+      "parameters": [
+        {
+          "name": "区域过滤",
+          "flag": "-b",
+          "description": "目标区域BED文件",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools depth -a -b targets.bed sorted.bam > coverage.txt",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 7.3 场景3: 覆盖度统计",
+          "_start_line": 157,
+          "_end_line": 157,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "samtools depth -a -b targets.bed sorted.bam > coverage.txt",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 7.3 场景3: 覆盖度统计",
+      "_start_line": 157,
+      "_end_line": 157,
+      "_source_line_start": 157,
+      "_source_line_end": 157
+    },
+    {
+      "name": "samtools flagstat",
+      "description": "统计BAM文件信息",
+      "task_name": "BAM文件统计",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "输入的BAM文件",
+          "role": "input_bam",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "samtools flagstat input.bam"
+            }
+          ],
+          "evidence_quote": "samtools flagstat input.bam",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 210,
+          "_end_line": 210,
+          "_source_line_start": 210,
+          "_source_line_end": 210
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "比对统计结果",
+          "role": "statistics_stdout",
+          "formats": [
+            "TXT"
+          ],
+          "evidence_quote": "samtools flagstat input.bam",
+          "scenario_id": "default",
+          "scenario_name": "BAM统计",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": null,
+          "flag": null,
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "| o3 | 统计信息 | TXT | 根据命令 | 各种统计信息文件 |"
+            }
+          ],
+          "output_channel": "stdout",
+          "produces_file_directly": false,
+          "format_interpretation": "tabular_plain_text",
+          "provenance_kind": "curated_from_md_and_manual",
+          "_source_line_start": 210,
+          "_source_line_end": 210
+        }
+      ],
+      "scenarios": [],
+      "parameters": [],
+      "min_input_files": 1,
+      "evidence_quote": "samtools flagstat input.bam",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 9. 工具执行示例 / 9.1 基本用法",
+      "_start_line": 210,
+      "_end_line": 210,
+      "_source_line_start": 210,
+      "_source_line_end": 210
+    },
+    {
+      "name": "samtools mpileup",
+      "description": "生成pileup文件",
+      "task_name": "生成pileup文件",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "输入的BAM文件",
+          "role": "input_bam",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup"
+            }
+          ],
+          "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 9. 工具执行示例 / 9.2 高级用法",
+          "_start_line": 227,
+          "_end_line": 227,
+          "_source_line_start": 227,
+          "_source_line_end": 227
+        },
+        {
+          "data_type": "参考基因组序列",
+          "description": "参考基因组FASTA文件",
+          "role": "reference",
+          "flag": "-f",
+          "flag_evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup",
+          "required": false,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "FASTA"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTA",
+              "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup"
+            }
+          ],
+          "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup",
+          "condition": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 9. 工具执行示例 / 9.2 高级用法",
+          "_start_line": 227,
+          "_end_line": 227,
+          "_source_line_start": 227,
+          "_source_line_end": 227
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "pileup文件",
+          "description": "生成的pileup文件",
+          "role": "pileup_output",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "condition": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [],
+          "format_evidence": [],
+          "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 9. 工具执行示例 / 9.2 高级用法",
+          "_start_line": 227,
+          "_end_line": 227,
+          "_source_line_start": 227,
+          "_source_line_end": 227
+        }
+      ],
+      "scenarios": [],
+      "parameters": [
+        {
+          "name": "线程数",
+          "flag": "-@",
+          "description": "线程数",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup",
+          "_source_file": "samtools_skill.md",
+          "_source_section": "索引 / 9. 工具执行示例 / 9.2 高级用法",
+          "_start_line": 227,
+          "_end_line": 227,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "samtools mpileup -@ 4 -f reference.fasta input.bam > output.pileup",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 9. 工具执行示例 / 9.2 高级用法",
+      "_start_line": 227,
+      "_end_line": 227,
+      "_source_line_start": 227,
+      "_source_line_end": 227
+    }
+  ],
+  "data_types": [
+    {
+      "name": "序列比对结果",
+      "description": "文本格式的序列比对文件",
+      "formats": [
+        "SAM",
+        "BAM",
+        "CRAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "SAM",
+          "evidence_quote": "| SAM | 支持 | .sam | 文本格式的序列比对文件 |"
+        },
+        {
+          "format": "BAM",
+          "evidence_quote": "| BAM | 支持 | .bam | 二进制压缩的SAM文件 |"
+        },
+        {
+          "format": "CRAM",
+          "evidence_quote": "| CRAM | 支持 | .cram | 压缩率更高的比对格式 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| SAM | 支持 | .sam | 文本格式的序列比对文件 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 85,
+      "_end_line": 85,
+      "evidence_quotes": [
+        "| SAM | 支持 | .sam | 文本格式的序列比对文件 |",
+        "| BAM | 支持 | .bam | 二进制压缩的SAM文件 |",
+        "| CRAM | 支持 | .cram | 压缩率更高的比对格式 |"
+      ],
+      "_source_line_start": 85,
+      "_source_line_end": 85
+    },
+    {
+      "name": "序列比对索引",
+      "description": "用于快速随机访问的索引文件",
+      "formats": [
+        "BAI",
+        "CSI"
+      ],
+      "format_evidence": [
+        {
+          "format": "BAI",
+          "evidence_quote": "| BAI/CSI | 索引格式 | 用于快速随机访问的索引文件 |"
+        },
+        {
+          "format": "CSI",
+          "evidence_quote": "| BAI/CSI | 索引格式 | 用于快速随机访问的索引文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| BAI/CSI | 索引格式 | 用于快速随机访问的索引文件 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 5. 数据类型兼容性 / 5.2 输出数据类型",
+      "_start_line": 98,
+      "_end_line": 98,
+      "_source_line_start": 98,
+      "_source_line_end": 98
+    },
+    {
+      "name": "统计信息",
+      "description": "各种统计信息文件",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o3 | 统计信息 | TXT | 根据命令 | 各种统计信息文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o3 | 统计信息 | TXT | 根据命令 | 各种统计信息文件 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 45,
+      "_end_line": 45,
+      "_source_line_start": 45,
+      "_source_line_end": 45
+    },
+    {
+      "name": "覆盖度深度信息",
+      "description": "覆盖度深度信息",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o4 | 深度信息 | TXT | {prefix}.depth | 覆盖度深度信息 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o4 | 深度信息 | TXT | {prefix}.depth | 覆盖度深度信息 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 46,
+      "_end_line": 46,
+      "_source_line_start": 46,
+      "_source_line_end": 46
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "bwa",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bwa, hisat2等比对工具（生成BAM文件）",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 105,
+      "_end_line": 105,
+      "_source_line_start": 105,
+      "_source_line_end": 105
+    },
+    {
+      "target_tool": "hisat2",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bwa, hisat2等比对工具（生成BAM文件）",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 105,
+      "_end_line": 105,
+      "_source_line_start": 105,
+      "_source_line_end": 105
+    },
+    {
+      "target_tool": "picard",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| picard | 数据处理类 | 标记重复序列 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 111,
+      "_end_line": 111,
+      "_source_line_start": 111,
+      "_source_line_end": 111
+    },
+    {
+      "target_tool": "GATK",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| GATK | 变异检测类 | 变异检测和重校准 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "bcftools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| bcftools | 变异检测类 | VCF文件处理 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 113,
+      "_end_line": 113,
+      "_source_line_start": 113,
+      "_source_line_end": 113
+    },
+    {
+      "target_tool": "bedtools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| bedtools | 区域分析类 | 基因组区域分析 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 114,
+      "_end_line": 114,
+      "_source_line_start": 114,
+      "_source_line_end": 114
+    },
+    {
+      "target_tool": "IGV",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| IGV | 可视化类 | 结果可视化 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 115,
+      "_end_line": 115,
+      "_source_line_start": 115,
+      "_source_line_end": 115
+    },
+    {
+      "target_tool": "sambamba",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **替代工具**: sambamba（部分功能可替代）",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "samtools工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 119,
+      "_end_line": 119,
+      "_source_line_start": 119,
+      "_source_line_end": 119
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "文件完整性",
+      "description": "samtools quickcheck，无错误报告",
+      "evidence_quote": "| 文件完整性 | samtools quickcheck | 无错误报告 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 178,
+      "_end_line": 178
+    },
+    {
+      "name": "排序状态",
+      "description": "samtools view -H，头信息包含SO标签",
+      "evidence_quote": "| 排序状态 | samtools view -H | 头信息包含SO标签 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 179,
+      "_end_line": 179
+    },
+    {
+      "name": "索引存在",
+      "description": "文件系统检查，对应索引文件存在且大小合理",
+      "evidence_quote": "| 索引存在 | 文件系统检查 | 对应索引文件存在且大小合理 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 180,
+      "_end_line": 180
+    },
+    {
+      "name": "统计信息",
+      "description": "samtools flagstat，统计数据合理",
+      "evidence_quote": "| 统计信息 | samtools flagstat | 统计数据合理 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 181,
+      "_end_line": 181
+    },
+    {
+      "name": "覆盖度",
+      "description": "samtools depth，覆盖度符合预期",
+      "evidence_quote": "| 覆盖度 | samtools depth | 覆盖度符合预期 |",
+      "_source_file": "samtools_skill.md",
+      "_source_section": "索引 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 182,
+      "_end_line": 182
+    }
+  ],
+  "review": [],
+  "metadata": {
+    "file": "samtools_skill.md",
+    "doc_id": "db30def5c4b712b3",
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6",
+    "chunk_count": 1,
+    "chunk_ranges": [
+      {
+        "section": "samtools工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: BAM文件排序和索引 / 排序 / 索引 / 7.2 场景2: 质量和标志过滤 / 7.3 场景3: 覆盖度统计 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 9.2 高级用法 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+        "start_line": 1,
+        "end_line": 276,
+        "chunk_id": "db30def5c4b712b3_llm_0001"
+      }
+    ]
+  }
+}

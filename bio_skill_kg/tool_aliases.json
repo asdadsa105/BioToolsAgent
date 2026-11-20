@@ -1,0 +1,11 @@
+{
+  "BWA": "bwa",
+  "Burrows-Wheeler Aligner": "bwa",
+  "bcftools": "bcftools",
+  "BCFtools": "bcftools",
+  "ANNOVAR": "annovar",
+  "ANNOtate VARiation": "annovar",
+  "bedtools": "bedtools",
+  "BEDTools": "bedtools",
+  "bedtools2": "bedtools"
+}

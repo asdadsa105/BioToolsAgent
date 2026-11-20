@@ -1,0 +1,955 @@
+{
+  "tool": {
+    "name": "Picard",
+    "version": "2.27.5",
+    "category": "数据处理类",
+    "description": "用于处理高通量测序数据的Java工具集，提供标记重复序列、排序、格式转换等多种功能，是GATK分析流程的重要组成部分",
+    "source_url": "https://github.com/broadinstitute/picard",
+    "docker_image": "broadinstitute/picard:2.27.5",
+    "evidence_quote": "**工具名称**: Picard\n**工具版本**: 2.27.5\n**工具分类**: 数据处理类"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "- **最小**: 1核"
+    },
+    {
+      "name": "CPU推荐",
+      "value": 4,
+      "unit": "核",
+      "evidence_quote": "- **推荐**: 4核"
+    },
+    {
+      "name": "CPU最大",
+      "value": 16,
+      "unit": "核",
+      "evidence_quote": "- **最大**: 16核"
+    },
+    {
+      "name": "内存最小",
+      "value": 4,
+      "unit": "GB",
+      "evidence_quote": "- **最小**: 4GB"
+    },
+    {
+      "name": "内存推荐",
+      "value": 16,
+      "unit": "GB",
+      "evidence_quote": "- **推荐**: 16GB"
+    },
+    {
+      "name": "内存最大",
+      "value": 64,
+      "unit": "GB",
+      "evidence_quote": "- **最大**: 64GB"
+    },
+    {
+      "name": "临时空间",
+      "value": "输入文件大小的2倍",
+      "unit": null,
+      "evidence_quote": "- **临时空间**: 输入文件大小的2倍"
+    },
+    {
+      "name": "输出空间",
+      "value": "输入文件大小的1.5倍",
+      "unit": null,
+      "evidence_quote": "- **输出空间**: 输入文件大小的1.5倍"
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "命令",
+      "flag": null,
+      "description": "Picard工具命令(MarkDuplicates/SortSam等)",
+      "required": true,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 命令 | - | - | 字符串 | Picard工具命令(MarkDuplicates/SortSam等) | 无 | 不支持 | 必填 |"
+    },
+    {
+      "name": "输入文件",
+      "flag": "I",
+      "description": "输入文件路径",
+      "required": true,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 输入文件 | I | INPUT | 文件路径 | 输入文件路径 | 无 | 支持 | 必填 |"
+    },
+    {
+      "name": "输出文件",
+      "flag": "O",
+      "description": "输出文件路径",
+      "required": true,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 输出文件 | O | OUTPUT | 文件路径 | 输出文件路径 | 无 | 支持 | 必填 |"
+    },
+    {
+      "name": "参考基因组",
+      "flag": "R",
+      "description": "参考基因组FASTA文件",
+      "required": false,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 参考基因组 | R | REFERENCE_SEQUENCE | 文件路径 | 参考基因组FASTA文件 | 无 | - | 可选 |"
+    },
+    {
+      "name": "内存分配",
+      "flag": null,
+      "description": "JVM内存分配(如-Xmx8G)",
+      "required": false,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 内存分配 | - | J | 字符串 | JVM内存分配(如-Xmx8G) | - | - | 推荐 |"
+    },
+    {
+      "name": "线程数",
+      "flag": null,
+      "description": "内存中最大记录数",
+      "required": false,
+      "default": "500000",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | - | MAX_RECORDS_IN_RAM | 整数 | 内存中最大记录数 | 500000 | 100000-2000000 | 可选 |"
+    },
+    {
+      "name": "排序顺序",
+      "flag": "SO",
+      "description": "排序顺序(Coordinate/Queryname等)",
+      "required": false,
+      "default": "Coordinate",
+      "scope": "tool",
+      "evidence_quote": "| 排序顺序 | SO | SORT_ORDER | 字符串 | 排序顺序(Coordinate/Queryname等) | Coordinate | Coordinate | 可选 |"
+    },
+    {
+      "name": "重复标记",
+      "flag": "M",
+      "description": "重复序列统计文件",
+      "required": false,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 重复标记 | M | METRICS_FILE | 文件路径 | 重复序列统计文件 | 无 | - | 推荐 |"
+    },
+    {
+      "name": "光学重复",
+      "flag": "OR",
+      "description": "光学重复像素距离",
+      "required": false,
+      "default": "100",
+      "scope": "tool",
+      "evidence_quote": "| 光学重复 | OR | OPTICAL_DUPLICATE_PIXEL_DISTANCE | 整数 | 光学重复像素距离 | 100 | 100-2500 | 可选 |"
+    },
+    {
+      "name": "创建索引",
+      "flag": null,
+      "description": "是否创建索引",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 创建索引 | CREATE_INDEX | - | 布尔值 | 是否创建索引 | false | true | 推荐 |"
+    },
+    {
+      "name": "验证字符串ency",
+      "flag": null,
+      "description": "验证严格性(STRICT/LENIENT/SILENT)",
+      "required": false,
+      "default": "STRICT",
+      "scope": "tool",
+      "evidence_quote": "| 验证字符串ency | VALIDATION_STRINGENCY | - | 字符串 | 验证严格性(STRICT/LENIENT/SILENT) | STRICT | LENIENT | 可选 |"
+    },
+    {
+      "name": "压缩级别",
+      "flag": null,
+      "description": "输出压缩级别(0-9)",
+      "required": false,
+      "default": "5",
+      "scope": "tool",
+      "evidence_quote": "| 压缩级别 | COMPRESSION_LEVEL | - | 整数 | 输出压缩级别(0-9) | 5 | 0-9 | 可选 |"
+    },
+    {
+      "name": "临时目录",
+      "flag": null,
+      "description": "临时文件目录",
+      "required": false,
+      "default": "java.io.tmpdir",
+      "scope": "tool",
+      "evidence_quote": "| 临时目录 | TMP_DIR | - | 文件路径 | 临时文件目录 | java.io.tmpdir | - | 可选 |"
+    }
+  ],
+  "operations": [
+    {
+      "name": "MarkDuplicates",
+      "description": "检测和标记PCR重复序列",
+      "task_name": "标记重复序列",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "已排序的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=sorted.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 已排序的BAM文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已排序的BAM文件",
+          "condition": null
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "标记重复后的序列比对结果",
+          "description": "标记重复后的BAM文件(dedup.bam)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=dedup.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "- 标记重复后的BAM文件(dedup.bam)"
+            }
+          ],
+          "evidence_quote": "- 标记重复后的BAM文件(dedup.bam)",
+          "min_occurs": null,
+          "max_occurs": null
+        },
+        {
+          "data_type": "重复序列统计结果",
+          "description": "重复序列统计文件(duplicate_metrics.txt)",
+          "role": "metrics",
+          "flag": "METRICS_FILE",
+          "flag_evidence_quote": "METRICS_FILE=duplicate_metrics.txt",
+          "required": false,
+          "condition": null,
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "- 重复序列统计文件(duplicate_metrics.txt)"
+            }
+          ],
+          "evidence_quote": "- 重复序列统计文件(duplicate_metrics.txt)",
+          "min_occurs": null,
+          "max_occurs": null
+        },
+        {
+          "data_type": "序列比对索引",
+          "description": "BAM索引文件(dedup.bam.bai)",
+          "role": "index",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": false,
+          "condition": "CREATE_INDEX=true",
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "BAI"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAI",
+              "evidence_quote": "- BAM索引文件(dedup.bam.bai)"
+            }
+          ],
+          "evidence_quote": "- BAM索引文件(dedup.bam.bai)",
+          "min_occurs": null,
+          "max_occurs": null
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "mark_duplicates",
+          "name": "标记重复序列",
+          "description": "检测和标记PCR重复序列",
+          "evidence_quote": "### 7.1 场景1: 标记重复序列"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "光学重复像素距离",
+          "flag": "OPTICAL_DUPLICATE_PIXEL_DISTANCE",
+          "description": "光学重复像素距离",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "OPTICAL_DUPLICATE_PIXEL_DISTANCE=2500"
+        },
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true"
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx16G -jar picard.jar MarkDuplicates \\\n  INPUT=sorted.bam \\\n  OUTPUT=dedup.bam \\\n  METRICS_FILE=duplicate_metrics.txt \\\n  OPTICAL_DUPLICATE_PIXEL_DISTANCE=2500 \\\n  CREATE_INDEX=true"
+    },
+    {
+      "name": "AddOrReplaceReadGroups",
+      "description": "为BAM文件添加或替换读取组信息",
+      "task_name": "添加读取组信息",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=input.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "add_read_groups",
+          "scenario_name": "添加读取组信息",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: BAM文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: BAM文件",
+          "condition": null
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "添加读取组后的序列比对结果",
+          "description": "添加读取组后的BAM文件(rg_added.bam)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=rg_added.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "add_read_groups",
+          "scenario_name": "添加读取组信息",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "- 添加读取组后的BAM文件(rg_added.bam)"
+            }
+          ],
+          "evidence_quote": "- 添加读取组后的BAM文件(rg_added.bam)",
+          "min_occurs": null,
+          "max_occurs": null
+        },
+        {
+          "data_type": "序列比对索引",
+          "description": "BAM索引文件(rg_added.bam.bai)",
+          "role": "index",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": false,
+          "condition": "CREATE_INDEX=true",
+          "scenario_id": "add_read_groups",
+          "scenario_name": "添加读取组信息",
+          "formats": [
+            "BAI"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAI",
+              "evidence_quote": "- BAM索引文件(rg_added.bam.bai)"
+            }
+          ],
+          "evidence_quote": "- BAM索引文件(rg_added.bam.bai)",
+          "min_occurs": null,
+          "max_occurs": null
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "add_read_groups",
+          "name": "添加读取组信息",
+          "description": "为BAM文件添加或替换读取组信息",
+          "evidence_quote": "### 7.2 场景2: 添加读取组信息"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true"
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx8G -jar picard.jar AddOrReplaceReadGroups \\\n  INPUT=input.bam \\\n  OUTPUT=rg_added.bam \\\n  RGID=sample1 \\\n  RGLB=library1 \\\n  RGPL=ILLUMINA \\\n  RGPU=unit1 \\\n  RGSM=sample1 \\\n  CREATE_INDEX=true"
+    },
+    {
+      "name": "CollectWgsMetrics",
+      "description": "计算全基因组测序的覆盖度和质量指标",
+      "task_name": "计算全基因组测序指标",
+      "inputs": [
+        {
+          "data_type": "标记重复后的序列比对结果",
+          "description": "已标记重复的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=dedup.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "collect_wgs_metrics",
+          "scenario_name": "计算全基因组测序指标",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 已标记重复的BAM文件，参考基因组"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已标记重复的BAM文件，参考基因组",
+          "condition": null
+        },
+        {
+          "data_type": "参考基因组序列",
+          "description": "参考基因组",
+          "role": "reference",
+          "flag": "REFERENCE_SEQUENCE",
+          "flag_evidence_quote": "REFERENCE_SEQUENCE=reference.fasta",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "collect_wgs_metrics",
+          "scenario_name": "计算全基因组测序指标",
+          "formats": [
+            "FASTA"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTA",
+              "evidence_quote": "REFERENCE_SEQUENCE=reference.fasta"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已标记重复的BAM文件，参考基因组",
+          "condition": null
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "全基因组测序指标结果",
+          "description": "全基因组测序指标文件(wgs_metrics.txt)，包含覆盖度、质量分布等详细信息",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=wgs_metrics.txt",
+          "required": true,
+          "condition": null,
+          "scenario_id": "collect_wgs_metrics",
+          "scenario_name": "计算全基因组测序指标",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "- 全基因组测序指标文件(wgs_metrics.txt)"
+            }
+          ],
+          "evidence_quote": "- 全基因组测序指标文件(wgs_metrics.txt)",
+          "min_occurs": null,
+          "max_occurs": null
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "collect_wgs_metrics",
+          "name": "计算全基因组测序指标",
+          "description": "计算全基因组测序的覆盖度和质量指标",
+          "evidence_quote": "### 7.3 场景3: 计算全基因组测序指标"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "包含碱基质量直方图",
+          "flag": "INCLUDE_BQ_HISTOGRAM",
+          "description": "包含碱基质量直方图",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "INCLUDE_BQ_HISTOGRAM=true"
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "java -Xmx8G -jar picard.jar CollectWgsMetrics \\\n  INPUT=dedup.bam \\\n  OUTPUT=wgs_metrics.txt \\\n  REFERENCE_SEQUENCE=reference.fasta \\\n  INCLUDE_BQ_HISTOGRAM=true"
+    },
+    {
+      "name": "SortSam",
+      "description": "排序BAM文件",
+      "task_name": "排序BAM文件",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "未排序的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=unsorted.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "sort_bam",
+          "scenario_name": "排序BAM文件",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "INPUT=unsorted.bam"
+            }
+          ],
+          "evidence_quote": "**排序BAM文件**:",
+          "condition": null
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "排序后的序列比对结果",
+          "description": "排序后的BAM文件",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=sorted.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "sort_bam",
+          "scenario_name": "排序BAM文件",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "OUTPUT=sorted.bam"
+            }
+          ],
+          "evidence_quote": "OUTPUT=sorted.bam",
+          "min_occurs": null,
+          "max_occurs": null
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "sort_bam",
+          "name": "排序BAM文件",
+          "description": "排序BAM文件",
+          "evidence_quote": "**排序BAM文件**:"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "排序顺序",
+          "flag": "SORT_ORDER",
+          "description": "排序顺序(Coordinate/Queryname等)",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "SORT_ORDER=Coordinate"
+        },
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true"
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx8G -jar picard.jar SortSam \\\n  INPUT=unsorted.bam \\\n  OUTPUT=sorted.bam \\\n  SORT_ORDER=Coordinate \\\n  CREATE_INDEX=true"
+    },
+    {
+      "name": "MergeSamFiles",
+      "description": "合并BAM文件",
+      "task_name": "合并BAM文件",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "待合并的BAM文件(sample1.bam, sample2.bam)",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=sample1.bam \\\n  INPUT=sample2.bam",
+          "required": true,
+          "min_occurs": 2,
+          "max_occurs": null,
+          "scenario_id": "merge_bam",
+          "scenario_name": "合并BAM文件",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "INPUT=sample1.bam \\\n  INPUT=sample2.bam"
+            }
+          ],
+          "evidence_quote": "INPUT=sample1.bam \\\n  INPUT=sample2.bam",
+          "condition": null
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "合并后的序列比对结果",
+          "description": "合并后的BAM文件(merged.bam)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=merged.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "merge_bam",
+          "scenario_name": "合并BAM文件",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "OUTPUT=merged.bam"
+            }
+          ],
+          "evidence_quote": "OUTPUT=merged.bam",
+          "min_occurs": null,
+          "max_occurs": null
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "merge_bam",
+          "name": "合并BAM文件",
+          "description": "合并BAM文件",
+          "evidence_quote": "**合并BAM文件**:"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true"
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "java -Xmx8G -jar picard.jar MergeSamFiles \\\n  INPUT=sample1.bam \\\n  INPUT=sample2.bam \\\n  OUTPUT=merged.bam \\\n  CREATE_INDEX=true"
+    },
+    {
+      "name": "ViewSam",
+      "description": "提取特定区域",
+      "task_name": "提取特定区域",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "输入BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=input.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "view_region",
+          "scenario_name": "提取特定区域",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "INPUT=input.bam"
+            }
+          ],
+          "evidence_quote": "**提取特定区域**:",
+          "condition": null
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "区域提取后的序列比对结果",
+          "description": "输出SAM文件(output.sam)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=output.sam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "view_region",
+          "scenario_name": "提取特定区域",
+          "formats": [
+            "SAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "SAM",
+              "evidence_quote": "OUTPUT=output.sam"
+            }
+          ],
+          "evidence_quote": "OUTPUT=output.sam",
+          "min_occurs": null,
+          "max_occurs": null
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "view_region",
+          "name": "提取特定区域",
+          "description": "提取特定区域",
+          "evidence_quote": "**提取特定区域**:"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "区域",
+          "flag": "REGION",
+          "description": "提取的基因组区域",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "REGION=chr1:1000000-2000000"
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx8G -jar picard.jar ViewSam \\\n  INPUT=input.bam \\\n  OUTPUT=output.sam \\\n  REGION=chr1:1000000-2000000"
+    }
+  ],
+  "data_types": [
+    {
+      "name": "序列比对结果",
+      "description": "二进制比对文件",
+      "formats": [
+        "BAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "BAM",
+          "evidence_quote": "| BAM | 支持 | .bam | 二进制比对文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| BAM | 支持 | .bam | 二进制比对文件 |"
+    },
+    {
+      "name": "序列比对结果",
+      "description": "文本比对文件",
+      "formats": [
+        "SAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "SAM",
+          "evidence_quote": "| SAM | 支持 | .sam | 文本比对文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| SAM | 支持 | .sam | 文本比对文件 |"
+    },
+    {
+      "name": "序列比对结果",
+      "description": "压缩比对文件",
+      "formats": [
+        "CRAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "CRAM",
+          "evidence_quote": "| CRAM | 支持 | .cram | 压缩比对文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| CRAM | 支持 | .cram | 压缩比对文件 |"
+    },
+    {
+      "name": "序列文件",
+      "description": "序列文件(部分命令)",
+      "formats": [
+        "FASTQ"
+      ],
+      "format_evidence": [
+        {
+          "format": "FASTQ",
+          "evidence_quote": "| FASTQ | 支持 | .fq, .fastq | 序列文件(部分命令) |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| FASTQ | 支持 | .fq, .fastq | 序列文件(部分命令) |"
+    },
+    {
+      "name": "变异文件",
+      "description": "变异文件(部分命令)",
+      "formats": [
+        "VCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF",
+          "evidence_quote": "| VCF | 支持 | .vcf | 变异文件(部分命令) |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| VCF | 支持 | .vcf | 变异文件(部分命令) |"
+    },
+    {
+      "name": "统计信息文件",
+      "description": "统计信息文件",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| TXT | 文本格式 | 统计信息文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| TXT | 文本格式 | 统计信息文件 |"
+    },
+    {
+      "name": "报告文件",
+      "description": "可视化报告文件",
+      "formats": [
+        "HTML"
+      ],
+      "format_evidence": [
+        {
+          "format": "HTML",
+          "evidence_quote": "| o4 | 报告文件 | HTML | {prefix}_report.html | 可视化报告文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o4 | 报告文件 | HTML | {prefix}_report.html | 可视化报告文件 |"
+    },
+    {
+      "name": "索引文件",
+      "description": "生成的索引文件",
+      "formats": [
+        "BAI"
+      ],
+      "format_evidence": [
+        {
+          "format": "BAI",
+          "evidence_quote": "| o3 | 索引文件 | BAI | {input}.bai | 生成的索引文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o3 | 索引文件 | BAI | {input}.bai | 生成的索引文件 |"
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "bwa",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bwa, samtools（生成输入BAM文件）"
+    },
+    {
+      "target_tool": "samtools",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bwa, samtools（生成输入BAM文件）"
+    },
+    {
+      "target_tool": "GATK",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| GATK | 变异检测类 | 变异检测和重校准 |"
+    },
+    {
+      "target_tool": "samtools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| samtools | 数据处理类 | 进一步处理BAM文件 |"
+    },
+    {
+      "target_tool": "bcftools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| bcftools | 变异检测类 | VCF文件处理 |"
+    },
+    {
+      "target_tool": "sambamba",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **替代工具**: sambamba（部分功能可替代）"
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "文件完整性",
+      "description": "输入文件不能损坏",
+      "evidence_quote": "| 文件完整性 | 完整 | 输入文件不能损坏 |"
+    },
+    {
+      "name": "格式正确",
+      "description": "符合SAM/BAM/CRAM格式规范",
+      "evidence_quote": "| 格式正确 | 标准格式 | 符合SAM/BAM/CRAM格式规范 |"
+    },
+    {
+      "name": "排序状态",
+      "description": "某些命令要求输入文件已排序",
+      "evidence_quote": "| 排序状态 | 已排序 | 某些命令要求输入文件已排序 |"
+    },
+    {
+      "name": "参考基因组",
+      "description": "与比对时使用的参考基因组一致",
+      "evidence_quote": "| 参考基因组 | 一致 | 与比对时使用的参考基因组一致 |"
+    },
+    {
+      "name": "文件完整性检查",
+      "description": "samtools quickcheck，无错误报告",
+      "evidence_quote": "| 文件完整性 | samtools quickcheck | 无错误报告 |"
+    },
+    {
+      "name": "索引存在",
+      "description": "对应索引文件存在且大小合理",
+      "evidence_quote": "| 索引存在 | 文件系统检查 | 对应索引文件存在且大小合理 |"
+    },
+    {
+      "name": "统计信息",
+      "description": "统计数据合理",
+      "evidence_quote": "| 统计信息 | 查看metrics文件 | 统计数据合理 |"
+    },
+    {
+      "name": "读取组信息",
+      "description": "包含正确的读取组信息",
+      "evidence_quote": "| 读取组信息 | samtools view -H | 包含正确的读取组信息 |"
+    },
+    {
+      "name": "重复率",
+      "description": "重复率在合理范围内(<30%)",
+      "evidence_quote": "| 重复率 | 查看duplicate metrics | 重复率在合理范围内(<30%) |"
+    }
+  ]
+}

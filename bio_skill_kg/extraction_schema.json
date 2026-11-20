@@ -1,0 +1,534 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BioSkillKG LLM Extraction",
+  "type": "object",
+  "required": [
+    "tool",
+    "resources",
+    "tool_parameters",
+    "operations",
+    "data_types",
+    "tool_relations",
+    "quality_controls"
+  ],
+  "properties": {
+    "tool": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "docker_image": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_quote": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "value",
+          "evidence_quote"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_quote": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "tool_parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tool_parameter"
+      }
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "inputs",
+          "outputs",
+          "parameters",
+          "evidence_quote"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "task_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "inputs": {
+            "$ref": "#/$defs/io_items"
+          },
+          "outputs": {
+            "$ref": "#/$defs/io_items"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/operation_parameter"
+            }
+          },
+          "min_input_files": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "evidence_quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenarios": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "scenario_id",
+                "name",
+                "evidence_quote"
+              ],
+              "properties": {
+                "scenario_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "evidence_quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "data_types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "formats",
+          "evidence_quote"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Semantic data concept (what the content represents), not a bare file format such as VCF, TXT, BAM, BED, or FASTQ."
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "formats": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "File formats used to represent this DataType, e.g. VCF, BCF, TXT, BAM, BED."
+          },
+          "parent": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "format_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "format",
+                "evidence_quote"
+              ],
+              "properties": {
+                "format": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence_quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "One exact source quote per listed format. A quote may support multiple formats only if it explicitly names each."
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "tool_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "target_tool",
+          "relation_type",
+          "direction",
+          "evidence_quote"
+        ],
+        "properties": {
+          "target_tool": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation_type": {
+            "enum": [
+              "RECOMMENDED_BEFORE",
+              "DOCUMENTED_PREREQUISITE",
+              "DOCUMENTED_DOWNSTREAM",
+              "PARTIALLY_ALTERNATIVE_TO"
+            ]
+          },
+          "direction": {
+            "enum": [
+              "target_to_focal",
+              "focal_to_target"
+            ]
+          },
+          "evidence_quote": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "quality_controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "evidence_quote"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_quote": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "io_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "data_type",
+          "formats",
+          "evidence_quote"
+        ],
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Semantic input/output data concept, not a bare file-format label."
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "formats": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Explicit file format(s) for the semantic data_type."
+          },
+          "evidence_quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "format_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "format",
+                "evidence_quote"
+              ],
+              "properties": {
+                "format": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence_quote": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": true
+            },
+            "description": "One exact source quote per listed format. A quote may support multiple formats only if it explicitly names each."
+          },
+          "role": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Semantic port role, e.g. regions_a, regions_b, read1, read2."
+          },
+          "flag": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Exact CLI option associated with this port, e.g. -a, -b, -ibam; null for positional arguments."
+          },
+          "required": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "min_occurs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "max_occurs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "scenario_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+          },
+          "scenario_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "condition": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Condition under which this output is produced."
+          },
+          "flag_evidence_quote": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Exact source quote supporting the CLI flag; may be the operation command rather than the semantic port quote."
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "tool_parameter": {
+      "type": "object",
+      "required": [
+        "name",
+        "scope",
+        "evidence_quote"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flag": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "default": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "const": "tool"
+        }
+      },
+      "additionalProperties": true
+    },
+    "operation_parameter": {
+      "type": "object",
+      "required": [
+        "name",
+        "scope",
+        "evidence_quote"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flag": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "default": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "const": "operation"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

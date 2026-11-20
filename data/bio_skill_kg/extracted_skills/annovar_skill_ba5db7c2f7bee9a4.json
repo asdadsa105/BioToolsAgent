@@ -1,0 +1,939 @@
+{
+  "tool": {
+    "name": "ANNOVAR (ANNOtate VARiation)",
+    "version": "2021-08-19",
+    "category": "变异注释类",
+    "description": "快速高效的基因组变异注释工具，能够对SNP、Indel等变异进行功能注释，提供基因、转录本、蛋白质、调控区域等多层面的注释信息",
+    "source_url": "https://annovar.openbioinformatics.org/en/latest/",
+    "docker_image": "biocontainers/annovar:v20210819_cv1",
+    "evidence_quote": "**工具名称**: ANNOVAR (ANNOtate VARiation)"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "- **最小**: 1核",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 57,
+      "_end_line": 57
+    },
+    {
+      "name": "CPU推荐",
+      "value": 4,
+      "unit": "核",
+      "evidence_quote": "- **推荐**: 4核",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 58,
+      "_end_line": 58
+    },
+    {
+      "name": "CPU最大",
+      "value": 16,
+      "unit": "核",
+      "evidence_quote": "- **最大**: 16核",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 59,
+      "_end_line": 59
+    },
+    {
+      "name": "内存最小",
+      "value": 2,
+      "unit": "GB",
+      "evidence_quote": "- **最小**: 2GB",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 62,
+      "_end_line": 62
+    },
+    {
+      "name": "内存推荐",
+      "value": 8,
+      "unit": "GB",
+      "evidence_quote": "- **推荐**: 8GB",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 63,
+      "_end_line": 63
+    },
+    {
+      "name": "内存最大",
+      "value": 16,
+      "unit": "GB",
+      "evidence_quote": "- **最大**: 16GB",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 64,
+      "_end_line": 64
+    },
+    {
+      "name": "临时空间",
+      "value": "输入文件大小的2倍",
+      "unit": null,
+      "evidence_quote": "- **临时空间**: 输入文件大小的2倍",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 67,
+      "_end_line": 67
+    },
+    {
+      "name": "输出空间",
+      "value": "输入文件大小的3倍",
+      "unit": null,
+      "evidence_quote": "- **输出空间**: 输入文件大小的3倍（取决于注释数据库的大小）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 68,
+      "_end_line": 68
+    },
+    {
+      "name": "数据库空间",
+      "value": "约50GB",
+      "unit": null,
+      "evidence_quote": "- **数据库空间**: 约50GB（注释数据库占用空间）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 69,
+      "_end_line": 69
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "输入文件",
+      "flag": null,
+      "description": "输入VCF文件路径",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 输入文件 | - | - | 文件路径 | 输入VCF文件路径 | 无 | 支持 | 必填 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 18,
+      "_end_line": 18
+    },
+    {
+      "name": "命令",
+      "flag": null,
+      "description": "ANNOVAR注释命令",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 命令 | - | table_annovar.pl | 字符串 | ANNOVAR注释命令 | 无 | 不支持 | 必填 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 19,
+      "_end_line": 19
+    },
+    {
+      "name": "数据库目录",
+      "flag": "--buildver",
+      "description": "参考基因组版本",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 数据库目录 | - | --buildver | 字符串 | 参考基因组版本 | 无 | 不支持 | 必填 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 20,
+      "_end_line": 20
+    },
+    {
+      "name": "操作类型",
+      "flag": "--operation",
+      "description": "注释操作类型",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 操作类型 | - | --operation | 字符串 | 注释操作类型 | 无 | 不支持 | 必填 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 21,
+      "_end_line": 21
+    },
+    {
+      "name": "输出前缀",
+      "flag": "--outfile",
+      "description": "输出文件前缀",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 输出前缀 | - | --outfile | 字符串 | 输出文件前缀 | 无 | 不支持 | 必填 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 22,
+      "_end_line": 22
+    },
+    {
+      "name": "输入格式",
+      "flag": "--format",
+      "description": "输入文件格式",
+      "required": false,
+      "default": "vcf4",
+      "scope": "tool",
+      "evidence_quote": "| 输入格式 | - | --format | 字符串 | 输入文件格式 | vcf4 | vcf4/vcf4old | 可选 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 28,
+      "_end_line": 28
+    },
+    {
+      "name": "线程数",
+      "flag": "--thread",
+      "description": "线程数",
+      "required": false,
+      "default": "1",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | - | --thread | 整数 | 线程数 | 1 | 1-32 | 推荐 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 29,
+      "_end_line": 29
+    },
+    {
+      "name": "注释数据库",
+      "flag": "--dbtype",
+      "description": "注释数据库类型",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 注释数据库 | - | --dbtype | 字符串 | 注释数据库类型 | 无 | refGene/ensGene | 推荐 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 30,
+      "_end_line": 30
+    },
+    {
+      "name": "过滤条件",
+      "flag": "--filter",
+      "description": "注释过滤条件",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 过滤条件 | - | --filter | 字符串 | 注释过滤条件 | 无 | - | 可选 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 31,
+      "_end_line": 31
+    },
+    {
+      "name": "注释选项",
+      "flag": "--otherinfo",
+      "description": "保留原始VCF中的其他信息",
+      "required": false,
+      "default": "0",
+      "scope": "tool",
+      "evidence_quote": "| 注释选项 | - | --otherinfo | 布尔值 | 保留原始VCF中的其他信息 | 0 | 1 | 可选 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 32,
+      "_end_line": 32
+    },
+    {
+      "name": "数据库路径",
+      "flag": "--dir",
+      "description": "注释数据库目录",
+      "required": false,
+      "default": "$ANNOVAR_DBDIR",
+      "scope": "tool",
+      "evidence_quote": "| 数据库路径 | - | --dir | 文件路径 | 注释数据库目录 | $ANNOVAR_DBDIR | - | 推荐 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 33,
+      "_end_line": 33
+    },
+    {
+      "name": "批处理大小",
+      "flag": "--batchsize",
+      "description": "批处理大小",
+      "required": false,
+      "default": "1000",
+      "scope": "tool",
+      "evidence_quote": "| 批处理大小 | - | --batchsize | 整数 | 批处理大小 | 1000 | 100-10000 | 可选 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 34,
+      "_end_line": 34
+    },
+    {
+      "name": "压缩输出",
+      "flag": "--gz",
+      "description": "压缩输出文件",
+      "required": false,
+      "default": "0",
+      "scope": "tool",
+      "evidence_quote": "| 压缩输出 | - | --gz | 布尔值 | 压缩输出文件 | 0 | 1 | 可选 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 35,
+      "_end_line": 35
+    }
+  ],
+  "operations": [
+    {
+      "name": "annotate_variation.pl",
+      "description": "下载ANNOVAR注释数据库",
+      "task_name": "下载注释数据库",
+      "inputs": [],
+      "outputs": [
+        {
+          "data_type": "ANNOVAR注释数据库",
+          "description": "下载到humandb/目录的注释数据库",
+          "role": "database_dir",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": null,
+          "condition": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [],
+          "format_evidence": [],
+          "evidence_quote": "annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "annovar_skill.md",
+          "_source_section": "下载注释数据库",
+          "_start_line": 123,
+          "_end_line": 123,
+          "_source_line_start": 123,
+          "_source_line_end": 123
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "database_download",
+          "name": "下载注释数据库",
+          "description": "将指定注释数据库下载到 humandb/ 目录",
+          "evidence_quote": "annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/",
+          "_source_file": "annovar_skill.md",
+          "_source_line_start": 123,
+          "_source_line_end": 123
+        }
+      ],
+      "parameters": [],
+      "min_input_files": null,
+      "evidence_quote": "annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "下载注释数据库",
+      "_start_line": 123,
+      "_end_line": 123,
+      "_source_line_start": 123,
+      "_source_line_end": 123
+    },
+    {
+      "name": "table_annovar.pl",
+      "description": "运行ANNOVAR注释，对变异进行功能注释",
+      "task_name": "变异功能注释",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "输入VCF文件",
+          "role": "input_vcf",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "basic_annotation",
+          "scenario_name": "基本功能注释",
+          "formats": [
+            "VCF"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF",
+              "evidence_quote": "table_annovar.pl input.vcf humandb/"
+            }
+          ],
+          "evidence_quote": "table_annovar.pl input.vcf humandb/",
+          "condition": null,
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 128,
+          "_end_line": 128,
+          "_source_line_start": 128,
+          "_source_line_end": 128
+        },
+        {
+          "data_type": "ANNOVAR注释数据库",
+          "description": "注释数据库目录humandb/",
+          "role": "database_dir",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "basic_annotation",
+          "scenario_name": "基本功能注释",
+          "formats": [],
+          "format_evidence": [],
+          "evidence_quote": "table_annovar.pl input.vcf humandb/",
+          "condition": null,
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 128,
+          "_end_line": 128,
+          "_source_line_start": 128,
+          "_source_line_end": 128
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "多数据库注释结果",
+          "description": "多数据库注释结果，制表符分隔",
+          "role": "multianno_txt",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": null,
+          "condition": null,
+          "scenario_id": "basic_annotation",
+          "scenario_name": "基本功能注释",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "| o1 | 注释结果 | TXT | {prefix}.{buildver}_multianno.txt | 多数据库注释结果，制表符分隔 |"
+            }
+          ],
+          "evidence_quote": "- 基本功能注释结果(annovar_output.hg19_multianno.txt)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 139,
+          "_end_line": 139,
+          "_source_line_start": 139,
+          "_source_line_end": 139
+        },
+        {
+          "data_type": "注释后的变异结果",
+          "description": "注释后的VCF文件",
+          "role": "multianno_vcf",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": null,
+          "condition": null,
+          "scenario_id": "basic_annotation",
+          "scenario_name": "基本功能注释",
+          "formats": [
+            "VCF"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF",
+              "evidence_quote": "| o2 | 注释VCF | VCF | {prefix}.{buildver}_multianno.vcf | 注释后的VCF文件 |"
+            }
+          ],
+          "evidence_quote": "- 注释后的VCF文件(annovar_output.hg19_multianno.vcf)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 140,
+          "_end_line": 140,
+          "_source_line_start": 140,
+          "_source_line_end": 140
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "basic_annotation",
+          "name": "基本功能注释",
+          "description": "对变异进行基本的基因功能注释",
+          "evidence_quote": "### 7.1 场景1: 基本功能注释",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "ANNOVAR工具Skill / 7. 使用场景模板",
+          "_start_line": 116,
+          "_end_line": 116,
+          "_source_line_start": 116,
+          "_source_line_end": 116
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buildver",
+          "flag": "--buildver",
+          "description": "参考基因组版本",
+          "required": true,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--buildver hg19",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 129,
+          "_end_line": 129,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "outfile",
+          "flag": "--outfile",
+          "description": "输出文件前缀",
+          "required": true,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--outfile annovar_output",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 130,
+          "_end_line": 130,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "remove",
+          "flag": "--remove",
+          "description": "移除注释结果中的临时文件",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--remove",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 131,
+          "_end_line": 131,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "protocol",
+          "flag": "--protocol",
+          "description": "注释数据库列表",
+          "required": true,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--protocol refGene,knownGene,dbsnp138",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 132,
+          "_end_line": 132,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "operation",
+          "flag": "--operation",
+          "description": "注释操作类型",
+          "required": true,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--operation gx,gx,f",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 133,
+          "_end_line": 133,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "thread",
+          "flag": "--thread",
+          "description": "线程数",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--thread 4",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 134,
+          "_end_line": 134,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "otherinfo",
+          "flag": "--otherinfo",
+          "description": "保留原始VCF中的其他信息",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--otherinfo",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "ANNOVAR工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+          "_start_line": 32,
+          "_end_line": 32,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "nastring",
+          "flag": "--nastring",
+          "description": "缺失注释的填充字符",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--nastring .",
+          "_source_file": "annovar_skill.md",
+          "_source_section": "运行ANNOVAR注释",
+          "_start_line": 136,
+          "_end_line": 136,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": null,
+      "evidence_quote": "table_annovar.pl input.vcf humandb/ \\\n  --buildver hg19 \\\n  --outfile annovar_output \\\n  --remove \\\n  --protocol refGene,knownGene,dbsnp138 \\\n  --operation gx,gx,f \\\n  --thread 4 \\\n  --otherinfo \\\n  --nastring .",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行ANNOVAR注释",
+      "_start_line": 128,
+      "_end_line": 136,
+      "_source_line_start": 128,
+      "_source_line_end": 136
+    }
+  ],
+  "data_types": [
+    {
+      "name": "变异检测结果",
+      "description": "变异检测结果文件",
+      "formats": [
+        "VCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF",
+          "evidence_quote": "| VCF | 支持 | .vcf, .vcf.gz | 变异检测结果文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| VCF | 支持 | .vcf, .vcf.gz | 变异检测结果文件 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 84,
+      "_end_line": 84,
+      "_source_line_start": 84,
+      "_source_line_end": 84
+    },
+    {
+      "name": "ANNOVAR输入格式文件",
+      "description": "ANNOVAR输入格式文件",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| TXT | 支持 | .txt | ANNOVAR输入格式文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| TXT | 支持 | .txt | ANNOVAR输入格式文件 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 85,
+      "_end_line": 85,
+      "_source_line_start": 85,
+      "_source_line_end": 85
+    },
+    {
+      "name": "注释后的VCF文件",
+      "description": "注释后的VCF文件",
+      "formats": [
+        "AVCF",
+        "注释后的VCF文件"
+      ],
+      "format_evidence": [
+        {
+          "format": "AVCF",
+          "evidence_quote": "| AVCF | 支持 | .avcf | 注释后的VCF文件 |"
+        },
+        {
+          "format": "注释后的VCF文件",
+          "evidence_quote": "| AVCF | 支持 | .avcf | 注释后的VCF文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| AVCF | 支持 | .avcf | 注释后的VCF文件 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 86,
+      "_end_line": 86,
+      "_source_line_start": 86,
+      "_source_line_end": 86
+    },
+    {
+      "name": "多数据库注释结果",
+      "description": "多数据库注释结果，制表符分隔",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o1 | 注释结果 | TXT | {prefix}.{buildver}_multianno.txt | 多数据库注释结果，制表符分隔 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o1 | 注释结果 | TXT | {prefix}.{buildver}_multianno.txt | 多数据库注释结果，制表符分隔 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 43,
+      "_end_line": 43,
+      "_source_line_start": 43,
+      "_source_line_end": 43
+    },
+    {
+      "name": "注释后的变异结果",
+      "description": "注释后的VCF文件",
+      "formats": [
+        "VCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF",
+          "evidence_quote": "| o2 | 注释VCF | VCF | {prefix}.{buildver}_multianno.vcf | 注释后的VCF文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o2 | 注释VCF | VCF | {prefix}.{buildver}_multianno.vcf | 注释后的VCF文件 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 44,
+      "_end_line": 44,
+      "_source_line_start": 44,
+      "_source_line_end": 44
+    },
+    {
+      "name": "过滤后的注释结果",
+      "description": "经过过滤的注释结果",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o3 | 过滤结果 | TXT | {prefix}.{buildver}_multianno_filtered.txt | 经过过滤的注释结果 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o3 | 过滤结果 | TXT | {prefix}.{buildver}_multianno_filtered.txt | 经过过滤的注释结果 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 45,
+      "_end_line": 45,
+      "_source_line_start": 45,
+      "_source_line_end": 45
+    },
+    {
+      "name": "注释统计信息",
+      "description": "注释统计信息",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o4 | 统计文件 | TXT | {prefix}.{buildver}_multianno_summary.txt | 注释统计信息 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o4 | 统计文件 | TXT | {prefix}.{buildver}_multianno_summary.txt | 注释统计信息 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 46,
+      "_end_line": 46,
+      "_source_line_start": 46,
+      "_source_line_end": 46
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "GATK",
+      "relation_type": "DOCUMENTED_PREREQUISITE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **必需前置工具**: GATK, Strelka, Mutect2等变异检测工具（生成输入VCF文件）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 99,
+      "_end_line": 99,
+      "_source_line_start": 99,
+      "_source_line_end": 99
+    },
+    {
+      "target_tool": "Strelka",
+      "relation_type": "DOCUMENTED_PREREQUISITE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **必需前置工具**: GATK, Strelka, Mutect2等变异检测工具（生成输入VCF文件）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 99,
+      "_end_line": 99,
+      "_source_line_start": 99,
+      "_source_line_end": 99
+    },
+    {
+      "target_tool": "Mutect2",
+      "relation_type": "DOCUMENTED_PREREQUISITE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **必需前置工具**: GATK, Strelka, Mutect2等变异检测工具（生成输入VCF文件）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 99,
+      "_end_line": 99,
+      "_source_line_start": 99,
+      "_source_line_end": 99
+    },
+    {
+      "target_tool": "bcftools",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bcftools（VCF文件处理和过滤）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 100,
+      "_end_line": 100,
+      "_source_line_start": 100,
+      "_source_line_end": 100
+    },
+    {
+      "target_tool": "maftools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| maftools | 数据分析类 | MAF文件处理和可视化 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 107,
+      "_end_line": 107,
+      "_source_line_start": 107,
+      "_source_line_end": 107
+    },
+    {
+      "target_tool": "VEP",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **互斥工具**: VEP（功能重叠，可根据需求选择）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 111,
+      "_end_line": 111,
+      "_source_line_start": 111,
+      "_source_line_end": 111
+    },
+    {
+      "target_tool": "InterVar",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **替代工具**: InterVar, CancerVar（专注于特定类型变异的注释）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "CancerVar",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **替代工具**: InterVar, CancerVar（专注于特定类型变异的注释）",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "ANNOVAR工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "VCF文件格式正确",
+      "description": "输入VCF文件必须符合VCF格式规范",
+      "evidence_quote": "| VCF文件 | 格式正确 | 输入VCF文件必须符合VCF格式规范 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 201,
+      "_end_line": 201
+    },
+    {
+      "name": "数据库完整性",
+      "description": "所需的注释数据库必须下载完整",
+      "evidence_quote": "| 数据库完整性 | 完整 | 所需的注释数据库必须下载完整 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 202,
+      "_end_line": 202
+    },
+    {
+      "name": "参考基因组版本匹配",
+      "description": "注释数据库的参考基因组版本必须与输入VCF一致",
+      "evidence_quote": "| 参考基因组 | 版本匹配 | 注释数据库的参考基因组版本必须与输入VCF一致 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 203,
+      "_end_line": 203
+    },
+    {
+      "name": "索引文件存在",
+      "description": "数据库文件必须有对应的索引文件",
+      "evidence_quote": "| 索引文件 | 存在 | 数据库文件必须有对应的索引文件 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 204,
+      "_end_line": 204
+    },
+    {
+      "name": "注释完整性",
+      "description": "统计注释率，合格标准注释率 > 95%",
+      "evidence_quote": "| 注释完整性 | 统计注释率 | 注释率 > 95% |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 210,
+      "_end_line": 210
+    },
+    {
+      "name": "注释一致性",
+      "description": "比对不同数据库结果，关键注释信息一致",
+      "evidence_quote": "| 注释一致性 | 比对不同数据库结果 | 关键注释信息一致 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 211,
+      "_end_line": 211
+    },
+    {
+      "name": "文件完整性",
+      "description": "检查文件大小和格式，文件大小合理，格式正确",
+      "evidence_quote": "| 文件完整性 | 检查文件大小和格式 | 文件大小合理，格式正确 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 212,
+      "_end_line": 212
+    },
+    {
+      "name": "基因覆盖",
+      "description": "检查基因注释，重要基因变异都有注释",
+      "evidence_quote": "| 基因覆盖 | 检查基因注释 | 重要基因变异都有注释 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 213,
+      "_end_line": 213
+    },
+    {
+      "name": "频率信息",
+      "description": "检查频率数据库注释，常见变异有频率信息",
+      "evidence_quote": "| 频率信息 | 检查频率数据库注释 | 常见变异有频率信息 |",
+      "_source_file": "annovar_skill.md",
+      "_source_section": "运行癌症相关注释 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 214,
+      "_end_line": 214
+    }
+  ],
+  "review": [],
+  "metadata": {
+    "file": "annovar_skill.md",
+    "doc_id": "ba5db7c2f7bee9a4",
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6",
+    "chunk_count": 1,
+    "chunk_ranges": [
+      {
+        "section": "ANNOVAR工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 基本功能注释 / 下载注释数据库 / 运行ANNOVAR注释 / 7.2 场景2: 全面临床注释 / 下载更多注释数据库 / 运行全面注释 / 7.3 场景3: 癌症相关注释 / 下载癌症相关数据库 / 运行癌症相关注释 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 9.2 高级用法 / 运行注释 / 过滤掉同义突变 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+        "start_line": 1,
+        "end_line": 337,
+        "chunk_id": "ba5db7c2f7bee9a4_llm_0001"
+      }
+    ]
+  }
+}

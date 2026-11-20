@@ -1,0 +1,684 @@
+{
+  "variant_calls": {
+    "name": "变异检测结果",
+    "description": "变异检测流程产生的变异调用数据，可作为过滤、统计、合并、比较和注释等操作的输入。",
+    "formats": [
+      "VCF",
+      "VCF_GZ",
+      "BCF"
+    ],
+    "aliases": [
+      "变异调用结果",
+      "变异检测结果",
+      "变异检测生成的VCF文件",
+      "VCF格式的变异文件",
+      "文本格式变异文件",
+      "压缩的VCF文件",
+      "输入VCF文件",
+      "待合并的VCF文件",
+      "变异检测结果文件",
+      "变异文件",
+      "VCF/BCF变异数据",
+      "变异数据",
+      "压缩的变异检测结果",
+      "压缩VCF文件",
+      "二进制变异文件",
+      "BCF变异文件",
+      "二进制变异检测结果",
+      "二进制格式变异文件",
+      "BCF格式变异文件"
+    ]
+  },
+  "multi_sample_variant_calls": {
+    "name": "多样本变异检测结果",
+    "description": "包含多个样本变异调用信息的数据。",
+    "formats": [
+      "VCF",
+      "VCF_GZ",
+      "BCF"
+    ],
+    "parent": "variant_calls",
+    "aliases": [
+      "多样本变异检测结果",
+      "多样本变异检测生成的VCF文件"
+    ]
+  },
+  "filtered_variant_calls": {
+    "name": "过滤后变异数据",
+    "description": "按照质量或其他过滤条件筛选后保留的变异调用数据。",
+    "formats": [
+      "VCF",
+      "VCF_GZ",
+      "BCF"
+    ],
+    "parent": "variant_calls",
+    "aliases": [
+      "过滤后变异数据",
+      "过滤后的变异数据",
+      "过滤后VCF文件",
+      "过滤后的SNV变异文件",
+      "过滤后的变异"
+    ]
+  },
+  "merged_variant_calls": {
+    "name": "合并后变异数据",
+    "description": "将多个样本或多个变异调用文件合并后得到的数据。",
+    "formats": [
+      "VCF",
+      "VCF_GZ",
+      "BCF"
+    ],
+    "parent": "variant_calls",
+    "aliases": [
+      "合并后变异数据",
+      "合并后的变异数据",
+      "合并后的VCF文件",
+      "合并后的变异",
+      "合并后变异",
+      "合并后的变异调用结果"
+    ]
+  },
+  "subset_variant_calls": {
+    "name": "样本或区域子集变异数据",
+    "description": "从原始变异调用数据中按样本或基因组区域筛选得到的子集。",
+    "formats": [
+      "VCF",
+      "VCF_GZ",
+      "BCF"
+    ],
+    "parent": "variant_calls",
+    "aliases": [
+      "样本或区域子集变异数据",
+      "样本子集变异文件",
+      "特定样本的VCF文件",
+      "样本子集变异"
+    ]
+  },
+  "variant_statistics": {
+    "name": "变异统计结果",
+    "description": "对变异调用数据进行统计分析后生成的统计数据。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "变异统计结果",
+      "变异统计结果文件",
+      "variants.stats"
+    ]
+  },
+  "short_reads": {
+    "name": "短读长测序数据",
+    "description": "测序产生的FASTQ短读长读段数据，可为原始读段或进一步处理后的读段；具体处理状态由子类型或端口状态表示。",
+    "formats": [
+      "FASTQ",
+      "FASTQ_GZ"
+    ],
+    "aliases": [
+      "短读长测序数据",
+      "测序读长数据",
+      "单端或双端测序数据",
+      "单端或双端FASTQ文件",
+      "FASTQ文件",
+      "FQ文件",
+      "测序读段数据",
+      "FASTQ测序读段",
+      "单端FASTQ文件",
+      "双端FASTQ文件",
+      "输入FASTQ文件",
+      "FASTQ读段数据",
+      "原始测序读段",
+      "测序读段",
+      "单端测序读段",
+      "双端测序读段"
+    ]
+  },
+  "reference_genome": {
+    "name": "参考基因组序列",
+    "description": "用于序列比对或变异分析的参考基因组序列数据。",
+    "formats": [
+      "FASTA"
+    ],
+    "aliases": [
+      "参考基因组序列",
+      "参考基因组",
+      "参考基因组文件",
+      "FASTA文件"
+    ]
+  },
+  "reference_index": {
+    "name": "BWA参考基因组索引",
+    "description": "由参考基因组构建、供 BWA 检索和比对使用的索引文件集合或索引前缀。",
+    "formats": [
+      "BWA_INDEX"
+    ],
+    "aliases": [
+      "参考基因组索引",
+      "BWA参考基因组索引",
+      "参考索引"
+    ]
+  },
+  "aligned_reads": {
+    "name": "序列比对结果",
+    "description": "将测序读段比对到参考基因组后得到的比对记录数据；具体文件表示由 SAM 或 BAM 子类型区分。",
+    "formats": [],
+    "aliases": [
+      "序列比对结果",
+      "比对结果",
+      "比对文件",
+      "BAM比对文件",
+      "SAM比对文件"
+    ]
+  },
+  "aligned_reads_sam": {
+    "name": "序列比对结果（SAM）",
+    "description": "以 SAM 格式存储的序列比对记录。",
+    "formats": [
+      "SAM"
+    ],
+    "parent": "aligned_reads",
+    "aliases": [
+      "SAM格式的比对文件",
+      "比对后的SAM文件",
+      "SAM比对结果",
+      "SAM文件"
+    ]
+  },
+  "aligned_reads_bam": {
+    "name": "序列比对结果（BAM）",
+    "description": "以 BAM 格式存储的序列比对记录。",
+    "formats": [
+      "BAM"
+    ],
+    "parent": "aligned_reads",
+    "aliases": [
+      "BAM格式的比对文件",
+      "BAM比对文件",
+      "比对后的BAM文件",
+      "BAM比对结果",
+      "BAM文件"
+    ]
+  },
+  "annotation_database": {
+    "name": "ANNOVAR注释数据库",
+    "description": "供 ANNOVAR 查询和注释使用的注释数据库文件或目录。",
+    "formats": [],
+    "aliases": [
+      "注释数据库",
+      "ANNOVAR注释数据库",
+      "ANNOVAR注释数据库目录",
+      "完整的ANNOVAR注释数据库",
+      "ANNOVAR数据库",
+      "注释数据库目录",
+      "humandb注释数据库目录"
+    ]
+  },
+  "annotated_variants": {
+    "name": "变异功能注释结果",
+    "description": "对变异调用数据进行功能或数据库注释后得到的结果，可使用表格或注释 VCF 等格式表示。",
+    "formats": [
+      "TXT",
+      "VCF"
+    ],
+    "aliases": [
+      "变异功能注释结果",
+      "注释结果",
+      "注释VCF",
+      "注释后的VCF文件",
+      "注释结果文件",
+      "多数据库注释结果",
+      "ANNOVAR注释结果",
+      "AVCF",
+      "注释后的变异数据",
+      "注释后的变异结果"
+    ]
+  },
+  "annovar_input_data": {
+    "name": "ANNOVAR输入数据",
+    "description": "按 ANNOVAR 输入要求组织的变异数据文件。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "ANNOVAR输入格式文件",
+      "ANNOVAR输入文件",
+      "ANNOVAR输入数据"
+    ]
+  },
+  "genomic_regions": {
+    "name": "基因组区域数据",
+    "description": "以染色体及起止坐标等信息表示的基因组区间数据。",
+    "formats": [
+      "BED"
+    ],
+    "aliases": [
+      "基因组区域数据",
+      "基因组区域",
+      "BED格式的基因组区域文件",
+      "两个BED格式的基因组区域文件",
+      "BED格式的覆盖文件",
+      "区域数据",
+      "BED文件"
+    ]
+  },
+  "gene_annotations": {
+    "name": "基因注释数据",
+    "description": "描述基因、转录本或其他基因组特征注释的数据。",
+    "formats": [
+      "GFF",
+      "GFF3"
+    ],
+    "aliases": [
+      "基因注释数据",
+      "基因注释文件",
+      "GFF格式的基因注释文件"
+    ]
+  },
+  "intersected_regions": {
+    "name": "基因组区域交集结果",
+    "description": "对基因组区域进行交集运算后得到的区域数据。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "genomic_regions",
+    "aliases": [
+      "区域交集结果",
+      "基因组区域交集",
+      "两个区域文件的交集",
+      "交集结果",
+      "至少50%重叠的交集区域",
+      "至少50%重叠的交集",
+      "50%重叠的交集区域"
+    ]
+  },
+  "merged_regions": {
+    "name": "合并后的基因组区域",
+    "description": "将重叠或相邻的基因组区域合并后得到的区域数据。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "genomic_regions",
+    "aliases": [
+      "区域合并结果",
+      "合并后的基因组区域",
+      "合并后的区域"
+    ]
+  },
+  "coverage_result": {
+    "name": "区域覆盖度结果",
+    "description": "对指定基因组区域计算得到的覆盖度或覆盖统计结果。",
+    "formats": [
+      "BED",
+      "TXT"
+    ],
+    "aliases": [
+      "区域覆盖度结果",
+      "覆盖度结果",
+      "区域覆盖度结果文件",
+      "覆盖度统计结果"
+    ]
+  },
+  "high_coverage_regions": {
+    "name": "高覆盖度区域",
+    "description": "根据覆盖度阈值筛选得到的基因组区域。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "genomic_regions",
+    "aliases": [
+      "高覆盖度区域",
+      "覆盖度高的区域"
+    ]
+  },
+  "signal_tracks": {
+    "name": "基因组信号轨道数据",
+    "description": "沿基因组坐标记录数值信号或覆盖信号的数据。",
+    "formats": [
+      "WIG",
+      "BEDGRAPH"
+    ],
+    "aliases": [
+      "信号文件",
+      "信号轨道数据",
+      "WIG格式的信号文件",
+      "BEDGRAPH格式的信号文件",
+      "信号数据",
+      "基因组覆盖度数据",
+      "覆盖度信号轨道",
+      "BEDGRAPH覆盖度数据"
+    ]
+  },
+  "sample_list": {
+    "name": "样本列表",
+    "description": "记录待处理或参与分析的样本标识符列表。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "样本列表",
+      "样本列表文件",
+      "样本列表文件(samples.txt)"
+    ]
+  },
+  "region_list": {
+    "name": "区域列表",
+    "description": "记录待处理基因组区域或区间的列表。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "区域列表",
+      "区域列表文件"
+    ]
+  },
+  "genotype_check_results": {
+    "name": "基因型检查结果",
+    "description": "样本间基因型一致性或比较检查生成的结果数据。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "基因型检查结果",
+      "基因型检查结果文件",
+      "基因型检查结果文件(genotype_check.txt)"
+    ]
+  },
+  "quality_distribution_plot": {
+    "name": "质量分布图表",
+    "description": "用于展示变异质量或深度分布的图形结果。",
+    "formats": [
+      "PDF"
+    ],
+    "aliases": [
+      "质量分布图表",
+      "质量分布图表(depth_distribution.pdf)",
+      "质量分布图",
+      "质量分布图(depth_distribution.pdf)",
+      "深度分布图"
+    ]
+  },
+  "tool_statistics": {
+    "name": "工具统计结果",
+    "description": "由生物信息学工具输出的一般性统计数据；若原文明确为变异统计，应使用 variant_statistics。",
+    "formats": [],
+    "aliases": [
+      "工具统计结果",
+      "一般统计结果"
+    ]
+  },
+  "single_sample_variant_calls": {
+    "name": "单样本变异检测结果",
+    "description": "按单个样本拆分得到的变异调用数据，区别于从多样本文件中提取多个指定样本的子集。",
+    "formats": [
+      "VCF",
+      "VCF_GZ",
+      "BCF"
+    ],
+    "parent": "variant_calls",
+    "aliases": [
+      "单样本变异",
+      "单个样本的VCF文件",
+      "单样本VCF文件",
+      "sample1.vcf.gz"
+    ]
+  },
+  "annotation_statistics": {
+    "name": "变异注释统计结果",
+    "description": "ANNOVAR 对注释结果汇总生成的统计信息，例如 multianno_summary 文件。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "注释统计信息",
+      "注释统计结果",
+      "注释统计文件",
+      "multianno_summary.txt"
+    ]
+  },
+  "detailed_coverage_statistics": {
+    "name": "详细覆盖度统计结果",
+    "description": "对基因组区域逐位置计算得到的详细覆盖度统计数据，例如 coverage_detail.bed。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "coverage_result",
+    "aliases": [
+      "详细的覆盖度统计",
+      "详细覆盖度统计",
+      "coverage_detail.bed"
+    ]
+  },
+  "multi_sample_coverage_result": {
+    "name": "多样本覆盖度结果",
+    "description": "针对多个样本分别计算或汇总得到的基因组区域覆盖度数据。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "coverage_result",
+    "aliases": [
+      "多样本覆盖度结果",
+      "多个样本的覆盖度结果",
+      "coverage_multi.bed",
+      "merged_coverage.bed"
+    ]
+  },
+  "difference_regions": {
+    "name": "基因组差异区域",
+    "description": "从一个基因组区域集合中排除与另一区域集合重叠部分后得到的区域数据。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "genomic_regions",
+    "aliases": [
+      "差异区域",
+      "difference.bed"
+    ]
+  },
+  "counted_intersection_regions": {
+    "name": "带交集计数的基因组区域",
+    "description": "基因组区域交集结果，并为每个区域附加与另一组区域重叠的计数。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "intersected_regions",
+    "aliases": [
+      "带交集计数的区域结果",
+      "交集计数结果",
+      "intersection_count.bed"
+    ]
+  },
+  "mean_aggregated_merged_regions": {
+    "name": "带平均值的合并区域",
+    "description": "合并重叠或相邻区域，并对原始区域的指定数值列计算平均值。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "merged_regions",
+    "aliases": [
+      "带原始区域平均值的合并结果",
+      "合并区域平均值结果",
+      "merged_mean.bed"
+    ]
+  },
+  "count_aggregated_merged_regions": {
+    "name": "带计数的合并区域",
+    "description": "合并重叠或相邻区域，并记录合并前原始区域的数量。",
+    "formats": [
+      "BED"
+    ],
+    "parent": "merged_regions",
+    "aliases": [
+      "带原始区域计数的合并结果",
+      "合并区域计数结果",
+      "merged_count.bed"
+    ]
+  },
+  "filtered_annotated_variants": {
+    "name": "过滤后的变异注释结果",
+    "description": "对变异功能注释结果进一步筛选后得到的数据。",
+    "formats": [
+      "TXT"
+    ],
+    "parent": "annotated_variants",
+    "aliases": [
+      "过滤后的注释结果",
+      "经过过滤的注释结果",
+      "multianno_filtered.txt"
+    ]
+  },
+  "execution_log": {
+    "name": "工具运行日志",
+    "description": "记录工具执行过程、参数信息和处理进度的日志文本。",
+    "formats": [
+      "TXT"
+    ],
+    "aliases": [
+      "运行日志",
+      "日志文件",
+      "bedtools.log",
+      "annovar.log"
+    ]
+  },
+  "aligned_reads_bam_unsorted": {
+    "name": "未排序BAM比对结果",
+    "description": "尚未按参考坐标排序的BAM序列比对记录。",
+    "formats": [
+      "BAM"
+    ],
+    "parent": "aligned_reads_bam",
+    "aliases": [
+      "未排序的序列比对结果",
+      "未排序的BAM文件",
+      "未排序BAM文件",
+      "未排序BAM比对结果"
+    ]
+  },
+  "aligned_reads_bam_sorted": {
+    "name": "已排序BAM比对结果",
+    "description": "已按参考坐标排序的BAM序列比对记录，可用于索引和需要排序输入的操作。",
+    "formats": [
+      "BAM"
+    ],
+    "parent": "aligned_reads_bam",
+    "aliases": [
+      "排序后的序列比对结果",
+      "排序后的BAM文件",
+      "已排序的BAM文件",
+      "已排序BAM文件",
+      "排序后BAM文件"
+    ]
+  },
+  "aligned_reads_bam_filtered": {
+    "name": "已过滤BAM比对结果",
+    "description": "根据质量或FLAG等条件过滤后的BAM序列比对记录。排序状态须依据具体输入和操作另行判断。",
+    "formats": [
+      "BAM"
+    ],
+    "parent": "aligned_reads_bam",
+    "aliases": [
+      "过滤后的序列比对结果",
+      "过滤后的BAM文件",
+      "过滤后BAM文件",
+      "已过滤BAM文件"
+    ]
+  },
+  "alignment_index": {
+    "name": "序列比对索引",
+    "description": "用于随机访问BAM/CRAM比对结果的索引数据，具体格式如BAI或CSI。",
+    "formats": [
+      "BAI",
+      "CSI"
+    ],
+    "aliases": [
+      "序列比对索引",
+      "BAM索引文件",
+      "BAM索引",
+      "比对索引文件",
+      "sorted.bam.bai"
+    ]
+  },
+  "alignment_statistics": {
+    "name": "比对统计结果",
+    "description": "samtools flagstat 等产生的序列比对记录统计摘要。",
+    "formats": [
+      "TXT"
+    ],
+    "parent": "tool_statistics",
+    "aliases": [
+      "比对统计结果",
+      "BAM统计信息",
+      "flagstat统计信息",
+      "flagstat结果"
+    ]
+  },
+  "per_base_depth": {
+    "name": "逐位置覆盖深度数据",
+    "description": "按参考基因组位置记录测序覆盖深度的文本数据，可由 samtools depth 产生。",
+    "formats": [
+      "TXT"
+    ],
+    "parent": "coverage_result",
+    "aliases": [
+      "覆盖度深度信息",
+      "覆盖度统计文件",
+      "逐位置深度信息",
+      "逐位置覆盖度信息"
+    ]
+  },
+  "pileup_data": {
+    "name": "Pileup数据",
+    "description": "按参考基因组位置汇总测序读段信息的pileup数据。",
+    "formats": [],
+    "aliases": [
+      "pileup文件",
+      "Pileup文件",
+      "生成的pileup文件",
+      "pileup数据"
+    ]
+  },
+  "processed_short_reads": {
+    "name": "预处理后测序读段",
+    "description": "经过质控、过滤、裁剪或去接头等预处理的FASTQ读段。",
+    "formats": [
+      "FASTQ",
+      "FASTQ_GZ"
+    ],
+    "parent": "short_reads",
+    "aliases": [
+      "处理后序列",
+      "预处理后测序读段",
+      "质控后测序读段",
+      "处理后FASTQ读段",
+      "过滤后的FASTQ读段",
+      "clean reads",
+      "trimmed reads"
+    ]
+  },
+  "quality_control_report": {
+    "name": "质量控制报告",
+    "description": "质量控制过程生成的可视化或人类可读HTML报告。",
+    "formats": [
+      "HTML"
+    ],
+    "aliases": [
+      "质控报告",
+      "质量控制报告",
+      "HTML质控报告",
+      "质量控制HTML报告",
+      "QC报告"
+    ]
+  },
+  "quality_control_metrics": {
+    "name": "质量控制指标数据",
+    "description": "质量控制过程生成的机器可读JSON统计数据。",
+    "formats": [
+      "JSON"
+    ],
+    "aliases": [
+      "质控数据",
+      "质量控制指标数据",
+      "JSON质控数据",
+      "质控统计JSON",
+      "QC指标数据"
+    ]
+  }
+}

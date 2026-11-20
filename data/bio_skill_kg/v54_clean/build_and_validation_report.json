@@ -1,0 +1,82 @@
+{
+  "build": "v5.4",
+  "llm_api_calls": 0,
+  "fresh": true,
+  "old_graph_merged": false,
+  "graph": {
+    "nodes": 123,
+    "edges": 199,
+    "labels": {
+      "DataType": 43,
+      "FileFormat": 17,
+      "Operation": 21,
+      "Task": 20,
+      "Tool": 22
+    },
+    "relations": {
+      "DOCUMENTED_DOWNSTREAM": 15,
+      "DOCUMENTED_PREREQUISITE": 3,
+      "HAS_FORMAT": 44,
+      "HAS_OPERATION": 21,
+      "IS_SUBTYPE_OF": 20,
+      "PARTIALLY_ALTERNATIVE_TO": 9,
+      "PERFORMS": 21,
+      "PRODUCES": 28,
+      "RECOMMENDED_BEFORE": 10,
+      "REQUIRES_INPUT": 28
+    },
+    "review_items": 5
+  },
+  "sources": {
+    "annovar": {
+      "md_path": "/mnt/data/annovar_skill.md",
+      "md_sha256": "b36b7132ae82d78f5bedd2e6716b90c6940a9305eeecb98db5b289fa16f3ef50",
+      "cache_path": "/mnt/data/samtools_kg_fix/test_project/data/annovar_skill_ba5db7c2f7bee9a4.json",
+      "prompt_version": "bioskillkg-extract-v1.6"
+    },
+    "bcftools": {
+      "md_path": "/mnt/data/bcftools_skill.md",
+      "md_sha256": "bdd48dc3de90dae5116f066cad8de8243025465cd2b0529a86a6aa45966570fb",
+      "cache_path": "/mnt/data/samtools_kg_fix/test_project/data/bcftools_skill_3841afd167477ae6.json",
+      "prompt_version": "bioskillkg-extract-v1.6"
+    },
+    "bedtools": {
+      "md_path": "/mnt/data/bedtools_skill.md",
+      "md_sha256": "c61a15dc5aa48eda51b4c6da85a3ea973366f5044ff1a975564f323013f73c8d",
+      "cache_path": "/mnt/data/samtools_kg_fix/test_project/data/bedtools_skill_80446c19d079a489.json",
+      "prompt_version": "bioskillkg-extract-v1.6"
+    },
+    "bwa": {
+      "md_path": "/mnt/data/bwa_skill.md",
+      "md_sha256": "afc5deaf2950287059ce4a2fde3283b88c6c190d80719149717e9aa94929eec2",
+      "cache_path": "/mnt/data/samtools_kg_fix/test_project/data/bwa_skill_5eaffba0e1dd59c8.json",
+      "prompt_version": "bioskillkg-extract-v1.6"
+    },
+    "samtools": {
+      "md_path": "/mnt/data/samtools_skill.md",
+      "md_sha256": "060845707a1271bc5d1c71b9104b2e622cf5364fa413ba5a4fe6004075862d7f",
+      "cache_path": "/mnt/data/samtools_kg_fix/test_project/data/samtools_skill.json",
+      "prompt_version": "bioskillkg-extract-v1.6"
+    }
+  },
+  "curated_changes": [
+    "samtools view 增加 SAM→BAM 独立场景；排序状态保持未知",
+    "samtools sort 增加通用 BAM 坐标排序场景，支持 view 输出接入 sort",
+    "samtools flagstat 增加 stdout 比对统计结果；不虚构输出文件",
+    "bedtools unionbedg 输入纠正为 BEDGRAPH；输出另建多样本覆盖度矩阵",
+    "bedtools genomecov -ibam 输入约束补充为坐标已排序 BAM",
+    "bedtools genomecov -bga 输出边限定为 awk 过滤前的 BEDGRAPH 数据"
+  ],
+  "candidate_workflow_count": 74,
+  "workflow_checks": {
+    "REVIEW_MISSING_FORMAT": 1,
+    "CANDIDATE_ONLY": 65,
+    "NEEDS_MULTIPLE_INPUTS": 4,
+    "REJECT_FORMAT_MISMATCH": 4
+  },
+  "notes": [
+    "同一 Operation 的场景不可混成一次调用",
+    "工作流候选不等于可执行：需检查参数、输入数量、排序/索引状态",
+    "unionbedg 的原 MD 使用 .bed 后缀，已按官方要求解释为 BEDGRAPH 内容；建议修订 MD"
+  ]
+}

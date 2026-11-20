@@ -1,0 +1,21 @@
+{
+  "project_artifact": "BioSkillKG",
+  "current_version": "5.2",
+  "schema": "BioSkillKG-v2",
+  "prompt_version": "bioskillkg-extract-v1.6",
+  "normalization_version": "bioskillkg-semantic-normalization-v5.2",
+  "graph": {
+    "path": "data/bio_skill_kg/bio_skill_graph.json",
+    "nodes": 99,
+    "edges": 150,
+    "review_items": 4,
+    "sha256": "235de1ba618e8556303f3a5a8310fede205b07b38c11f29535406c5022f1af7a"
+  },
+  "source_documents": {
+    "annovar_skill.md": "b36b7132ae82d78f5bedd2e6716b90c6940a9305eeecb98db5b289fa16f3ef50",
+    "bcftools_skill.md": "bdd48dc3de90dae5116f066cad8de8243025465cd2b0529a86a6aa45966570fb",
+    "bedtools_skill.md": "c61a15dc5aa48eda51b4c6da85a3ea973366f5044ff1a975564f323013f73c8d",
+    "bwa_skill.md": "afc5deaf2950287059ce4a2fde3283b88c6c190d80719149717e9aa94929eec2"
+  },
+  "agent_modules_modified": false
+}

@@ -1,0 +1,694 @@
+{
+  "version": "bioskill-op-index-1",
+  "backend": "bge-m3",
+  "model": "BAAI/bge-m3",
+  "digest": "f24cafabee20aa49b2341887c0cd48ba93dcf068cb7c5eacce9c6533f410d60e",
+  "entries": [
+    {
+      "id": "op:addorreplacereadgroups",
+      "view": "purpose",
+      "text": "工具 Tool: Picard; 操作 Operation: AddOrReplaceReadGroups; 功能 Purpose: 为BAM文件添加或替换读取组信息; 任务 Task: 添加读取组信息"
+    },
+    {
+      "id": "op:addorreplacereadgroups",
+      "view": "scenario",
+      "text": "工具 Tool: Picard; 操作 Operation: AddOrReplaceReadGroups; 应用场景 Scenario: 添加读取组信息; 为BAM文件添加或替换读取组信息; 添加读取组信息; 为BAM文件添加或替换读取组信息"
+    },
+    {
+      "id": "op:addorreplacereadgroups",
+      "view": "io",
+      "text": "工具 Tool: Picard; 操作 Operation: AddOrReplaceReadGroups; 输入 Input: 序列比对结果（BAM） BAM文件 格式:BAM 状态:{'formats': ['BAM']}; 输出 Output: 添加读取组后的序列比对结果 添加读取组后的BAM文件(rg_added.bam) 格式:BAM 状态:{'formats': ['BAM'], 'processing_states': ['read_groups_added']}; 序列比对索引 BAM索引文件(rg_added.bam.bai) 格式:BAI 状态:{'formats': ['BAI']}"
+    },
+    {
+      "id": "op:annotate_variation.pl",
+      "view": "purpose",
+      "text": "工具 Tool: ANNOVAR (ANNOtate VARiation); 操作 Operation: annotate_variation.pl; 功能 Purpose: 下载ANNOVAR注释数据库; 任务 Task: 下载注释数据库"
+    },
+    {
+      "id": "op:annotate_variation.pl",
+      "view": "scenario",
+      "text": "工具 Tool: ANNOVAR (ANNOtate VARiation); 操作 Operation: annotate_variation.pl; 应用场景 Scenario: 下载注释数据库; 将指定注释数据库下载到 humandb/ 目录"
+    },
+    {
+      "id": "op:annotate_variation.pl",
+      "view": "io",
+      "text": "工具 Tool: ANNOVAR (ANNOtate VARiation); 操作 Operation: annotate_variation.pl; 输入 Input: ; 输出 Output: ANNOVAR注释数据库 下载到humandb/目录的注释数据库 格式: 状态:{}"
+    },
+    {
+      "id": "op:bcftools_filter",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools filter; 功能 Purpose: 过滤VCF文件中的变异，保留符合条件的变异; 任务 Task: VCF文件过滤"
+    },
+    {
+      "id": "op:bcftools_filter",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools filter; 应用场景 Scenario: VCF文件过滤; 过滤VCF文件中的变异，保留符合条件的变异"
+    },
+    {
+      "id": "op:bcftools_filter",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools filter; 输入 Input: 变异检测结果 变异检测生成的VCF文件 格式:VCF.gz 状态:{}; 输出 Output: 过滤后变异数据 过滤后的SNV变异文件(filtered_snvs.vcf.gz) 格式:VCF.gz 状态:{}"
+    },
+    {
+      "id": "op:bcftools_gtcheck",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools gtcheck; 功能 Purpose: 基因型分析; 任务 Task: 基因型分析"
+    },
+    {
+      "id": "op:bcftools_gtcheck",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools gtcheck; 应用场景 Scenario: 基因型检查; 根据变异文件和样本列表执行基因型检查"
+    },
+    {
+      "id": "op:bcftools_gtcheck",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools gtcheck; 输入 Input: 变异检测结果 输入VCF文件 格式:VCF.gz 状态:{}; 样本列表 样本列表文件 格式:TXT 状态:{}; 输出 Output: 基因型检查结果 基因型检查结果文件(genotype_check.txt) 格式:TXT 状态:{}"
+    },
+    {
+      "id": "op:bcftools_merge",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools merge; 功能 Purpose: 合并多个VCF文件; 任务 Task: 多样本VCF文件处理"
+    },
+    {
+      "id": "op:bcftools_merge",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools merge; 应用场景 Scenario: 合并多个VCF文件; 合并多个VCF文件"
+    },
+    {
+      "id": "op:bcftools_merge",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools merge; 输入 Input: 变异检测结果 待合并的VCF文件 格式:VCF.gz 状态:{}; 输出 Output: 合并后变异数据 合并后的VCF文件(merged.vcf.gz) 格式:VCF.gz 状态:{}"
+    },
+    {
+      "id": "op:bcftools_plot",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools plot; 功能 Purpose: 生成质量分布图; 任务 Task: 质量分布图生成"
+    },
+    {
+      "id": "op:bcftools_plot",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools plot; 应用场景 Scenario: 变异统计分析; 对VCF文件中的变异进行统计分析"
+    },
+    {
+      "id": "op:bcftools_plot",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools plot; 输入 Input: 变异检测结果 变异检测生成的VCF文件 格式:VCF.gz 状态:{}; 输出 Output: 质量分布图表 质量分布图表(depth_distribution.pdf) 格式:PDF 状态:{}"
+    },
+    {
+      "id": "op:bcftools_query",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools query; 功能 Purpose: 提取样本列表; 任务 Task: 样本列表提取"
+    },
+    {
+      "id": "op:bcftools_query",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools query; 应用场景 Scenario: 样本列表提取"
+    },
+    {
+      "id": "op:bcftools_query",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools query; 输入 Input: 变异检测结果 输入VCF文件 格式:VCF.gz 状态:{}; 输出 Output: 样本列表 样本列表文件(samples.txt) 格式:TXT 状态:{}"
+    },
+    {
+      "id": "op:bcftools_stats",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools stats; 功能 Purpose: 对VCF文件中的变异进行统计分析; 任务 Task: 变异统计分析"
+    },
+    {
+      "id": "op:bcftools_stats",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools stats; 应用场景 Scenario: 变异统计分析; 对VCF文件中的变异进行统计分析"
+    },
+    {
+      "id": "op:bcftools_stats",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools stats; 输入 Input: 变异检测结果 变异检测生成的VCF文件 格式:VCF.gz 状态:{}; 输出 Output: 变异统计结果 变异统计结果文件(variants.stats) 格式:TXT 状态:{}"
+    },
+    {
+      "id": "op:bcftools_view",
+      "view": "purpose",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools view; 功能 Purpose: 提取特定样本; 任务 Task: 多样本VCF文件处理"
+    },
+    {
+      "id": "op:bcftools_view",
+      "view": "scenario",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools view; 应用场景 Scenario: 提取特定样本; 从多样本VCF中提取指定的多个样本; 按单样本拆分; 从多样本VCF中提取单个样本"
+    },
+    {
+      "id": "op:bcftools_view",
+      "view": "io",
+      "text": "工具 Tool: bcftools; 操作 Operation: bcftools view; 输入 Input: 多样本变异检测结果 包含多个样本的变异调用数据 格式:VCF_GZ 状态:{}; 多样本变异检测结果 包含多个样本的变异调用数据 格式:VCF_GZ 状态:{}; 输出 Output: 样本或区域子集变异数据 从多样本变异文件中提取指定样本 格式:VCF_GZ 状态:{}; 单样本变异检测结果 从多样本文件中提取单个样本的变异数据 格式:VCF_GZ 状态:{}"
+    },
+    {
+      "id": "op:bedtools_coverage",
+      "view": "purpose",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools coverage; 功能 Purpose: 分析基因组区域的覆盖度; 任务 Task: 基因组区域覆盖度分析"
+    },
+    {
+      "id": "op:bedtools_coverage",
+      "view": "scenario",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools coverage; 应用场景 Scenario: 基因组区域覆盖度分析; 分析基因组区域的覆盖度"
+    },
+    {
+      "id": "op:bedtools_coverage",
+      "view": "io",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools coverage; 输入 Input: 基因组区域数据 BED格式的基因组区域文件 格式:BED 状态:{}; 序列比对结果（BAM） BAM格式的比对文件 格式:BAM 状态:{}; 输出 Output: 区域覆盖度结果 区域覆盖度结果 格式:BED 状态:{}; 详细覆盖度统计结果 详细的覆盖度统计 格式:BED 状态:{}; 多样本覆盖度结果 多个样本的覆盖度结果 格式:BED 状态:{}"
+    },
+    {
+      "id": "op:bedtools_genomecov",
+      "view": "purpose",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools genomecov; 功能 Purpose: 从BAM文件提取覆盖度高的区域; 任务 Task: 基因组覆盖度计算"
+    },
+    {
+      "id": "op:bedtools_genomecov",
+      "view": "scenario",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools genomecov; 应用场景 Scenario: 输出覆盖度信号轨道; None"
+    },
+    {
+      "id": "op:bedtools_genomecov",
+      "view": "io",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools genomecov; 输入 Input: 已排序BAM比对结果 -ibam 要求按参考坐标排序的 BAM 文件 格式:BAM 状态:{}; 输出 Output: 基因组信号轨道数据 genomecov -bga 生成的基因组覆盖度信号轨道；位于后续 awk 阈值筛选之前 格式:BEDGRAPH 状态:{}"
+    },
+    {
+      "id": "op:bedtools_intersect",
+      "view": "purpose",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools intersect; 功能 Purpose: 计算两个基因组区域文件的交集; 任务 Task: 基因组区域交集分析"
+    },
+    {
+      "id": "op:bedtools_intersect",
+      "view": "scenario",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools intersect; 应用场景 Scenario: 基因组区域交集分析; 分析两个基因组区域文件的交集"
+    },
+    {
+      "id": "op:bedtools_intersect",
+      "view": "io",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools intersect; 输入 Input: 基因组区域数据 第一个输入文件路径 格式:BED 状态:{}; 基因组区域数据 第二个输入文件路径 格式:BED 状态:{}; 输出 Output: 基因组区域交集结果 两个区域文件的交集 格式:BED 状态:{}; 带交集计数的基因组区域 带交集计数的结果 格式:BED 状态:{}; 基因组区域交集结果 至少50%重叠的交集 格式:BED 状态:{}"
+    },
+    {
+      "id": "op:bedtools_merge",
+      "view": "purpose",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools merge; 功能 Purpose: 合并重叠或相邻的基因组区域; 任务 Task: 基因组区域合并"
+    },
+    {
+      "id": "op:bedtools_merge",
+      "view": "scenario",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools merge; 应用场景 Scenario: 基因组区域合并; 合并重叠或相邻的基因组区域"
+    },
+    {
+      "id": "op:bedtools_merge",
+      "view": "io",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools merge; 输入 Input: 基因组区域数据 BED格式的基因组区域文件 格式:BED 状态:{}; 输出 Output: 合并后的基因组区域 合并后的区域 格式:BED 状态:{}; 带计数的合并区域 带原始区域计数的合并结果 格式:BED 状态:{}; 带平均值的合并区域 带原始区域平均值的合并结果 格式:BED 状态:{}"
+    },
+    {
+      "id": "op:bedtools_unionbedg",
+      "view": "purpose",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools unionbedg; 功能 Purpose: 计算并集/合并多个样本的覆盖度结果; 任务 Task: 基因组区域并集计算"
+    },
+    {
+      "id": "op:bedtools_unionbedg",
+      "view": "scenario",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools unionbedg; 应用场景 Scenario: 合并多个样本的覆盖度结果; 将多个样本分别计算的覆盖度文件合并"
+    },
+    {
+      "id": "op:bedtools_unionbedg",
+      "view": "io",
+      "text": "工具 Tool: bedtools; 操作 Operation: bedtools unionbedg; 输入 Input: 基因组信号轨道数据 多个 BEDGRAPH 格式的覆盖度信号文件；实际内容须为 bedGraph 四列结构 格式:BEDGRAPH 状态:{}; 输出 Output: 多样本覆盖度矩阵 3列基因组坐标 + N列样本覆盖度值；并非标准4列 BEDGRAPH 格式: 状态:{}"
+    },
+    {
+      "id": "op:bwa_mem",
+      "view": "purpose",
+      "text": "工具 Tool: BWA (Burrows-Wheeler Aligner); 操作 Operation: bwa mem; 功能 Purpose: 使用mem算法将短读长序列比对到参考基因组; 任务 Task: 序列比对"
+    },
+    {
+      "id": "op:bwa_mem",
+      "view": "scenario",
+      "text": "工具 Tool: BWA (Burrows-Wheeler Aligner); 操作 Operation: bwa mem; 应用场景 Scenario: 单端数据比对; 单端FASTQ数据比对; 双端数据比对; 双端FASTQ数据比对; 全基因组重测序比对; None; 外显子组测序比对; None; 目标区域测序比对; None"
+    },
+    {
+      "id": "op:bwa_mem",
+      "view": "io",
+      "text": "工具 Tool: BWA (Burrows-Wheeler Aligner); 操作 Operation: bwa mem; 输入 Input: BWA参考基因组索引 参考基因组的BWA索引文件前缀 格式: 状态:{}; 短读长测序数据 单端FASTQ文件 格式:FASTQ,FASTQ.gz 状态:{}; 短读长测序数据 双端FASTQ文件read1 格式:FASTQ,FASTQ.gz 状态:{}; 短读长测序数据 双端FASTQ文件read2 格式:FASTQ,FASTQ.gz 状态:{}; 短读长测序数据 双端FASTQ测序读段 格式:FASTQ,FASTQ_GZ 状态:{}; 短读长测序数据 双端FASTQ测序读段的第二端 格式:FASTQ,FASTQ_GZ 状态:{}; 短读长测序数据 双端FASTQ测序读段 格式:FASTQ,FASTQ_GZ 状态:{}; 短读长测序数据 双端FASTQ测序读段的第二端 格式:FASTQ,FASTQ_GZ 状态:{}; 短读长测序数据 双端FASTQ测序读段 格式:FASTQ,FASTQ_GZ 状态:{}; 短读长测序数据 双端FASTQ测序读段的第二端 格式:FASTQ,FASTQ_GZ 状态:{}; 输出 Output: 序列比对结果（SAM） 比对后的SAM文件 格式:SAM 状态:{}; 序列比对结果（SAM） 比对后的SAM文件 格式:SAM 状态:{}"
+    },
+    {
+      "id": "op:collectwgsmetrics",
+      "view": "purpose",
+      "text": "工具 Tool: Picard; 操作 Operation: CollectWgsMetrics; 功能 Purpose: 计算全基因组测序的覆盖度和质量指标; 任务 Task: 计算全基因组测序指标"
+    },
+    {
+      "id": "op:collectwgsmetrics",
+      "view": "scenario",
+      "text": "工具 Tool: Picard; 操作 Operation: CollectWgsMetrics; 应用场景 Scenario: 计算全基因组测序指标; 计算全基因组测序的覆盖度和质量指标; 计算全基因组测序指标; 计算全基因组测序的覆盖度和质量指标"
+    },
+    {
+      "id": "op:collectwgsmetrics",
+      "view": "io",
+      "text": "工具 Tool: Picard; 操作 Operation: CollectWgsMetrics; 输入 Input: 标记重复后的序列比对结果 已标记重复的BAM文件 格式:BAM 状态:{'formats': ['BAM'], 'processing_states': ['duplicate_marked']}; 参考基因组序列 参考基因组 格式:FASTA 状态:{'formats': ['FASTA']}; 输出 Output: 全基因组测序指标结果 全基因组测序指标文件(wgs_metrics.txt)，包含覆盖度、质量分布等详细信息 格式:TXT 状态:{'formats': ['TXT']}"
+    },
+    {
+      "id": "op:fastp",
+      "view": "purpose",
+      "text": "工具 Tool: fastp; 操作 Operation: fastp; 功能 Purpose: 快速的质控和过滤工具，支持多线程，可生成HTML质控报告; 任务 Task: FASTQ质控与过滤"
+    },
+    {
+      "id": "op:fastp",
+      "view": "scenario",
+      "text": "工具 Tool: fastp; 操作 Operation: fastp; 应用场景 Scenario: 单端数据处理; 单端FASTQ数据的质控与过滤; 双端数据处理; 双端FASTQ数据的质控与过滤; RNA-seq数据质控; 转录组测序数据的质量控制和预处理; WGS数据质控; 全基因组测序数据的质量控制; ChIP-seq数据质控; 染色质免疫沉淀测序数据的质量控制"
+    },
+    {
+      "id": "op:fastp",
+      "view": "io",
+      "text": "工具 Tool: fastp; 操作 Operation: fastp; 输入 Input: 短读长测序数据 输入的FASTQ文件（单端或双端的R1） 格式:FASTQ,FASTQ.gz 状态:{'formats': ['FASTQ', 'FASTQ_GZ']}; 短读长测序数据 输入的FASTQ文件（单端或双端的R1） 格式:FASTQ,FASTQ.gz 状态:{'formats': ['FASTQ', 'FASTQ_GZ']}; 短读长测序数据 输入的FASTQ文件（双端的R2） 格式:FASTQ,FASTQ.gz 状态:{'formats': ['FASTQ', 'FASTQ_GZ']}; 输出 Output: 预处理后测序读段 处理后的R1文件 格式:FASTQ.gz 状态:{'formats': ['FASTQ_GZ'], 'read_stage': 'processed'}; 质量控制报告 详细的质控报告，包含数据统计和图表 格式:HTML 状态:{'formats': ['HTML']}; 质量控制指标数据 质控报告的JSON格式数据，便于程序处理 格式:JSON 状态:{'formats': ['JSON']}; 预处理后测序读段 处理后的R1文件 格式:FASTQ.gz 状态:{'formats': ['FASTQ_GZ'], 'read_stage': 'processed'}; 预处理后测序读段 处理后的R2文件 格式:FASTQ.gz 状态:{'formats': ['FASTQ_GZ'], 'read_stage': 'processed'}; 质量控制报告 详细的质控报告，包含数据统计和图表 格式:HTML 状态:{'formats': ['HTML']}; 质量控制指标数据 质控报告的JSON格式数据，便于程序处理 格式:JSON 状态:{'formats': ['JSON']}"
+    },
+    {
+      "id": "op:markduplicates",
+      "view": "purpose",
+      "text": "工具 Tool: Picard; 操作 Operation: MarkDuplicates; 功能 Purpose: 检测和标记PCR重复序列; 任务 Task: 标记重复序列"
+    },
+    {
+      "id": "op:markduplicates",
+      "view": "scenario",
+      "text": "工具 Tool: Picard; 操作 Operation: MarkDuplicates; 应用场景 Scenario: 标记重复序列; 检测和标记PCR重复序列; 标记重复序列; 检测和标记PCR重复序列"
+    },
+    {
+      "id": "op:markduplicates",
+      "view": "io",
+      "text": "工具 Tool: Picard; 操作 Operation: MarkDuplicates; 输入 Input: 已排序BAM比对结果 已排序的BAM文件 格式:BAM 状态:{'formats': ['BAM'], 'sorting_state': 'sorted'}; 输出 Output: 标记重复后的序列比对结果 标记重复后的BAM文件(dedup.bam) 格式:BAM 状态:{'formats': ['BAM'], 'processing_states': ['duplicate_marked']}; 重复序列统计结果 重复序列统计文件(duplicate_metrics.txt) 格式:TXT 状态:{'formats': ['TXT']}; 序列比对索引 BAM索引文件(dedup.bam.bai) 格式:BAI 状态:{'formats': ['BAI'], 'processing_states': ['duplicate_marked']}"
+    },
+    {
+      "id": "op:mergesamfiles",
+      "view": "purpose",
+      "text": "工具 Tool: Picard; 操作 Operation: MergeSamFiles; 功能 Purpose: 合并BAM文件; 任务 Task: 合并BAM文件"
+    },
+    {
+      "id": "op:mergesamfiles",
+      "view": "scenario",
+      "text": "工具 Tool: Picard; 操作 Operation: MergeSamFiles; 应用场景 Scenario: 合并BAM文件; 合并BAM文件"
+    },
+    {
+      "id": "op:mergesamfiles",
+      "view": "io",
+      "text": "工具 Tool: Picard; 操作 Operation: MergeSamFiles; 输入 Input: 序列比对结果（BAM） 待合并的BAM文件(sample1.bam, sample2.bam) 格式:BAM 状态:{'formats': ['BAM']}; 输出 Output: 合并后的序列比对结果 合并后的BAM文件(merged.bam) 格式:BAM 状态:{'formats': ['BAM'], 'processing_states': ['merged']}"
+    },
+    {
+      "id": "op:samtools_depth",
+      "view": "purpose",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools depth; 功能 Purpose: 计算目标区域的覆盖度; 任务 Task: 覆盖度统计"
+    },
+    {
+      "id": "op:samtools_depth",
+      "view": "scenario",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools depth; 应用场景 Scenario: 覆盖度统计; 计算目标区域的覆盖度"
+    },
+    {
+      "id": "op:samtools_depth",
+      "view": "io",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools depth; 输入 Input: 已排序BAM比对结果 已排序的BAM文件 格式:BAM 状态:{}; 基因组区域数据 目标区域BED文件 格式:BED 状态:{}; 输出 Output: 逐位置覆盖深度数据 覆盖度统计文件，包含每个位置的深度信息 格式:TXT 状态:{}"
+    },
+    {
+      "id": "op:samtools_flagstat",
+      "view": "purpose",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools flagstat; 功能 Purpose: 统计BAM文件信息; 任务 Task: BAM文件统计"
+    },
+    {
+      "id": "op:samtools_flagstat",
+      "view": "scenario",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools flagstat; 应用场景 Scenario: BAM统计; None"
+    },
+    {
+      "id": "op:samtools_flagstat",
+      "view": "io",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools flagstat; 输入 Input: 序列比对结果（BAM） 输入的BAM文件 格式:BAM 状态:{}; 输出 Output: 比对统计结果  格式:TXT 状态:{}"
+    },
+    {
+      "id": "op:samtools_index",
+      "view": "purpose",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools index; 功能 Purpose: 为排序后的BAM文件生成索引; 任务 Task: BAM文件索引"
+    },
+    {
+      "id": "op:samtools_index",
+      "view": "scenario",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools index; 应用场景 Scenario: BAM文件排序和索引; 比对后BAM文件的排序和索引"
+    },
+    {
+      "id": "op:samtools_index",
+      "view": "io",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools index; 输入 Input: 已排序BAM比对结果 排序后的BAM文件 格式:BAM 状态:{}; 输出 Output: 序列比对索引 BAM索引文件(sorted.bam.bai) 格式:BAI 状态:{}"
+    },
+    {
+      "id": "op:samtools_mpileup",
+      "view": "purpose",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools mpileup; 功能 Purpose: 生成pileup文件; 任务 Task: 生成pileup文件"
+    },
+    {
+      "id": "op:samtools_mpileup",
+      "view": "scenario",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools mpileup; 应用场景 Scenario: 生成pileup文件"
+    },
+    {
+      "id": "op:samtools_mpileup",
+      "view": "io",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools mpileup; 输入 Input: 序列比对结果（BAM） 输入的BAM文件 格式:BAM 状态:{}; 参考基因组序列 参考基因组FASTA文件 格式:FASTA 状态:{}; 输出 Output: Pileup数据 生成的pileup文件 格式: 状态:{}"
+    },
+    {
+      "id": "op:samtools_sort",
+      "view": "purpose",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools sort; 功能 Purpose: 比对后BAM文件的排序; 任务 Task: BAM文件排序"
+    },
+    {
+      "id": "op:samtools_sort",
+      "view": "scenario",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools sort; 应用场景 Scenario: BAM文件排序和索引; 比对后BAM文件的排序和索引; BAM坐标排序（通用输入）; 通用 BAM 输入，默认坐标排序输出；不使用 -n/-N/-t 等替代排序模式"
+    },
+    {
+      "id": "op:samtools_sort",
+      "view": "io",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools sort; 输入 Input: 未排序BAM比对结果 未排序的BAM文件 格式:BAM 状态:{}; 序列比对结果（BAM）  格式:BAM 状态:{}; 输出 Output: 已排序BAM比对结果 排序后的BAM文件(sorted.bam) 格式:BAM 状态:{}; 已排序BAM比对结果  格式:BAM 状态:{}"
+    },
+    {
+      "id": "op:samtools_view",
+      "view": "purpose",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools view; 功能 Purpose: 过滤低质量比对和未比对的 reads; 任务 Task: 质量和标志过滤"
+    },
+    {
+      "id": "op:samtools_view",
+      "view": "scenario",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools view; 应用场景 Scenario: 质量和标志过滤; 过滤低质量比对和未比对的 reads; SAM转BAM格式转换; SAM转BAM；不推断 BAM 是否已排序"
+    },
+    {
+      "id": "op:samtools_view",
+      "view": "io",
+      "text": "工具 Tool: samtools; 操作 Operation: samtools view; 输入 Input: 已排序BAM比对结果 已排序的BAM文件 格式:BAM 状态:{}; 序列比对结果（SAM）  格式:SAM 状态:{}; 输出 Output: 已过滤BAM比对结果 过滤后的BAM文件，只包含高质量的比对reads 格式:BAM 状态:{}; 序列比对结果（BAM）  格式:BAM 状态:{}"
+    },
+    {
+      "id": "op:sortsam",
+      "view": "purpose",
+      "text": "工具 Tool: Picard; 操作 Operation: SortSam; 功能 Purpose: 排序BAM文件; 任务 Task: 排序BAM文件"
+    },
+    {
+      "id": "op:sortsam",
+      "view": "scenario",
+      "text": "工具 Tool: Picard; 操作 Operation: SortSam; 应用场景 Scenario: 排序BAM文件; 排序BAM文件"
+    },
+    {
+      "id": "op:sortsam",
+      "view": "io",
+      "text": "工具 Tool: Picard; 操作 Operation: SortSam; 输入 Input: 未排序BAM比对结果 未排序的BAM文件 格式:BAM 状态:{'formats': ['BAM'], 'sorting_state': 'unsorted'}; 输出 Output: 已排序BAM比对结果 排序后的BAM文件 格式:BAM 状态:{'formats': ['BAM'], 'sorting_state': 'sorted'}"
+    },
+    {
+      "id": "op:table_annovar.pl",
+      "view": "purpose",
+      "text": "工具 Tool: ANNOVAR (ANNOtate VARiation); 操作 Operation: table_annovar.pl; 功能 Purpose: 运行ANNOVAR注释，对变异进行功能注释; 任务 Task: 变异功能注释"
+    },
+    {
+      "id": "op:table_annovar.pl",
+      "view": "scenario",
+      "text": "工具 Tool: ANNOVAR (ANNOtate VARiation); 操作 Operation: table_annovar.pl; 应用场景 Scenario: 基本功能注释; 对变异进行基本的基因功能注释"
+    },
+    {
+      "id": "op:table_annovar.pl",
+      "view": "io",
+      "text": "工具 Tool: ANNOVAR (ANNOtate VARiation); 操作 Operation: table_annovar.pl; 输入 Input: 变异检测结果 输入VCF文件 格式:VCF 状态:{}; ANNOVAR注释数据库 注释数据库目录humandb/ 格式: 状态:{}; 输出 Output: 变异功能注释结果 多数据库注释结果，制表符分隔 格式:TXT 状态:{}; 变异功能注释结果 注释后的VCF文件 格式:VCF 状态:{}"
+    },
+    {
+      "id": "op:viewsam",
+      "view": "purpose",
+      "text": "工具 Tool: Picard; 操作 Operation: ViewSam; 功能 Purpose: 提取特定区域; 任务 Task: 提取特定区域"
+    },
+    {
+      "id": "op:viewsam",
+      "view": "scenario",
+      "text": "工具 Tool: Picard; 操作 Operation: ViewSam; 应用场景 Scenario: 提取特定区域; 提取特定区域"
+    },
+    {
+      "id": "op:viewsam",
+      "view": "io",
+      "text": "工具 Tool: Picard; 操作 Operation: ViewSam; 输入 Input: 序列比对结果（BAM） 输入BAM文件 格式:BAM 状态:{'formats': ['BAM']}; 输出 Output: 区域提取后的序列比对结果 输出SAM文件(output.sam) 格式:SAM 状态:{'formats': ['SAM']}"
+    },
+    {
+      "id": "data:aligned_reads",
+      "view": "datatype",
+      "text": "DataType 数据类型: 序列比对结果; 定义: 将测序读段比对到参考基因组后得到的比对记录数据；具体文件表示由 SAM 或 BAM 子类型区分。; 父类型: "
+    },
+    {
+      "id": "data:aligned_reads_bam",
+      "view": "datatype",
+      "text": "DataType 数据类型: 序列比对结果（BAM）; 定义: 以 BAM 格式存储的序列比对记录。; 父类型: 序列比对结果"
+    },
+    {
+      "id": "data:aligned_reads_bam_filtered",
+      "view": "datatype",
+      "text": "DataType 数据类型: 已过滤BAM比对结果; 定义: 根据质量或FLAG等条件过滤后的BAM序列比对记录。排序状态须依据具体输入和操作另行判断。; 父类型: 序列比对结果（BAM）"
+    },
+    {
+      "id": "data:aligned_reads_bam_sorted",
+      "view": "datatype",
+      "text": "DataType 数据类型: 已排序BAM比对结果; 定义: 已按参考坐标排序的BAM序列比对记录，可用于索引和需要排序输入的操作。; 父类型: 序列比对结果（BAM）"
+    },
+    {
+      "id": "data:aligned_reads_bam_unsorted",
+      "view": "datatype",
+      "text": "DataType 数据类型: 未排序BAM比对结果; 定义: 尚未按参考坐标排序的BAM序列比对记录。; 父类型: 序列比对结果（BAM）"
+    },
+    {
+      "id": "data:aligned_reads_sam",
+      "view": "datatype",
+      "text": "DataType 数据类型: 序列比对结果（SAM）; 定义: 以 SAM 格式存储的序列比对记录。; 父类型: 序列比对结果"
+    },
+    {
+      "id": "data:alignment_index",
+      "view": "datatype",
+      "text": "DataType 数据类型: 序列比对索引; 定义: 用于随机访问BAM/CRAM比对结果的索引数据，具体格式如BAI或CSI。; 父类型: "
+    },
+    {
+      "id": "data:alignment_statistics",
+      "view": "datatype",
+      "text": "DataType 数据类型: 比对统计结果; 定义: samtools flagstat 等产生的序列比对记录统计摘要。; 父类型: 工具统计结果"
+    },
+    {
+      "id": "data:annotated_variants",
+      "view": "datatype",
+      "text": "DataType 数据类型: 变异功能注释结果; 定义: 对变异调用数据进行功能或数据库注释后得到的结果，可使用表格或注释 VCF 等格式表示。; 父类型: "
+    },
+    {
+      "id": "data:annotation_database",
+      "view": "datatype",
+      "text": "DataType 数据类型: ANNOVAR注释数据库; 定义: 供 ANNOVAR 查询和注释使用的注释数据库文件或目录。; 父类型: "
+    },
+    {
+      "id": "data:annotation_statistics",
+      "view": "datatype",
+      "text": "DataType 数据类型: 变异注释统计结果; 定义: ANNOVAR 对注释结果汇总生成的统计信息，例如 multianno_summary 文件。; 父类型: "
+    },
+    {
+      "id": "data:annovar_input_data",
+      "view": "datatype",
+      "text": "DataType 数据类型: ANNOVAR输入数据; 定义: 按 ANNOVAR 输入要求组织的变异数据文件。; 父类型: "
+    },
+    {
+      "id": "data:count_aggregated_merged_regions",
+      "view": "datatype",
+      "text": "DataType 数据类型: 带计数的合并区域; 定义: 合并重叠或相邻区域，并记录合并前原始区域的数量。; 父类型: 合并后的基因组区域"
+    },
+    {
+      "id": "data:counted_intersection_regions",
+      "view": "datatype",
+      "text": "DataType 数据类型: 带交集计数的基因组区域; 定义: 基因组区域交集结果，并为每个区域附加与另一组区域重叠的计数。; 父类型: 基因组区域交集结果"
+    },
+    {
+      "id": "data:coverage_result",
+      "view": "datatype",
+      "text": "DataType 数据类型: 区域覆盖度结果; 定义: 对指定基因组区域计算得到的覆盖度或覆盖统计结果。; 父类型: "
+    },
+    {
+      "id": "data:detailed_coverage_statistics",
+      "view": "datatype",
+      "text": "DataType 数据类型: 详细覆盖度统计结果; 定义: 对基因组区域逐位置计算得到的详细覆盖度统计数据，例如 coverage_detail.bed。; 父类型: 区域覆盖度结果"
+    },
+    {
+      "id": "data:execution_log",
+      "view": "datatype",
+      "text": "DataType 数据类型: 工具运行日志; 定义: 记录工具执行过程、参数信息和处理进度的日志文本。; 父类型: "
+    },
+    {
+      "id": "data:filtered_annotated_variants",
+      "view": "datatype",
+      "text": "DataType 数据类型: 过滤后的变异注释结果; 定义: 对变异功能注释结果进一步筛选后得到的数据。; 父类型: 变异功能注释结果"
+    },
+    {
+      "id": "data:filtered_variant_calls",
+      "view": "datatype",
+      "text": "DataType 数据类型: 过滤后变异数据; 定义: 按照质量或其他过滤条件筛选后保留的变异调用数据。; 父类型: 变异检测结果"
+    },
+    {
+      "id": "data:gene_annotations",
+      "view": "datatype",
+      "text": "DataType 数据类型: 基因注释数据; 定义: 描述基因、转录本或其他基因组特征注释的数据。; 父类型: "
+    },
+    {
+      "id": "data:genomic_regions",
+      "view": "datatype",
+      "text": "DataType 数据类型: 基因组区域数据; 定义: 以染色体及起止坐标等信息表示的基因组区间数据。; 父类型: "
+    },
+    {
+      "id": "data:genotype_check_results",
+      "view": "datatype",
+      "text": "DataType 数据类型: 基因型检查结果; 定义: 样本间基因型一致性或比较检查生成的结果数据。; 父类型: "
+    },
+    {
+      "id": "data:intersected_regions",
+      "view": "datatype",
+      "text": "DataType 数据类型: 基因组区域交集结果; 定义: 对基因组区域进行交集运算后得到的区域数据。; 父类型: 基因组区域数据"
+    },
+    {
+      "id": "data:mean_aggregated_merged_regions",
+      "view": "datatype",
+      "text": "DataType 数据类型: 带平均值的合并区域; 定义: 合并重叠或相邻区域，并对原始区域的指定数值列计算平均值。; 父类型: 合并后的基因组区域"
+    },
+    {
+      "id": "data:merged_regions",
+      "view": "datatype",
+      "text": "DataType 数据类型: 合并后的基因组区域; 定义: 将重叠或相邻的基因组区域合并后得到的区域数据。; 父类型: 基因组区域数据"
+    },
+    {
+      "id": "data:merged_variant_calls",
+      "view": "datatype",
+      "text": "DataType 数据类型: 合并后变异数据; 定义: 将多个样本或多个变异调用文件合并后得到的数据。; 父类型: 变异检测结果"
+    },
+    {
+      "id": "data:multi_sample_coverage_matrix",
+      "view": "datatype",
+      "text": "DataType 数据类型: 多样本覆盖度矩阵; 定义: bedtools unionbedg 将多个 bedGraph 的区域信号合并为坐标与多样本数值列组成的表格。; 父类型: "
+    },
+    {
+      "id": "data:multi_sample_coverage_result",
+      "view": "datatype",
+      "text": "DataType 数据类型: 多样本覆盖度结果; 定义: 针对多个样本分别计算或汇总得到的基因组区域覆盖度数据。; 父类型: 区域覆盖度结果"
+    },
+    {
+      "id": "data:multi_sample_variant_calls",
+      "view": "datatype",
+      "text": "DataType 数据类型: 多样本变异检测结果; 定义: 包含多个样本变异调用信息的数据。; 父类型: 变异检测结果"
+    },
+    {
+      "id": "data:per_base_depth",
+      "view": "datatype",
+      "text": "DataType 数据类型: 逐位置覆盖深度数据; 定义: 按参考基因组位置记录测序覆盖深度的文本数据，可由 samtools depth 产生。; 父类型: 区域覆盖度结果"
+    },
+    {
+      "id": "data:pileup_data",
+      "view": "datatype",
+      "text": "DataType 数据类型: Pileup数据; 定义: 按参考基因组位置汇总测序读段信息的pileup数据。; 父类型: "
+    },
+    {
+      "id": "data:processed_short_reads",
+      "view": "datatype",
+      "text": "DataType 数据类型: 预处理后测序读段; 定义: 经过质控、过滤、裁剪或去接头等预处理的FASTQ读段。; 父类型: 短读长测序数据"
+    },
+    {
+      "id": "data:quality_control_metrics",
+      "view": "datatype",
+      "text": "DataType 数据类型: 质量控制指标数据; 定义: 质量控制过程生成的机器可读JSON统计数据。; 父类型: "
+    },
+    {
+      "id": "data:quality_control_report",
+      "view": "datatype",
+      "text": "DataType 数据类型: 质量控制报告; 定义: 质量控制过程生成的可视化或人类可读HTML报告。; 父类型: "
+    },
+    {
+      "id": "data:quality_distribution_plot",
+      "view": "datatype",
+      "text": "DataType 数据类型: 质量分布图表; 定义: 用于展示变异质量或深度分布的图形结果。; 父类型: "
+    },
+    {
+      "id": "data:reference_genome",
+      "view": "datatype",
+      "text": "DataType 数据类型: 参考基因组序列; 定义: 用于序列比对或变异分析的参考基因组序列数据。; 父类型: "
+    },
+    {
+      "id": "data:reference_index",
+      "view": "datatype",
+      "text": "DataType 数据类型: BWA参考基因组索引; 定义: 由参考基因组构建、供 BWA 检索和比对使用的索引文件集合或索引前缀。; 父类型: "
+    },
+    {
+      "id": "data:region_list",
+      "view": "datatype",
+      "text": "DataType 数据类型: 区域列表; 定义: 记录待处理基因组区域或区间的列表。; 父类型: "
+    },
+    {
+      "id": "data:sample_list",
+      "view": "datatype",
+      "text": "DataType 数据类型: 样本列表; 定义: 记录待处理或参与分析的样本标识符列表。; 父类型: "
+    },
+    {
+      "id": "data:short_reads",
+      "view": "datatype",
+      "text": "DataType 数据类型: 短读长测序数据; 定义: 测序产生的FASTQ短读长读段数据，可为原始读段或进一步处理后的读段；具体处理状态由子类型或端口状态表示。; 父类型: "
+    },
+    {
+      "id": "data:signal_tracks",
+      "view": "datatype",
+      "text": "DataType 数据类型: 基因组信号轨道数据; 定义: 沿基因组坐标记录数值信号或覆盖信号的数据。; 父类型: "
+    },
+    {
+      "id": "data:single_sample_variant_calls",
+      "view": "datatype",
+      "text": "DataType 数据类型: 单样本变异检测结果; 定义: 按单个样本拆分得到的变异调用数据，区别于从多样本文件中提取多个指定样本的子集。; 父类型: 变异检测结果"
+    },
+    {
+      "id": "data:subset_variant_calls",
+      "view": "datatype",
+      "text": "DataType 数据类型: 样本或区域子集变异数据; 定义: 从原始变异调用数据中按样本或基因组区域筛选得到的子集。; 父类型: 变异检测结果"
+    },
+    {
+      "id": "data:tool_statistics",
+      "view": "datatype",
+      "text": "DataType 数据类型: 工具统计结果; 定义: 由生物信息学工具输出的一般性统计数据；若原文明确为变异统计，应使用 variant_statistics。; 父类型: "
+    },
+    {
+      "id": "data:variant_calls",
+      "view": "datatype",
+      "text": "DataType 数据类型: 变异检测结果; 定义: 变异检测流程产生的变异调用数据，可作为过滤、统计、合并、比较和注释等操作的输入。; 父类型: "
+    },
+    {
+      "id": "data:variant_statistics",
+      "view": "datatype",
+      "text": "DataType 数据类型: 变异统计结果; 定义: 对变异调用数据进行统计分析后生成的统计数据。; 父类型: "
+    },
+    {
+      "id": "tool:annovar",
+      "view": "tool",
+      "text": "Tool 科研工具: ANNOVAR (ANNOtate VARiation); 功能: 快速高效的基因组变异注释工具，能够对SNP、Indel等变异进行功能注释，提供基因、转录本、蛋白质、调控区域等多层面的注释信息"
+    },
+    {
+      "id": "tool:bcftools",
+      "view": "tool",
+      "text": "Tool 科研工具: bcftools; 功能: 用于处理和分析VCF/BCF文件的工具集，提供排序、过滤、统计、合并、比较等多种功能，是生信分析中处理变异数据的核心工具"
+    },
+    {
+      "id": "tool:bedtools",
+      "view": "tool",
+      "text": "Tool 科研工具: bedtools; 功能: 用于处理BED格式文件的工具集，提供基因组区域的交集、并集、差异等操作，支持多种文件格式，是基因组学研究中常用的工具之一"
+    },
+    {
+      "id": "tool:bwa",
+      "view": "tool",
+      "text": "Tool 科研工具: BWA (Burrows-Wheeler Aligner); 功能: 高效的短读长序列比对工具，支持将FASTQ格式的测序数据比对到参考基因组，适用于全基因组、外显子组和目标区域测序数据的比对"
+    },
+    {
+      "id": "tool:fastp",
+      "view": "tool",
+      "text": "Tool 科研工具: fastp; 功能: 快速的质控和过滤工具，支持多线程，可生成HTML质控报告，适用于各种测序数据的质量控制和预处理"
+    },
+    {
+      "id": "tool:picard",
+      "view": "tool",
+      "text": "Tool 科研工具: Picard; 功能: 用于处理高通量测序数据的Java工具集，提供标记重复序列、排序、格式转换等多种功能，是GATK分析流程的重要组成部分"
+    },
+    {
+      "id": "tool:samtools",
+      "view": "tool",
+      "text": "Tool 科研工具: samtools; 功能: 用于处理SAM/BAM/CRAM格式文件的核心工具套件，提供排序、索引、统计、格式转换等多种功能，是生信分析流程中的基础工具"
+    }
+  ],
+  "dimension": 1024
+}

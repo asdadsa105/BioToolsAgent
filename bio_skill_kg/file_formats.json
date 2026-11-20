@@ -1,0 +1,133 @@
+{
+  "VCF": {
+    "aliases": [
+      ".vcf"
+    ],
+    "description": "Variant Call Format"
+  },
+  "VCF_GZ": {
+    "aliases": [
+      "vcf.gz",
+      ".vcf.gz"
+    ],
+    "description": "Gzip-compressed VCF"
+  },
+  "BCF": {
+    "aliases": [
+      ".bcf"
+    ],
+    "description": "Binary Call Format"
+  },
+  "TXT": {
+    "aliases": [
+      ".txt",
+      "text",
+      "plain text"
+    ],
+    "description": "Plain text"
+  },
+  "CSV": {
+    "aliases": [
+      ".csv"
+    ],
+    "description": "Comma-separated values"
+  },
+  "AVCF": {
+    "aliases": [
+      ".avcf"
+    ],
+    "description": "ANNOVAR documented AVCF extension"
+  },
+  "BED": {
+    "aliases": [
+      ".bed"
+    ],
+    "description": "Browser Extensible Data"
+  },
+  "GFF": {
+    "aliases": [
+      ".gff"
+    ],
+    "description": "General Feature Format"
+  },
+  "GFF3": {
+    "aliases": [
+      ".gff3"
+    ],
+    "description": "GFF version 3"
+  },
+  "SAM": {
+    "aliases": [
+      ".sam"
+    ],
+    "description": "Sequence Alignment/Map text format"
+  },
+  "BAM": {
+    "aliases": [
+      ".bam"
+    ],
+    "description": "Binary Alignment/Map format"
+  },
+  "WIG": {
+    "aliases": [
+      ".wig"
+    ],
+    "description": "Wiggle signal format"
+  },
+  "BEDGRAPH": {
+    "aliases": [
+      ".bedgraph"
+    ],
+    "description": "BedGraph signal format"
+  },
+  "FASTQ": {
+    "aliases": [
+      "fq",
+      ".fq",
+      ".fastq"
+    ],
+    "description": "FASTQ sequencing reads"
+  },
+  "FASTQ_GZ": {
+    "aliases": [
+      "fq.gz",
+      ".fq.gz",
+      ".fastq.gz"
+    ],
+    "description": "Gzip-compressed FASTQ"
+  },
+  "FASTA": {
+    "aliases": [
+      "fa",
+      ".fa",
+      ".fasta"
+    ],
+    "description": "FASTA sequence format"
+  },
+  "PDF": {
+    "aliases": [
+      ".pdf"
+    ],
+    "description": "Portable Document Format"
+  },
+  "BWA_INDEX": {
+    "aliases": [
+      "bwa_index",
+      "index prefix"
+    ],
+    "description": "BWA reference index"
+  },
+  "HTML": {
+    "aliases": [
+      ".html",
+      ".htm"
+    ],
+    "description": "HTML quality-control/report document"
+  },
+  "JSON": {
+    "aliases": [
+      ".json"
+    ],
+    "description": "Structured JSON content"
+  }
+}

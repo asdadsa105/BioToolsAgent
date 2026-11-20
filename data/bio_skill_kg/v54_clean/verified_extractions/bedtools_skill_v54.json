@@ -1,0 +1,1418 @@
+{
+  "tool": {
+    "name": "bedtools",
+    "version": "2.30.0",
+    "category": "基因组分析类",
+    "description": "用于处理BED格式文件的工具集，提供基因组区域的交集、并集、差异等操作，支持多种文件格式，是基因组学研究中常用的工具之一",
+    "source_url": "https://github.com/arq5x/bedtools2",
+    "docker_image": "biocontainers/bedtools:v2.30.0_cv1",
+    "evidence_quote": "**工具名称**: bedtools\n**工具版本**: 2.30.0"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "- **最小**: 1核",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 59,
+      "_end_line": 59
+    },
+    {
+      "name": "CPU推荐",
+      "value": 2,
+      "unit": "核",
+      "evidence_quote": "- **推荐**: 2核",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 60,
+      "_end_line": 60
+    },
+    {
+      "name": "CPU最大",
+      "value": 8,
+      "unit": "核",
+      "evidence_quote": "- **最大**: 8核",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 61,
+      "_end_line": 61
+    },
+    {
+      "name": "内存最小",
+      "value": 1,
+      "unit": "GB",
+      "evidence_quote": "- **最小**: 1GB",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 64,
+      "_end_line": 64
+    },
+    {
+      "name": "内存推荐",
+      "value": 4,
+      "unit": "GB",
+      "evidence_quote": "- **推荐**: 4GB",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 65,
+      "_end_line": 65
+    },
+    {
+      "name": "内存最大",
+      "value": 16,
+      "unit": "GB",
+      "evidence_quote": "- **最大**: 16GB",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 66,
+      "_end_line": 66
+    },
+    {
+      "name": "临时空间",
+      "value": "输入文件大小的2倍",
+      "unit": null,
+      "evidence_quote": "- **临时空间**: 输入文件大小的2倍",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 69,
+      "_end_line": 69
+    },
+    {
+      "name": "输出空间",
+      "value": "输入文件大小的1.5倍",
+      "unit": null,
+      "evidence_quote": "- **输出空间**: 输入文件大小的1.5倍（主要是结果文件）",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 70,
+      "_end_line": 70
+    },
+    {
+      "name": "运行时间(1M区域)",
+      "value": "1-2分钟",
+      "unit": null,
+      "evidence_quote": "| 1M区域 | 1-2分钟 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.4 运行时间预估",
+      "_start_line": 75,
+      "_end_line": 75
+    },
+    {
+      "name": "运行时间(10M区域)",
+      "value": "5-10分钟",
+      "unit": null,
+      "evidence_quote": "| 10M区域 | 5-10分钟 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.4 运行时间预估",
+      "_start_line": 76,
+      "_end_line": 76
+    },
+    {
+      "name": "运行时间(100M区域)",
+      "value": "30-60分钟",
+      "unit": null,
+      "evidence_quote": "| 100M区域 | 30-60分钟 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 4. 资源需求配置 / 4.4 运行时间预估",
+      "_start_line": 77,
+      "_end_line": 77
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "输入文件",
+      "flag": "-a",
+      "description": "第一个输入文件路径",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 输入文件 | -a | --a | 文件路径 | 第一个输入文件路径 | 无 | 支持 | 必填 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 20,
+      "_end_line": 20
+    },
+    {
+      "name": "第二个输入文件",
+      "flag": "-b",
+      "description": "第二个输入文件路径",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 第二个输入文件 | -b | --b | 文件路径 | 第二个输入文件路径 | 无 | - | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 26,
+      "_end_line": 26
+    },
+    {
+      "name": "输出文件",
+      "flag": "-o",
+      "description": "输出文件路径",
+      "required": false,
+      "default": "stdout",
+      "scope": "tool",
+      "evidence_quote": "| 输出文件 | -o | --output | 文件路径 | 输出文件路径 | stdout | - | 推荐 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 27,
+      "_end_line": 27
+    },
+    {
+      "name": "输入格式",
+      "flag": "-format",
+      "description": "输入文件格式",
+      "required": false,
+      "default": "bed",
+      "scope": "tool",
+      "evidence_quote": "| 输入格式 | -format | --format | 字符串 | 输入文件格式 | bed | bed/gff/vcf | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 28,
+      "_end_line": 28
+    },
+    {
+      "name": "输出格式",
+      "flag": "-output",
+      "description": "输出文件格式",
+      "required": false,
+      "default": "bed",
+      "scope": "tool",
+      "evidence_quote": "| 输出格式 | -output | --output | 字符串 | 输出文件格式 | bed | bed/gff/vcf | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 29,
+      "_end_line": 29
+    },
+    {
+      "name": "输入文件是否已排序",
+      "flag": "-sorted",
+      "description": "输入文件是否已排序",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -sorted | --sorted | 布尔值 | 输入文件是否已排序 | false | true/false | 推荐 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 30,
+      "_end_line": 30
+    },
+    {
+      "name": "基因组大小文件",
+      "flag": "-g",
+      "description": "基因组大小文件路径",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -g | --genome | 文件路径 | 基因组大小文件路径 | 无 | - | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 31,
+      "_end_line": 31
+    },
+    {
+      "name": "处理split reads",
+      "flag": "-split",
+      "description": "处理split reads",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -split | --split | 布尔值 | 处理split reads | false | true/false | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 32,
+      "_end_line": 32
+    },
+    {
+      "name": "保留头部信息",
+      "flag": "-header",
+      "description": "保留头部信息",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -header | --header | 布尔值 | 保留头部信息 | false | true/false | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 33,
+      "_end_line": 33
+    },
+    {
+      "name": "写入第一个文件的所有条目",
+      "flag": "-wa",
+      "description": "写入第一个文件的所有条目",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -wa | --wa | 布尔值 | 写入第一个文件的所有条目 | false | true/false | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 34,
+      "_end_line": 34
+    },
+    {
+      "name": "写入第二个文件的所有条目",
+      "flag": "-wb",
+      "description": "写入第二个文件的所有条目",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -wb | --wb | 布尔值 | 写入第二个文件的所有条目 | false | true/false | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 35,
+      "_end_line": 35
+    },
+    {
+      "name": "只写入唯一的条目",
+      "flag": "-u",
+      "description": "只写入唯一的条目",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -u | --u | 布尔值 | 只写入唯一的条目 | false | true/false | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 36,
+      "_end_line": 36
+    },
+    {
+      "name": "计算重叠次数",
+      "flag": "-c",
+      "description": "计算重叠次数",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -c | --count | 布尔值 | 计算重叠次数 | false | true/false | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 37,
+      "_end_line": 37
+    },
+    {
+      "name": "最小重叠比例",
+      "flag": "-f",
+      "description": "最小重叠比例",
+      "required": false,
+      "default": "1e-9",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -f | --fraction | 浮点数 | 最小重叠比例 | 1e-9 | 0-1 | 可选 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 38,
+      "_end_line": 38
+    }
+  ],
+  "operations": [
+    {
+      "name": "bedtools intersect",
+      "description": "计算两个基因组区域文件的交集",
+      "task_name": "基因组区域交集分析",
+      "inputs": [
+        {
+          "data_type": "基因组区域数据",
+          "description": "第一个输入文件路径",
+          "role": "regions_a",
+          "flag": "-a",
+          "flag_evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -wa \\\n  -wb \\\n  -o intersection.bed",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "region_intersection",
+          "scenario_name": "基因组区域交集分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "**输入数据**: 两个BED格式的基因组区域文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 两个BED格式的基因组区域文件",
+          "condition": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "bedtools工具Skill / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析",
+          "_start_line": 126,
+          "_end_line": 126,
+          "_source_line_start": 126,
+          "_source_line_end": 126
+        },
+        {
+          "data_type": "基因组区域数据",
+          "description": "第二个输入文件路径",
+          "role": "regions_b",
+          "flag": "-b",
+          "flag_evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -wa \\\n  -wb \\\n  -o intersection.bed",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "region_intersection",
+          "scenario_name": "基因组区域交集分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "**输入数据**: 两个BED格式的基因组区域文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 两个BED格式的基因组区域文件",
+          "condition": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "bedtools工具Skill / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析",
+          "_start_line": 126,
+          "_end_line": 126,
+          "_source_line_start": 126,
+          "_source_line_end": 126
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "基因组区域交集结果",
+          "description": "两个区域文件的交集",
+          "role": "intersection",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -wa \\\n  -wb \\\n  -o intersection.bed",
+          "required": null,
+          "condition": null,
+          "scenario_id": "region_intersection",
+          "scenario_name": "基因组区域交集分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 两个区域文件的交集(intersection.bed)"
+            }
+          ],
+          "evidence_quote": "- 两个区域文件的交集(intersection.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算特定比例的交集",
+          "_start_line": 152,
+          "_end_line": 152,
+          "_source_line_start": 152,
+          "_source_line_end": 152
+        },
+        {
+          "data_type": "带交集计数的区域结果",
+          "description": "带交集计数的结果",
+          "role": "intersection_count",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -c \\\n  -o intersection_count.bed",
+          "required": null,
+          "condition": "使用 -c 计算重叠次数时",
+          "scenario_id": "region_intersection",
+          "scenario_name": "基因组区域交集分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 带交集计数的结果(intersection_count.bed)"
+            }
+          ],
+          "evidence_quote": "- 带交集计数的结果(intersection_count.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算特定比例的交集",
+          "_start_line": 153,
+          "_end_line": 153,
+          "_source_line_start": 153,
+          "_source_line_end": 153
+        },
+        {
+          "data_type": "至少50%重叠的交集区域",
+          "description": "至少50%重叠的交集",
+          "role": "intersection_50",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -f 0.5 \\\n  -o intersection_50.bed",
+          "required": null,
+          "condition": "使用 -f 0.5 指定最小重叠比例时",
+          "scenario_id": "region_intersection",
+          "scenario_name": "基因组区域交集分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 至少50%重叠的交集(intersection_50.bed)"
+            }
+          ],
+          "evidence_quote": "- 至少50%重叠的交集(intersection_50.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算特定比例的交集",
+          "_start_line": 154,
+          "_end_line": 154,
+          "_source_line_start": 154,
+          "_source_line_end": 154
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "region_intersection",
+          "name": "基因组区域交集分析",
+          "description": "分析两个基因组区域文件的交集",
+          "evidence_quote": "**适用场景**: 分析两个基因组区域文件的交集",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "bedtools工具Skill / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析",
+          "_start_line": 125,
+          "_end_line": 125,
+          "_source_line_start": 125,
+          "_source_line_end": 125
+        }
+      ],
+      "parameters": [
+        {
+          "name": "写入第一个文件的所有条目",
+          "flag": "-wa",
+          "description": "写入第一个文件的所有条目",
+          "required": false,
+          "default": "false",
+          "scope": "operation",
+          "evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -wa \\\n  -wb \\\n  -o intersection.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算两个BED文件的交集",
+          "_start_line": 130,
+          "_end_line": 135,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "写入第二个文件的所有条目",
+          "flag": "-wb",
+          "description": "写入第二个文件的所有条目",
+          "required": false,
+          "default": "false",
+          "scope": "operation",
+          "evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -wa \\\n  -wb \\\n  -o intersection.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算两个BED文件的交集",
+          "_start_line": 130,
+          "_end_line": 135,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "计算重叠次数",
+          "flag": "-c",
+          "description": "计算重叠次数",
+          "required": false,
+          "default": "false",
+          "scope": "operation",
+          "evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -c \\\n  -o intersection_count.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算交集并统计次数",
+          "_start_line": 138,
+          "_end_line": 142,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "最小重叠比例",
+          "flag": "-f",
+          "description": "最小重叠比例",
+          "required": false,
+          "default": "1e-9",
+          "scope": "operation",
+          "evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -f 0.5 \\\n  -o intersection_50.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算特定比例的交集",
+          "_start_line": 145,
+          "_end_line": 149,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "bedtools intersect \\\n  -a regions1.bed \\\n  -b regions2.bed \\\n  -wa \\\n  -wb \\\n  -o intersection.bed",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算两个BED文件的交集",
+      "_start_line": 130,
+      "_end_line": 135,
+      "_source_line_start": 130,
+      "_source_line_end": 135
+    },
+    {
+      "name": "bedtools merge",
+      "description": "合并重叠或相邻的基因组区域",
+      "task_name": "基因组区域合并",
+      "inputs": [
+        {
+          "data_type": "基因组区域数据",
+          "description": "BED格式的基因组区域文件",
+          "role": "regions",
+          "flag": "-i",
+          "flag_evidence_quote": "bedtools merge \\\n  -i regions.bed \\\n  -o merged.bed",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "region_merge",
+          "scenario_name": "基因组区域合并",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "**输入数据**: BED格式的基因组区域文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: BED格式的基因组区域文件",
+          "condition": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算特定比例的交集 / 7.2 场景2: 基因组区域合并",
+          "_start_line": 159,
+          "_end_line": 159,
+          "_source_line_start": 159,
+          "_source_line_end": 159
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "合并后的基因组区域",
+          "description": "合并后的区域",
+          "role": "merged",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools merge \\\n  -i regions.bed \\\n  -o merged.bed",
+          "required": null,
+          "condition": null,
+          "scenario_id": "region_merge",
+          "scenario_name": "基因组区域合并",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 合并后的区域(merged.bed)"
+            }
+          ],
+          "evidence_quote": "- 合并后的区域(merged.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域的平均值",
+          "_start_line": 182,
+          "_end_line": 182,
+          "_source_line_start": 182,
+          "_source_line_end": 182
+        },
+        {
+          "data_type": "带原始区域计数的合并结果",
+          "description": "带原始区域计数的合并结果",
+          "role": "merged_count",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools merge \\\n  -i regions.bed \\\n  -c 4 \\\n  -o count \\\n  -o merged_count.bed",
+          "required": null,
+          "condition": "使用 -c 4 -o count 时",
+          "scenario_id": "region_merge",
+          "scenario_name": "基因组区域合并",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 带原始区域计数的合并结果(merged_count.bed)"
+            }
+          ],
+          "evidence_quote": "- 带原始区域计数的合并结果(merged_count.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域的平均值",
+          "_start_line": 183,
+          "_end_line": 183,
+          "_source_line_start": 183,
+          "_source_line_end": 183
+        },
+        {
+          "data_type": "带原始区域平均值的合并结果",
+          "description": "带原始区域平均值的合并结果",
+          "role": "merged_mean",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools merge \\\n  -i regions.bed \\\n  -c 4 \\\n  -o mean \\\n  -o merged_mean.bed",
+          "required": null,
+          "condition": "使用 -c 4 -o mean 时",
+          "scenario_id": "region_merge",
+          "scenario_name": "基因组区域合并",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 带原始区域平均值的合并结果(merged_mean.bed)"
+            }
+          ],
+          "evidence_quote": "- 带原始区域平均值的合并结果(merged_mean.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域的平均值",
+          "_start_line": 184,
+          "_end_line": 184,
+          "_source_line_start": 184,
+          "_source_line_end": 184
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "region_merge",
+          "name": "基因组区域合并",
+          "description": "合并重叠或相邻的基因组区域",
+          "evidence_quote": "**适用场景**: 合并重叠或相邻的基因组区域",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算特定比例的交集 / 7.2 场景2: 基因组区域合并",
+          "_start_line": 158,
+          "_end_line": 158,
+          "_source_line_start": 158,
+          "_source_line_end": 158
+        }
+      ],
+      "parameters": [
+        {
+          "name": "计算列",
+          "flag": "-c",
+          "description": "指定用于统计的列",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "bedtools merge \\\n  -i regions.bed \\\n  -c 4 \\\n  -o count \\\n  -o merged_count.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域数",
+          "_start_line": 168,
+          "_end_line": 172,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bedtools merge \\\n  -i regions.bed \\\n  -o merged.bed",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "合并重叠或相邻的区域",
+      "_start_line": 163,
+      "_end_line": 165,
+      "_source_line_start": 163,
+      "_source_line_end": 165
+    },
+    {
+      "name": "bedtools coverage",
+      "description": "分析基因组区域的覆盖度",
+      "task_name": "基因组区域覆盖度分析",
+      "inputs": [
+        {
+          "data_type": "基因组区域数据",
+          "description": "BED格式的基因组区域文件",
+          "role": "regions",
+          "flag": "-a",
+          "flag_evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b alignments.bam \\\n  -o coverage.bed",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "region_coverage",
+          "scenario_name": "基因组区域覆盖度分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "**输入数据**: BED格式的基因组区域文件，BAM或BED格式的覆盖文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: BED格式的基因组区域文件，BAM或BED格式的覆盖文件",
+          "condition": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析",
+          "_start_line": 189,
+          "_end_line": 189,
+          "_source_line_start": 189,
+          "_source_line_end": 189
+        },
+        {
+          "data_type": "序列比对结果",
+          "description": "BAM格式的比对文件",
+          "role": "alignments",
+          "flag": "-b",
+          "flag_evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b alignments.bam \\\n  -o coverage.bed",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": null,
+          "scenario_id": "region_coverage",
+          "scenario_name": "基因组区域覆盖度分析",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: BED格式的基因组区域文件，BAM或BED格式的覆盖文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: BED格式的基因组区域文件，BAM或BED格式的覆盖文件",
+          "condition": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析",
+          "_start_line": 189,
+          "_end_line": 189,
+          "_source_line_start": 189,
+          "_source_line_end": 189
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "区域覆盖度结果",
+          "description": "区域覆盖度结果",
+          "role": "coverage",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b alignments.bam \\\n  -o coverage.bed",
+          "required": null,
+          "condition": null,
+          "scenario_id": "region_coverage",
+          "scenario_name": "基因组区域覆盖度分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 区域覆盖度结果(coverage.bed)"
+            }
+          ],
+          "evidence_quote": "- 区域覆盖度结果(coverage.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算多个样本的覆盖度",
+          "_start_line": 212,
+          "_end_line": 212,
+          "_source_line_start": 212,
+          "_source_line_end": 212
+        },
+        {
+          "data_type": "详细覆盖度统计",
+          "description": "详细的覆盖度统计",
+          "role": "coverage_detail",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b alignments.bam \\\n  -d \\\n  -o coverage_detail.bed",
+          "required": null,
+          "condition": "使用 -d 时",
+          "scenario_id": "region_coverage",
+          "scenario_name": "基因组区域覆盖度分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 详细的覆盖度统计(coverage_detail.bed)"
+            }
+          ],
+          "evidence_quote": "- 详细的覆盖度统计(coverage_detail.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算多个样本的覆盖度",
+          "_start_line": 213,
+          "_end_line": 213,
+          "_source_line_start": 213,
+          "_source_line_end": 213
+        },
+        {
+          "data_type": "多样本覆盖度结果",
+          "description": "多个样本的覆盖度结果",
+          "role": "coverage_multi",
+          "flag": "-o",
+          "flag_evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b sample1.bam sample2.bam sample3.bam \\\n  -o coverage_multi.bed",
+          "required": null,
+          "condition": "多个BAM样本输入时",
+          "scenario_id": "region_coverage",
+          "scenario_name": "基因组区域覆盖度分析",
+          "formats": [
+            "BED"
+          ],
+          "format_evidence": [
+            {
+              "format": "BED",
+              "evidence_quote": "- 多个样本的覆盖度结果(coverage_multi.bed)"
+            }
+          ],
+          "evidence_quote": "- 多个样本的覆盖度结果(coverage_multi.bed)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算多个样本的覆盖度",
+          "_start_line": 214,
+          "_end_line": 214,
+          "_source_line_start": 214,
+          "_source_line_end": 214
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "region_coverage",
+          "name": "基因组区域覆盖度分析",
+          "description": "分析基因组区域的覆盖度",
+          "evidence_quote": "**适用场景**: 分析基因组区域的覆盖度",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析",
+          "_start_line": 188,
+          "_end_line": 188,
+          "_source_line_start": 188,
+          "_source_line_end": 188
+        }
+      ],
+      "parameters": [
+        {
+          "name": "详细覆盖度",
+          "flag": "-d",
+          "description": "计算详细的覆盖度统计",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b alignments.bam \\\n  -d \\\n  -o coverage_detail.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "计算详细的覆盖度统计",
+          "_start_line": 199,
+          "_end_line": 203,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "bedtools coverage \\\n  -a regions.bed \\\n  -b alignments.bam \\\n  -o coverage.bed",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算BAM文件对区域的覆盖度",
+      "_start_line": 193,
+      "_end_line": 196,
+      "_source_line_start": 193,
+      "_source_line_end": 196
+    },
+    {
+      "name": "bedtools unionbedg",
+      "description": "计算并集/合并多个样本的覆盖度结果",
+      "task_name": "基因组区域并集计算",
+      "inputs": [
+        {
+          "data_type": "基因组信号轨道数据",
+          "description": "多个 BEDGRAPH 格式的覆盖度信号文件；实际内容须为 bedGraph 四列结构",
+          "role": "coverage_files",
+          "flag": "-i",
+          "flag_evidence_quote": "bedtools unionbedg -i *_coverage.bed > merged_coverage.bed",
+          "required": true,
+          "min_occurs": 2,
+          "max_occurs": null,
+          "scenario_id": "merge_sample_coverages",
+          "scenario_name": "合并多个样本的覆盖度结果",
+          "formats": [
+            "BEDGRAPH"
+          ],
+          "format_evidence": [
+            {
+              "format": "BEDGRAPH",
+              "evidence_quote": "| BEDGRAPH | 支持 | .bedgraph | BEDGRAPH格式的信号文件 |"
+            }
+          ],
+          "evidence_quote": "bedtools unionbedg -i *_coverage.bed > merged_coverage.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_line_start": 305,
+          "_source_line_end": 305,
+          "provenance_kind": "curated_external_manual",
+          "external_validation_url": "https://bedtools.readthedocs.io/en/latest/content/tools/unionbedg.html",
+          "original_claim": "输入区域覆盖度结果/BED；MD 示例使用 .bed 后缀，此后缀不能保证 BEDGRAPH 内容",
+          "data_format_rule": "chrom, start, end, value (4 columns)"
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "多样本覆盖度矩阵",
+          "description": "3列基因组坐标 + N列样本覆盖度值；并非标准4列 BEDGRAPH",
+          "role": "merged_coverage",
+          "flag": null,
+          "scenario_id": "merge_sample_coverages",
+          "scenario_name": "合并多个样本的覆盖度结果",
+          "formats": [],
+          "format_evidence": [],
+          "evidence_quote": "bedtools unionbedg -i *_coverage.bed > merged_coverage.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_line_start": 305,
+          "_source_line_end": 305,
+          "data_layout": "chrom, start, end, value_sample_1, ..., value_sample_N",
+          "provenance_kind": "curated_external_manual",
+          "external_validation_url": "https://bedtools.readthedocs.io/en/latest/content/tools/unionbedg.html",
+          "original_claim": "抽取时映射为多样本覆盖度结果/BED；无充分格式依据"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "merge_sample_coverages",
+          "name": "合并多个样本的覆盖度结果",
+          "description": "将多个样本分别计算的覆盖度文件合并",
+          "evidence_quote": "bedtools unionbedg -i *_coverage.bed > merged_coverage.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_line_start": 305,
+          "_source_line_end": 305
+        }
+      ],
+      "parameters": [],
+      "min_input_files": 2,
+      "evidence_quote": "bedtools unionbedg -i file1.bed file2.bed file3.bed > union.bed",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算并集",
+      "_start_line": 288,
+      "_end_line": 288,
+      "_source_line_start": 288,
+      "_source_line_end": 288
+    },
+    {
+      "name": "bedtools genomecov",
+      "description": "从BAM文件提取覆盖度高的区域",
+      "task_name": "基因组覆盖度计算",
+      "inputs": [
+        {
+          "data_type": "已排序BAM比对结果",
+          "description": "-ibam 要求按参考坐标排序的 BAM 文件",
+          "role": "alignments",
+          "flag": "-ibam",
+          "flag_evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\\n  | awk '$4 > 20' \\\n  > high_coverage_regions.bed",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\\n  | awk '$4 > 20' \\\n  > high_coverage_regions.bed"
+            }
+          ],
+          "evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\\n  | awk '$4 > 20' \\\n  > high_coverage_regions.bed",
+          "condition": null,
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "从BAM文件提取覆盖度高的区域",
+          "_start_line": 320,
+          "_end_line": 324,
+          "_source_line_start": 320,
+          "_source_line_end": 324,
+          "sorting_state_required": "coordinate_sorted",
+          "provenance_kind": "curated_external_manual",
+          "external_validation_url": "https://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html"
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "信号轨道数据",
+          "description": "genomecov -bga 生成的基因组覆盖度信号轨道；位于后续 awk 阈值筛选之前",
+          "role": "coverage_signal_track",
+          "flag": "-bga",
+          "flag_evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\",
+          "scenario_id": "bedgraph_coverage_output",
+          "scenario_name": "输出覆盖度信号轨道",
+          "formats": [
+            "BEDGRAPH"
+          ],
+          "format_evidence": [
+            {
+              "format": "BEDGRAPH",
+              "evidence_quote": "| BEDGRAPH | 支持 | .bedgraph | BEDGRAPH格式的信号文件 |"
+            }
+          ],
+          "evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\",
+          "condition": "-bga 直接输出；原文随后使用 awk 对覆盖度阈值进行筛选",
+          "_source_file": "bedtools_skill.md",
+          "_source_line_start": 320,
+          "_source_line_end": 322,
+          "output_channel": "stdout_before_pipeline_transform",
+          "format_rule": "BEDGRAPH from -bga, before awk",
+          "provenance_kind": "md_example"
+        }
+      ],
+      "scenarios": [],
+      "parameters": [
+        {
+          "name": "BAM输入",
+          "flag": "-ibam",
+          "description": "BAM格式的比对文件输入",
+          "required": true,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\\n  | awk '$4 > 20' \\\n  > high_coverage_regions.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "从BAM文件提取覆盖度高的区域",
+          "_start_line": 320,
+          "_end_line": 324,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "BEDGRAPH输出",
+          "flag": "-bga",
+          "description": "输出BEDGRAPH格式覆盖度",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\\n  | awk '$4 > 20' \\\n  > high_coverage_regions.bed",
+          "_source_file": "bedtools_skill.md",
+          "_source_section": "从BAM文件提取覆盖度高的区域",
+          "_start_line": 320,
+          "_end_line": 324,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bedtools genomecov \\\n  -ibam alignments.bam \\\n  -bga \\\n  | awk '$4 > 20' \\\n  > high_coverage_regions.bed",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "从BAM文件提取覆盖度高的区域",
+      "_start_line": 320,
+      "_end_line": 324,
+      "_source_line_start": 320,
+      "_source_line_end": 324
+    }
+  ],
+  "data_types": [
+    {
+      "name": "基因组区域数据",
+      "description": "BED格式的基因组区域文件",
+      "formats": [
+        "BED"
+      ],
+      "format_evidence": [
+        {
+          "format": "BED",
+          "evidence_quote": "| BED | 支持 | .bed | BED格式的基因组区域文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| BED | 支持 | .bed | BED格式的基因组区域文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 85,
+      "_end_line": 85,
+      "_source_line_start": 85,
+      "_source_line_end": 85
+    },
+    {
+      "name": "基因注释数据",
+      "description": "GFF格式的基因注释文件",
+      "formats": [
+        "GFF"
+      ],
+      "format_evidence": [
+        {
+          "format": "GFF",
+          "evidence_quote": "| GFF | 支持 | .gff, .gff3 | GFF格式的基因注释文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| GFF | 支持 | .gff, .gff3 | GFF格式的基因注释文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 86,
+      "_end_line": 86,
+      "_source_line_start": 86,
+      "_source_line_end": 86
+    },
+    {
+      "name": "变异数据",
+      "description": "VCF格式的变异文件",
+      "formats": [
+        "VCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF",
+          "evidence_quote": "| VCF | 支持 | .vcf, .vcf.gz | VCF格式的变异文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| VCF | 支持 | .vcf, .vcf.gz | VCF格式的变异文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 87,
+      "_end_line": 87,
+      "_source_line_start": 87,
+      "_source_line_end": 87
+    },
+    {
+      "name": "序列比对结果",
+      "description": "SAM/BAM格式的比对文件",
+      "formats": [
+        "SAM",
+        "BAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "SAM",
+          "evidence_quote": "| SAM | 支持 | .sam | SAM格式的比对文件 |"
+        },
+        {
+          "format": "BAM",
+          "evidence_quote": "| BAM | 支持 | .bam | BAM格式的比对文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| SAM | 支持 | .sam | SAM格式的比对文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 88,
+      "_end_line": 88,
+      "_source_line_start": 88,
+      "_source_line_end": 88
+    },
+    {
+      "name": "信号数据",
+      "description": "WIG/BEDGRAPH格式的信号文件",
+      "formats": [
+        "WIG",
+        "BEDGRAPH"
+      ],
+      "format_evidence": [
+        {
+          "format": "WIG",
+          "evidence_quote": "| WIG | 支持 | .wig | WIG格式的信号文件 |"
+        },
+        {
+          "format": "BEDGRAPH",
+          "evidence_quote": "| BEDGRAPH | 支持 | .bedgraph | BEDGRAPH格式的信号文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| WIG | 支持 | .wig | WIG格式的信号文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 90,
+      "_end_line": 90,
+      "_source_line_start": 90,
+      "_source_line_end": 90
+    },
+    {
+      "name": "统计结果",
+      "description": "统计结果文件",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o2 | 统计文件 | TXT | {prefix}.stats | 统计结果文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o2 | 统计文件 | TXT | {prefix}.stats | 统计结果文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 47,
+      "_end_line": 47,
+      "_source_line_start": 47,
+      "_source_line_end": 47
+    },
+    {
+      "name": "运行日志",
+      "description": "运行日志文件",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o3 | 日志文件 | TXT | {prefix}.bedtools.log | 运行日志文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o3 | 日志文件 | TXT | {prefix}.bedtools.log | 运行日志文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 48,
+      "_end_line": 48,
+      "_source_line_start": 48,
+      "_source_line_end": 48
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "BWA",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: BWA, samtools, GATK等（生成输入数据文件）",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "samtools",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: BWA, samtools, GATK等（生成输入数据文件）",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "GATK",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: BWA, samtools, GATK等（生成输入数据文件）",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "IGV",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| IGV | 可视化类 | 结果可视化 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 113,
+      "_end_line": 113,
+      "_source_line_start": 113,
+      "_source_line_end": 113
+    },
+    {
+      "target_tool": "UCSC Genome Browser",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| UCSC Genome Browser | 可视化类 | 结果可视化 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "bedtools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 114,
+      "_end_line": 114,
+      "_source_line_start": 114,
+      "_source_line_end": 114
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "文件格式检查",
+      "description": "输入文件必须符合指定的格式规范",
+      "evidence_quote": "| 文件格式 | 正确 | 输入文件必须符合指定的格式规范 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 222,
+      "_end_line": 222
+    },
+    {
+      "name": "文件完整性检查",
+      "description": "输入文件完整，无损坏",
+      "evidence_quote": "| 文件完整性 | 完整 | 输入文件完整，无损坏 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 223,
+      "_end_line": 223
+    },
+    {
+      "name": "排序状态",
+      "description": "对于大型文件，推荐使用排序后的文件以提高性能",
+      "evidence_quote": "| 排序状态 | 可选 | 对于大型文件，推荐使用排序后的文件以提高性能 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 224,
+      "_end_line": 224
+    },
+    {
+      "name": "索引文件",
+      "description": "BAM文件需要对应的索引文件",
+      "evidence_quote": "| 索引文件 | 可选 | BAM文件需要对应的索引文件 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 225,
+      "_end_line": 225
+    },
+    {
+      "name": "结果文件检查",
+      "description": "检查文件存在性和格式，结果文件存在且格式正确",
+      "evidence_quote": "| 结果文件 | 检查文件存在性和格式 | 结果文件存在且格式正确 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 231,
+      "_end_line": 231
+    },
+    {
+      "name": "结果数量检查",
+      "description": "统计结果数量，结果数量符合预期",
+      "evidence_quote": "| 结果数量 | 统计结果数量 | 结果数量符合预期 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 232,
+      "_end_line": 232
+    },
+    {
+      "name": "日志文件检查",
+      "description": "检查日志内容，日志文件无错误信息",
+      "evidence_quote": "| 日志文件 | 检查日志内容 | 日志文件无错误信息 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 233,
+      "_end_line": 233
+    },
+    {
+      "name": "处理完整性检查",
+      "description": "检查处理步骤，所有处理步骤执行完成",
+      "evidence_quote": "| 处理完整性 | 检查处理步骤 | 所有处理步骤执行完成 |",
+      "_source_file": "bedtools_skill.md",
+      "_source_section": "计算多个样本的覆盖度 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 234,
+      "_end_line": 234
+    }
+  ],
+  "review": [
+    {
+      "file": "bedtools_skill.md",
+      "section": "bedtools工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析 / 计算两个BED文件的交集 / 计算交集并统计次数 / 计算特定比例的交集 / 7.2 场景2: 基因组区域合并 / 合并重叠或相邻的区域 / 合并并计算原始区域数 / 合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析 / 计算BAM文件对区域的覆盖度 / 计算详细的覆盖度统计 / 计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 基本交集 / 带选项的交集 / 基本合并 / 合并并计算统计信息 / 基本覆盖度 / 详细覆盖度 / 9.2 高级用法 / 计算三个文件的共同交集 / 计算差异区域 / 计算并集 / 批量计算多个样本的覆盖度 / 合并多个样本的覆盖度结果 / 从VCF文件提取变异区域并与BED文件交集 / 从BAM文件提取覆盖度高的区域 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+      "reason": "bedtools merge的参数缺少可在原文中验证的 evidence_quote",
+      "record_preview": "统计操作"
+    },
+    {
+      "file": "bedtools_skill.md",
+      "section": "bedtools工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析 / 计算两个BED文件的交集 / 计算交集并统计次数 / 计算特定比例的交集 / 7.2 场景2: 基因组区域合并 / 合并重叠或相邻的区域 / 合并并计算原始区域数 / 合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析 / 计算BAM文件对区域的覆盖度 / 计算详细的覆盖度统计 / 计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 基本交集 / 带选项的交集 / 基本合并 / 合并并计算统计信息 / 基本覆盖度 / 详细覆盖度 / 9.2 高级用法 / 计算三个文件的共同交集 / 计算差异区域 / 计算并集 / 批量计算多个样本的覆盖度 / 合并多个样本的覆盖度结果 / 从VCF文件提取变异区域并与BED文件交集 / 从BAM文件提取覆盖度高的区域 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+      "reason": "bedtools genomecov的参数文件格式 BAM输入 缺少与该数据语义对应的原文证据，已从候选中移除",
+      "record_preview": "BAM输入"
+    },
+    {
+      "file": "bedtools_skill.md",
+      "section": "bedtools工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析 / 计算两个BED文件的交集 / 计算交集并统计次数 / 计算特定比例的交集 / 7.2 场景2: 基因组区域合并 / 合并重叠或相邻的区域 / 合并并计算原始区域数 / 合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析 / 计算BAM文件对区域的覆盖度 / 计算详细的覆盖度统计 / 计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 基本交集 / 带选项的交集 / 基本合并 / 合并并计算统计信息 / 基本覆盖度 / 详细覆盖度 / 9.2 高级用法 / 计算三个文件的共同交集 / 计算差异区域 / 计算并集 / 批量计算多个样本的覆盖度 / 合并多个样本的覆盖度结果 / 从VCF文件提取变异区域并与BED文件交集 / 从BAM文件提取覆盖度高的区域 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+      "reason": "bedtools genomecov的参数文件格式 BEDGRAPH输出 缺少与该数据语义对应的原文证据，已从候选中移除",
+      "record_preview": "BEDGRAPH输出"
+    }
+  ],
+  "metadata": {
+    "file": "bedtools_skill.md",
+    "doc_id": "80446c19d079a489",
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6",
+    "chunk_count": 1,
+    "chunk_ranges": [
+      {
+        "section": "bedtools工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 基因组区域交集分析 / 计算两个BED文件的交集 / 计算交集并统计次数 / 计算特定比例的交集 / 7.2 场景2: 基因组区域合并 / 合并重叠或相邻的区域 / 合并并计算原始区域数 / 合并并计算原始区域的平均值 / 7.3 场景3: 基因组区域覆盖度分析 / 计算BAM文件对区域的覆盖度 / 计算详细的覆盖度统计 / 计算多个样本的覆盖度 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 基本交集 / 带选项的交集 / 基本合并 / 合并并计算统计信息 / 基本覆盖度 / 详细覆盖度 / 9.2 高级用法 / 计算三个文件的共同交集 / 计算差异区域 / 计算并集 / 批量计算多个样本的覆盖度 / 合并多个样本的覆盖度结果 / 从VCF文件提取变异区域并与BED文件交集 / 从BAM文件提取覆盖度高的区域 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+        "start_line": 1,
+        "end_line": 375,
+        "chunk_id": "80446c19d079a489_llm_0001"
+      }
+    ]
+  }
+}

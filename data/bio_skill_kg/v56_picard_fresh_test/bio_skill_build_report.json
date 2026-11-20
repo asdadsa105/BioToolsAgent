@@ -1,0 +1,68 @@
+{
+  "input_files": [
+    "picard_skill.md"
+  ],
+  "output": "D:\\gitwork\\SciToolAgent_v5_6\\SciToolAgent_v5_6_clean\\data\\bio_skill_kg\\v56_picard_fresh_test\\all7_fresh.json",
+  "schema": "BioSkillKG-v2",
+  "normalization_version": "bioskillkg-semantic-normalization-v5.6-semantic-family-and-scenarios",
+  "ontology_metadata_updates": 0,
+  "mode": "llm_incremental",
+  "graph": {
+    "nodes": 145,
+    "edges": 244,
+    "labels": {
+      "DataType": 46,
+      "FileFormat": 19,
+      "Operation": 28,
+      "Task": 27,
+      "Tool": 25
+    },
+    "relations": {
+      "DOCUMENTED_DOWNSTREAM": 23,
+      "DOCUMENTED_PREREQUISITE": 3,
+      "HAS_FORMAT": 47,
+      "HAS_OPERATION": 28,
+      "IS_SUBTYPE_OF": 21,
+      "PARTIALLY_ALTERNATIVE_TO": 13,
+      "PERFORMS": 28,
+      "PRODUCES": 34,
+      "RECOMMENDED_BEFORE": 12,
+      "REQUIRES_INPUT": 35
+    },
+    "review_items": 24
+  },
+  "changes": {
+    "new_nodes": 12,
+    "new_edges": 27,
+    "enriched_tools": [
+      "tool:picard"
+    ],
+    "changed_properties": 16,
+    "added_review_items": 18
+  },
+  "llm": {
+    "api_calls": 1,
+    "cache_hits": 0,
+    "chunks": 1,
+    "model": "deepseek-chat",
+    "prompt_version": "bioskillkg-extract-v1.6"
+  },
+  "extraction_files": [
+    {
+      "file": "picard_skill.md",
+      "doc_id": "4c0ba3b2635d2c5b",
+      "path": "data\\bio_skill_kg\\v56_picard_fresh_test\\extracted_skills\\picard_skill_4c0ba3b2635d2c5b.json",
+      "operations": 6,
+      "data_types": 6,
+      "tool_relations": 6,
+      "review_items": 0
+    }
+  ],
+  "port_audit": {
+    "total_ports": 96,
+    "curated_ports": 89,
+    "pending_ports": 7,
+    "errors": [],
+    "publish_ready": false
+  }
+}

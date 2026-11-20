@@ -1,0 +1,19 @@
+{
+  "bcftools": [
+    {"command":"bcftools filter","task_id":"variant_filtering","task_name":"变异过滤","inputs":["variant_calls"],"outputs":["filtered_variant_calls"],"notes":"过滤表达式与输出格式应按子命令校验"},
+    {"command":"bcftools stats","task_id":"variant_statistics","task_name":"变异统计","inputs":["variant_calls"],"outputs":["variant_statistics"],"notes":"生成统计文本"},
+    {"command":"bcftools merge","task_id":"merge_variants","task_name":"多样本变异合并","inputs":["variant_calls"],"outputs":["merged_variant_calls"],"min_input_files":2},
+    {"command":"bcftools view","task_id":"subset_variants","task_name":"变异样本或区域筛选","inputs":["variant_calls"],"outputs":["subset_variant_calls"]}
+  ],
+  "bwa": [
+    {"command":"bwa mem","task_id":"read_alignment","task_name":"短读长序列比对","inputs":["short_reads","reference_index"],"outputs":["aligned_reads_sam"],"notes":"需要预先构建的参考基因组索引"}
+  ],
+  "annovar": [
+    {"command":"table_annovar.pl","task_id":"variant_annotation","task_name":"变异功能注释","inputs":["variant_calls","annotation_database"],"outputs":["annotated_variants"],"notes":"注释数据库与参考基因组版本需要匹配"}
+  ],
+  "bedtools": [
+    {"command":"bedtools intersect","task_id":"region_intersection","task_name":"基因组区域交集","inputs":["genomic_regions"],"outputs":["intersected_regions"],"min_input_files":2},
+    {"command":"bedtools merge","task_id":"region_merge","task_name":"基因组区域合并","inputs":["genomic_regions"],"outputs":["merged_regions"]},
+    {"command":"bedtools coverage","task_id":"region_coverage","task_name":"基因组区域覆盖度","inputs":["genomic_regions","aligned_reads_bam"],"outputs":["coverage_result"]}
+  ]
+}

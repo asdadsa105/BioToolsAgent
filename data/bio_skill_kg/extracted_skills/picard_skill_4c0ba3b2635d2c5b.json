@@ -1,0 +1,1400 @@
+{
+  "tool": {
+    "name": "Picard",
+    "version": "2.27.5",
+    "category": "数据处理类",
+    "description": "用于处理高通量测序数据的Java工具集，提供标记重复序列、排序、格式转换等多种功能，是GATK分析流程的重要组成部分",
+    "source_url": "https://github.com/broadinstitute/picard",
+    "docker_image": "broadinstitute/picard:2.27.5",
+    "evidence_quote": "**工具名称**: Picard\n**工具版本**: 2.27.5\n**工具分类**: 数据处理类"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "- **最小**: 1核",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 57,
+      "_end_line": 57
+    },
+    {
+      "name": "CPU推荐",
+      "value": 4,
+      "unit": "核",
+      "evidence_quote": "- **推荐**: 4核",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 58,
+      "_end_line": 58
+    },
+    {
+      "name": "CPU最大",
+      "value": 16,
+      "unit": "核",
+      "evidence_quote": "- **最大**: 16核",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 59,
+      "_end_line": 59
+    },
+    {
+      "name": "内存最小",
+      "value": 4,
+      "unit": "GB",
+      "evidence_quote": "- **最小**: 4GB",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 62,
+      "_end_line": 62
+    },
+    {
+      "name": "内存推荐",
+      "value": 16,
+      "unit": "GB",
+      "evidence_quote": "- **推荐**: 16GB",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 63,
+      "_end_line": 63
+    },
+    {
+      "name": "内存最大",
+      "value": 64,
+      "unit": "GB",
+      "evidence_quote": "- **最大**: 64GB",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 64,
+      "_end_line": 64
+    },
+    {
+      "name": "临时空间",
+      "value": "输入文件大小的2倍",
+      "unit": null,
+      "evidence_quote": "- **临时空间**: 输入文件大小的2倍",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 67,
+      "_end_line": 67
+    },
+    {
+      "name": "输出空间",
+      "value": "输入文件大小的1.5倍",
+      "unit": null,
+      "evidence_quote": "- **输出空间**: 输入文件大小的1.5倍",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 68,
+      "_end_line": 68
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "命令",
+      "flag": null,
+      "description": "Picard工具命令(MarkDuplicates/SortSam等)",
+      "required": true,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 命令 | - | - | 字符串 | Picard工具命令(MarkDuplicates/SortSam等) | 无 | 不支持 | 必填 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 18,
+      "_end_line": 18
+    },
+    {
+      "name": "输入文件",
+      "flag": "I",
+      "description": "输入文件路径",
+      "required": true,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 输入文件 | I | INPUT | 文件路径 | 输入文件路径 | 无 | 支持 | 必填 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 19,
+      "_end_line": 19
+    },
+    {
+      "name": "输出文件",
+      "flag": "O",
+      "description": "输出文件路径",
+      "required": true,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 输出文件 | O | OUTPUT | 文件路径 | 输出文件路径 | 无 | 支持 | 必填 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 20,
+      "_end_line": 20
+    },
+    {
+      "name": "参考基因组",
+      "flag": "R",
+      "description": "参考基因组FASTA文件",
+      "required": false,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 参考基因组 | R | REFERENCE_SEQUENCE | 文件路径 | 参考基因组FASTA文件 | 无 | - | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 26,
+      "_end_line": 26
+    },
+    {
+      "name": "内存分配",
+      "flag": null,
+      "description": "JVM内存分配(如-Xmx8G)",
+      "required": false,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 内存分配 | - | J | 字符串 | JVM内存分配(如-Xmx8G) | - | - | 推荐 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 27,
+      "_end_line": 27
+    },
+    {
+      "name": "线程数",
+      "flag": null,
+      "description": "内存中最大记录数",
+      "required": false,
+      "default": "500000",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | - | MAX_RECORDS_IN_RAM | 整数 | 内存中最大记录数 | 500000 | 100000-2000000 | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 28,
+      "_end_line": 28
+    },
+    {
+      "name": "排序顺序",
+      "flag": "SO",
+      "description": "排序顺序(Coordinate/Queryname等)",
+      "required": false,
+      "default": "Coordinate",
+      "scope": "tool",
+      "evidence_quote": "| 排序顺序 | SO | SORT_ORDER | 字符串 | 排序顺序(Coordinate/Queryname等) | Coordinate | Coordinate | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 29,
+      "_end_line": 29
+    },
+    {
+      "name": "重复标记",
+      "flag": "M",
+      "description": "重复序列统计文件",
+      "required": false,
+      "default": null,
+      "scope": "tool",
+      "evidence_quote": "| 重复标记 | M | METRICS_FILE | 文件路径 | 重复序列统计文件 | 无 | - | 推荐 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 30,
+      "_end_line": 30
+    },
+    {
+      "name": "光学重复",
+      "flag": "OR",
+      "description": "光学重复像素距离",
+      "required": false,
+      "default": "100",
+      "scope": "tool",
+      "evidence_quote": "| 光学重复 | OR | OPTICAL_DUPLICATE_PIXEL_DISTANCE | 整数 | 光学重复像素距离 | 100 | 100-2500 | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 31,
+      "_end_line": 31
+    },
+    {
+      "name": "创建索引",
+      "flag": null,
+      "description": "是否创建索引",
+      "required": false,
+      "default": "false",
+      "scope": "tool",
+      "evidence_quote": "| 创建索引 | CREATE_INDEX | - | 布尔值 | 是否创建索引 | false | true | 推荐 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 32,
+      "_end_line": 32
+    },
+    {
+      "name": "验证字符串ency",
+      "flag": null,
+      "description": "验证严格性(STRICT/LENIENT/SILENT)",
+      "required": false,
+      "default": "STRICT",
+      "scope": "tool",
+      "evidence_quote": "| 验证字符串ency | VALIDATION_STRINGENCY | - | 字符串 | 验证严格性(STRICT/LENIENT/SILENT) | STRICT | LENIENT | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 33,
+      "_end_line": 33
+    },
+    {
+      "name": "压缩级别",
+      "flag": null,
+      "description": "输出压缩级别(0-9)",
+      "required": false,
+      "default": "5",
+      "scope": "tool",
+      "evidence_quote": "| 压缩级别 | COMPRESSION_LEVEL | - | 整数 | 输出压缩级别(0-9) | 5 | 0-9 | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 34,
+      "_end_line": 34
+    },
+    {
+      "name": "临时目录",
+      "flag": null,
+      "description": "临时文件目录",
+      "required": false,
+      "default": "java.io.tmpdir",
+      "scope": "tool",
+      "evidence_quote": "| 临时目录 | TMP_DIR | - | 文件路径 | 临时文件目录 | java.io.tmpdir | - | 可选 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 35,
+      "_end_line": 35
+    }
+  ],
+  "operations": [
+    {
+      "name": "MarkDuplicates",
+      "description": "检测和标记PCR重复序列",
+      "task_name": "标记重复序列",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "已排序的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=sorted.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 已排序的BAM文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已排序的BAM文件",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 123,
+          "_end_line": 123,
+          "_source_line_start": 123,
+          "_source_line_end": 123
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "标记重复后的序列比对结果",
+          "description": "标记重复后的BAM文件(dedup.bam)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=dedup.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "标记重复后的BAM文件(dedup.bam)"
+            }
+          ],
+          "evidence_quote": "标记重复后的BAM文件(dedup.bam)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 134,
+          "_end_line": 134,
+          "_source_line_start": 134,
+          "_source_line_end": 134
+        },
+        {
+          "data_type": "重复序列统计结果",
+          "description": "重复序列统计文件(duplicate_metrics.txt)",
+          "role": "metrics",
+          "flag": "METRICS_FILE",
+          "flag_evidence_quote": "METRICS_FILE=duplicate_metrics.txt",
+          "required": true,
+          "condition": null,
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "重复序列统计文件(duplicate_metrics.txt)"
+            }
+          ],
+          "evidence_quote": "重复序列统计文件(duplicate_metrics.txt)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 135,
+          "_end_line": 135,
+          "_source_line_start": 135,
+          "_source_line_end": 135
+        },
+        {
+          "data_type": "序列比对索引",
+          "description": "BAM索引文件(dedup.bam.bai)",
+          "role": "index",
+          "flag": "CREATE_INDEX",
+          "flag_evidence_quote": "CREATE_INDEX=true",
+          "required": false,
+          "condition": "CREATE_INDEX=true",
+          "scenario_id": "mark_duplicates",
+          "scenario_name": "标记重复序列",
+          "formats": [
+            "BAI"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAI",
+              "evidence_quote": "BAM索引文件(dedup.bam.bai)"
+            }
+          ],
+          "evidence_quote": "BAM索引文件(dedup.bam.bai)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 136,
+          "_end_line": 136,
+          "_source_line_start": 136,
+          "_source_line_end": 136
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "mark_duplicates",
+          "name": "标记重复序列",
+          "description": "检测和标记PCR重复序列",
+          "evidence_quote": "**适用场景**: 检测和标记PCR重复序列",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 122,
+          "_end_line": 122,
+          "_source_line_start": 122,
+          "_source_line_end": 122
+        }
+      ],
+      "parameters": [
+        {
+          "name": "光学重复",
+          "flag": "OPTICAL_DUPLICATE_PIXEL_DISTANCE",
+          "description": "光学重复像素距离",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "OPTICAL_DUPLICATE_PIXEL_DISTANCE=2500",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 130,
+          "_end_line": 130,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 131,
+          "_end_line": 131,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx16G -jar picard.jar MarkDuplicates \\\n  INPUT=sorted.bam \\\n  OUTPUT=dedup.bam \\\n  METRICS_FILE=duplicate_metrics.txt \\\n  OPTICAL_DUPLICATE_PIXEL_DISTANCE=2500 \\\n  CREATE_INDEX=true",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+      "_start_line": 126,
+      "_end_line": 131,
+      "_source_line_start": 126,
+      "_source_line_end": 131
+    },
+    {
+      "name": "AddOrReplaceReadGroups",
+      "description": "为BAM文件添加或替换读取组信息",
+      "task_name": "添加读取组信息",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=input.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "add_read_groups",
+          "scenario_name": "添加读取组信息",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: BAM文件"
+            }
+          ],
+          "evidence_quote": "**输入数据**: BAM文件",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 141,
+          "_end_line": 141,
+          "_source_line_start": 141,
+          "_source_line_end": 141
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "添加读取组后的序列比对结果",
+          "description": "添加读取组后的BAM文件(rg_added.bam)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=rg_added.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": "add_read_groups",
+          "scenario_name": "添加读取组信息",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "添加读取组后的BAM文件(rg_added.bam)"
+            }
+          ],
+          "evidence_quote": "添加读取组后的BAM文件(rg_added.bam)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 155,
+          "_end_line": 155,
+          "_source_line_start": 155,
+          "_source_line_end": 155
+        },
+        {
+          "data_type": "序列比对索引",
+          "description": "BAM索引文件(rg_added.bam.bai)",
+          "role": "index",
+          "flag": "CREATE_INDEX",
+          "flag_evidence_quote": "CREATE_INDEX=true",
+          "required": false,
+          "condition": "CREATE_INDEX=true",
+          "scenario_id": "add_read_groups",
+          "scenario_name": "添加读取组信息",
+          "formats": [
+            "BAI"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAI",
+              "evidence_quote": "BAM索引文件(rg_added.bam.bai)"
+            }
+          ],
+          "evidence_quote": "BAM索引文件(rg_added.bam.bai)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 156,
+          "_end_line": 156,
+          "_source_line_start": 156,
+          "_source_line_end": 156
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "add_read_groups",
+          "name": "添加读取组信息",
+          "description": "为BAM文件添加或替换读取组信息",
+          "evidence_quote": "**适用场景**: 为BAM文件添加或替换读取组信息",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 140,
+          "_end_line": 140,
+          "_source_line_start": 140,
+          "_source_line_end": 140
+        }
+      ],
+      "parameters": [
+        {
+          "name": "读取组ID",
+          "flag": "RGID",
+          "description": null,
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "RGID=sample1",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 147,
+          "_end_line": 147,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "读取组文库",
+          "flag": "RGLB",
+          "description": null,
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "RGLB=library1",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 148,
+          "_end_line": 148,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "读取组平台",
+          "flag": "RGPL",
+          "description": null,
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "RGPL=ILLUMINA",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 149,
+          "_end_line": 149,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "读取组平台单元",
+          "flag": "RGPU",
+          "description": null,
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "RGPU=unit1",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 150,
+          "_end_line": 150,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "读取组样本",
+          "flag": "RGSM",
+          "description": null,
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "RGSM=sample1",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 151,
+          "_end_line": 151,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 131,
+          "_end_line": 131,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx8G -jar picard.jar AddOrReplaceReadGroups \\\n  INPUT=input.bam \\\n  OUTPUT=rg_added.bam \\\n  RGID=sample1 \\\n  RGLB=library1 \\\n  RGPL=ILLUMINA \\\n  RGPU=unit1 \\\n  RGSM=sample1 \\\n  CREATE_INDEX=true",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+      "_start_line": 144,
+      "_end_line": 152,
+      "_source_line_start": 144,
+      "_source_line_end": 152
+    },
+    {
+      "name": "CollectWgsMetrics",
+      "description": "计算全基因组测序的覆盖度和质量指标",
+      "task_name": "计算全基因组测序指标",
+      "inputs": [
+        {
+          "data_type": "标记重复后的序列比对结果",
+          "description": "已标记重复的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=dedup.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "collect_wgs_metrics",
+          "scenario_name": "计算全基因组测序指标",
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "**输入数据**: 已标记重复的BAM文件，参考基因组"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已标记重复的BAM文件，参考基因组",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.3 场景3: 计算全基因组测序指标",
+          "_start_line": 161,
+          "_end_line": 161,
+          "_source_line_start": 161,
+          "_source_line_end": 161
+        },
+        {
+          "data_type": "参考基因组序列",
+          "description": "参考基因组",
+          "role": "reference",
+          "flag": "REFERENCE_SEQUENCE",
+          "flag_evidence_quote": "REFERENCE_SEQUENCE=reference.fasta",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "collect_wgs_metrics",
+          "scenario_name": "计算全基因组测序指标",
+          "formats": [
+            "FASTA"
+          ],
+          "format_evidence": [
+            {
+              "format": "FASTA",
+              "evidence_quote": "REFERENCE_SEQUENCE=reference.fasta"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 已标记重复的BAM文件，参考基因组",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.3 场景3: 计算全基因组测序指标",
+          "_start_line": 161,
+          "_end_line": 161,
+          "_source_line_start": 161,
+          "_source_line_end": 161
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "全基因组测序指标结果",
+          "description": "全基因组测序指标文件(wgs_metrics.txt)",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=wgs_metrics.txt",
+          "required": true,
+          "condition": null,
+          "scenario_id": "collect_wgs_metrics",
+          "scenario_name": "计算全基因组测序指标",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "全基因组测序指标文件(wgs_metrics.txt)"
+            }
+          ],
+          "evidence_quote": "全基因组测序指标文件(wgs_metrics.txt)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.3 场景3: 计算全基因组测序指标",
+          "_start_line": 171,
+          "_end_line": 171,
+          "_source_line_start": 171,
+          "_source_line_end": 171
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "collect_wgs_metrics",
+          "name": "计算全基因组测序指标",
+          "description": "计算全基因组测序的覆盖度和质量指标",
+          "evidence_quote": "**适用场景**: 计算全基因组测序的覆盖度和质量指标",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.3 场景3: 计算全基因组测序指标",
+          "_start_line": 160,
+          "_end_line": 160,
+          "_source_line_start": 160,
+          "_source_line_end": 160
+        }
+      ],
+      "parameters": [
+        {
+          "name": "包含碱基质量直方图",
+          "flag": "INCLUDE_BQ_HISTOGRAM",
+          "description": null,
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "INCLUDE_BQ_HISTOGRAM=true",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.3 场景3: 计算全基因组测序指标",
+          "_start_line": 168,
+          "_end_line": 168,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "java -Xmx8G -jar picard.jar CollectWgsMetrics \\\n  INPUT=dedup.bam \\\n  OUTPUT=wgs_metrics.txt \\\n  REFERENCE_SEQUENCE=reference.fasta \\\n  INCLUDE_BQ_HISTOGRAM=true",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.3 场景3: 计算全基因组测序指标",
+      "_start_line": 164,
+      "_end_line": 168,
+      "_source_line_start": 164,
+      "_source_line_end": 168
+    },
+    {
+      "name": "SortSam",
+      "description": "排序BAM文件",
+      "task_name": "排序BAM文件",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "未排序的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=unsorted.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "INPUT=unsorted.bam"
+            }
+          ],
+          "evidence_quote": "INPUT=unsorted.bam",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 212,
+          "_end_line": 212,
+          "_source_line_start": 212,
+          "_source_line_end": 212
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "排序后的序列比对结果",
+          "description": "排序后的BAM文件",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=sorted.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "OUTPUT=sorted.bam"
+            }
+          ],
+          "evidence_quote": "OUTPUT=sorted.bam",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 213,
+          "_end_line": 213,
+          "_source_line_start": 213,
+          "_source_line_end": 213
+        }
+      ],
+      "scenarios": [],
+      "parameters": [
+        {
+          "name": "排序顺序",
+          "flag": "SORT_ORDER",
+          "description": "排序顺序(Coordinate/Queryname等)",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "SORT_ORDER=Coordinate",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 214,
+          "_end_line": 214,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 131,
+          "_end_line": 131,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx8G -jar picard.jar SortSam \\\n  INPUT=unsorted.bam \\\n  OUTPUT=sorted.bam \\\n  SORT_ORDER=Coordinate \\\n  CREATE_INDEX=true",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+      "_start_line": 211,
+      "_end_line": 215,
+      "_source_line_start": 211,
+      "_source_line_end": 215
+    },
+    {
+      "name": "MergeSamFiles",
+      "description": "合并BAM文件",
+      "task_name": "合并BAM文件",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "待合并的BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=sample1.bam",
+          "required": true,
+          "min_occurs": 2,
+          "max_occurs": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "INPUT=sample1.bam"
+            }
+          ],
+          "evidence_quote": "INPUT=sample1.bam",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 221,
+          "_end_line": 221,
+          "_source_line_start": 221,
+          "_source_line_end": 221
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "合并后的序列比对结果",
+          "description": "合并后的BAM文件",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=merged.bam",
+          "required": true,
+          "condition": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "OUTPUT=merged.bam"
+            }
+          ],
+          "evidence_quote": "OUTPUT=merged.bam",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 223,
+          "_end_line": 223,
+          "_source_line_start": 223,
+          "_source_line_end": 223
+        }
+      ],
+      "scenarios": [],
+      "parameters": [
+        {
+          "name": "创建索引",
+          "flag": "CREATE_INDEX",
+          "description": "是否创建索引",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "CREATE_INDEX=true",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.1 场景1: 标记重复序列",
+          "_start_line": 131,
+          "_end_line": 131,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "java -Xmx8G -jar picard.jar MergeSamFiles \\\n  INPUT=sample1.bam \\\n  INPUT=sample2.bam \\\n  OUTPUT=merged.bam \\\n  CREATE_INDEX=true",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+      "_start_line": 220,
+      "_end_line": 224,
+      "_source_line_start": 220,
+      "_source_line_end": 224
+    },
+    {
+      "name": "ViewSam",
+      "description": "提取特定区域",
+      "task_name": "提取特定区域",
+      "inputs": [
+        {
+          "data_type": "序列比对结果",
+          "description": "输入BAM文件",
+          "role": "input",
+          "flag": "INPUT",
+          "flag_evidence_quote": "INPUT=input.bam",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "BAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "BAM",
+              "evidence_quote": "INPUT=input.bam"
+            }
+          ],
+          "evidence_quote": "INPUT=input.bam",
+          "condition": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 7. 使用场景模板 / 7.2 场景2: 添加读取组信息",
+          "_start_line": 145,
+          "_end_line": 145,
+          "_source_line_start": 145,
+          "_source_line_end": 145
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "区域提取后的序列比对结果",
+          "description": "输出SAM文件",
+          "role": "output",
+          "flag": "OUTPUT",
+          "flag_evidence_quote": "OUTPUT=output.sam",
+          "required": true,
+          "condition": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "SAM"
+          ],
+          "format_evidence": [
+            {
+              "format": "SAM",
+              "evidence_quote": "OUTPUT=output.sam"
+            }
+          ],
+          "evidence_quote": "OUTPUT=output.sam",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 231,
+          "_end_line": 231,
+          "_source_line_start": 231,
+          "_source_line_end": 231
+        }
+      ],
+      "scenarios": [],
+      "parameters": [
+        {
+          "name": "区域",
+          "flag": "REGION",
+          "description": "提取区域",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "REGION=chr1:1000000-2000000",
+          "_source_file": "picard_skill.md",
+          "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+          "_start_line": 232,
+          "_end_line": 232,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "java -Xmx8G -jar picard.jar ViewSam \\\n  INPUT=input.bam \\\n  OUTPUT=output.sam \\\n  REGION=chr1:1000000-2000000",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 9. 工具执行示例 / 9.1 基本用法",
+      "_start_line": 229,
+      "_end_line": 232,
+      "_source_line_start": 229,
+      "_source_line_end": 232
+    }
+  ],
+  "data_types": [
+    {
+      "name": "序列比对结果",
+      "description": "二进制比对文件",
+      "formats": [
+        "BAM",
+        "SAM",
+        "CRAM"
+      ],
+      "format_evidence": [
+        {
+          "format": "BAM",
+          "evidence_quote": "| BAM | 支持 | .bam | 二进制比对文件 |"
+        },
+        {
+          "format": "SAM",
+          "evidence_quote": "| SAM | 支持 | .sam | 文本比对文件 |"
+        },
+        {
+          "format": "CRAM",
+          "evidence_quote": "| CRAM | 支持 | .cram | 压缩比对文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| BAM | 支持 | .bam | 二进制比对文件 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 84,
+      "_end_line": 84,
+      "evidence_quotes": [
+        "| BAM | 支持 | .bam | 二进制比对文件 |",
+        "| SAM | 支持 | .sam | 文本比对文件 |",
+        "| CRAM | 支持 | .cram | 压缩比对文件 |"
+      ],
+      "_source_line_start": 84,
+      "_source_line_end": 84
+    },
+    {
+      "name": "序列文件",
+      "description": "序列文件(部分命令)",
+      "formats": [
+        "FASTQ"
+      ],
+      "format_evidence": [
+        {
+          "format": "FASTQ",
+          "evidence_quote": "| FASTQ | 支持 | .fq, .fastq | 序列文件(部分命令) |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| FASTQ | 支持 | .fq, .fastq | 序列文件(部分命令) |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 87,
+      "_end_line": 87,
+      "_source_line_start": 87,
+      "_source_line_end": 87
+    },
+    {
+      "name": "变异文件",
+      "description": "变异文件(部分命令)",
+      "formats": [
+        "VCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF",
+          "evidence_quote": "| VCF | 支持 | .vcf | 变异文件(部分命令) |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| VCF | 支持 | .vcf | 变异文件(部分命令) |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 88,
+      "_end_line": 88,
+      "_source_line_start": 88,
+      "_source_line_end": 88
+    },
+    {
+      "name": "统计信息文件",
+      "description": "统计信息文件",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| TXT | 文本格式 | 统计信息文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| TXT | 文本格式 | 统计信息文件 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 5. 数据类型兼容性 / 5.2 输出数据类型",
+      "_start_line": 97,
+      "_end_line": 97,
+      "_source_line_start": 97,
+      "_source_line_end": 97
+    },
+    {
+      "name": "报告文件",
+      "description": "可视化报告文件",
+      "formats": [
+        "HTML"
+      ],
+      "format_evidence": [
+        {
+          "format": "HTML",
+          "evidence_quote": "| o4 | 报告文件 | HTML | {prefix}_report.html | 可视化报告文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o4 | 报告文件 | HTML | {prefix}_report.html | 可视化报告文件 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 46,
+      "_end_line": 46,
+      "_source_line_start": 46,
+      "_source_line_end": 46
+    },
+    {
+      "name": "索引文件",
+      "description": "生成的索引文件",
+      "formats": [
+        "BAI"
+      ],
+      "format_evidence": [
+        {
+          "format": "BAI",
+          "evidence_quote": "| o3 | 索引文件 | BAI | {input}.bai | 生成的索引文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o3 | 索引文件 | BAI | {input}.bai | 生成的索引文件 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 45,
+      "_end_line": 45,
+      "_source_line_start": 45,
+      "_source_line_end": 45
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "bwa",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bwa, samtools（生成输入BAM文件）",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 104,
+      "_end_line": 104,
+      "_source_line_start": 104,
+      "_source_line_end": 104
+    },
+    {
+      "target_tool": "samtools",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "- **推荐前置工具**: bwa, samtools（生成输入BAM文件）",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 104,
+      "_end_line": 104,
+      "_source_line_start": 104,
+      "_source_line_end": 104
+    },
+    {
+      "target_tool": "GATK",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| GATK | 变异检测类 | 变异检测和重校准 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 110,
+      "_end_line": 110,
+      "_source_line_start": 110,
+      "_source_line_end": 110
+    },
+    {
+      "target_tool": "samtools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| samtools | 数据处理类 | 进一步处理BAM文件 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 111,
+      "_end_line": 111,
+      "_source_line_start": 111,
+      "_source_line_end": 111
+    },
+    {
+      "target_tool": "bcftools",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| bcftools | 变异检测类 | VCF文件处理 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "sambamba",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "- **替代工具**: sambamba（部分功能可替代）",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 116,
+      "_end_line": 116,
+      "_source_line_start": 116,
+      "_source_line_end": 116
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "文件完整性",
+      "description": "输入文件不能损坏",
+      "evidence_quote": "| 文件完整性 | 完整 | 输入文件不能损坏 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 180,
+      "_end_line": 180
+    },
+    {
+      "name": "格式正确",
+      "description": "符合SAM/BAM/CRAM格式规范",
+      "evidence_quote": "| 格式正确 | 标准格式 | 符合SAM/BAM/CRAM格式规范 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 181,
+      "_end_line": 181
+    },
+    {
+      "name": "排序状态",
+      "description": "某些命令要求输入文件已排序",
+      "evidence_quote": "| 排序状态 | 已排序 | 某些命令要求输入文件已排序 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 182,
+      "_end_line": 182
+    },
+    {
+      "name": "参考基因组",
+      "description": "与比对时使用的参考基因组一致",
+      "evidence_quote": "| 参考基因组 | 一致 | 与比对时使用的参考基因组一致 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 183,
+      "_end_line": 183
+    },
+    {
+      "name": "文件完整性检查",
+      "description": "samtools quickcheck，无错误报告",
+      "evidence_quote": "| 文件完整性 | samtools quickcheck | 无错误报告 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 189,
+      "_end_line": 189
+    },
+    {
+      "name": "索引存在",
+      "description": "对应索引文件存在且大小合理",
+      "evidence_quote": "| 索引存在 | 文件系统检查 | 对应索引文件存在且大小合理 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 190,
+      "_end_line": 190
+    },
+    {
+      "name": "统计信息",
+      "description": "统计数据合理",
+      "evidence_quote": "| 统计信息 | 查看metrics文件 | 统计数据合理 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 191,
+      "_end_line": 191
+    },
+    {
+      "name": "读取组信息",
+      "description": "包含正确的读取组信息",
+      "evidence_quote": "| 读取组信息 | samtools view -H | 包含正确的读取组信息 |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 192,
+      "_end_line": 192
+    },
+    {
+      "name": "重复率",
+      "description": "重复率在合理范围内(<30%)",
+      "evidence_quote": "| 重复率 | 查看duplicate metrics | 重复率在合理范围内(<30%) |",
+      "_source_file": "picard_skill.md",
+      "_source_section": "Picard工具Skill / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 193,
+      "_end_line": 193
+    }
+  ],
+  "review": [],
+  "metadata": {
+    "file": "picard_skill.md",
+    "doc_id": "4c0ba3b2635d2c5b",
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6",
+    "chunk_count": 1,
+    "chunk_ranges": [
+      {
+        "section": "Picard工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: 标记重复序列 / 7.2 场景2: 添加读取组信息 / 7.3 场景3: 计算全基因组测序指标 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 9.2 高级用法 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+        "start_line": 1,
+        "end_line": 310,
+        "chunk_id": "4c0ba3b2635d2c5b_llm_0001"
+      }
+    ]
+  }
+}

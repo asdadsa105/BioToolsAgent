@@ -1,0 +1,1436 @@
+{
+  "tool": {
+    "name": "bcftools",
+    "version": "1.17",
+    "category": "变异分析类",
+    "description": "用于处理和分析VCF/BCF文件的工具集，提供排序、过滤、统计、合并、比较等多种功能，是生信分析中处理变异数据的核心工具",
+    "source_url": "https://github.com/samtools/bcftools",
+    "docker_image": "biocontainers/bcftools:v1.17_cv1",
+    "evidence_quote": "**工具名称**: bcftools\n**工具版本**: 1.17"
+  },
+  "resources": [
+    {
+      "name": "CPU最小",
+      "value": 1,
+      "unit": "核",
+      "evidence_quote": "**最小**: 1核",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 58,
+      "_end_line": 58
+    },
+    {
+      "name": "CPU推荐",
+      "value": 4,
+      "unit": "核",
+      "evidence_quote": "**推荐**: 4核",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 59,
+      "_end_line": 59
+    },
+    {
+      "name": "CPU最大",
+      "value": 32,
+      "unit": "核",
+      "evidence_quote": "**最大**: 32核",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.1 CPU需求",
+      "_start_line": 60,
+      "_end_line": 60
+    },
+    {
+      "name": "内存最小",
+      "value": 1,
+      "unit": "GB",
+      "evidence_quote": "**最小**: 1GB",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 63,
+      "_end_line": 63
+    },
+    {
+      "name": "内存推荐",
+      "value": 8,
+      "unit": "GB",
+      "evidence_quote": "**推荐**: 8GB",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 64,
+      "_end_line": 64
+    },
+    {
+      "name": "内存最大",
+      "value": 32,
+      "unit": "GB",
+      "evidence_quote": "**最大**: 32GB",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.2 内存需求",
+      "_start_line": 65,
+      "_end_line": 65
+    },
+    {
+      "name": "临时空间",
+      "value": "输入文件大小的2倍",
+      "unit": null,
+      "evidence_quote": "**临时空间**: 输入文件大小的2倍",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 68,
+      "_end_line": 68
+    },
+    {
+      "name": "输出空间",
+      "value": "输入文件大小的1.5倍",
+      "unit": null,
+      "evidence_quote": "**输出空间**: 输入文件大小的1.5倍",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 4. 资源需求配置 / 4.3 磁盘需求",
+      "_start_line": 69,
+      "_end_line": 69
+    }
+  ],
+  "tool_parameters": [
+    {
+      "name": "命令",
+      "flag": null,
+      "description": "bcftools子命令(view/filter/stats等)",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 命令 | - | - | 字符串 | bcftools子命令(view/filter/stats等) | 无 | 不支持 | 必填 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 18,
+      "_end_line": 18
+    },
+    {
+      "name": "输入文件",
+      "flag": null,
+      "description": "输入VCF/BCF文件路径",
+      "required": true,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 输入文件 | - | - | 文件路径 | 输入VCF/BCF文件路径 | 无 | 支持 | 必填 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.1 必需参数",
+      "_start_line": 19,
+      "_end_line": 19
+    },
+    {
+      "name": "输出文件",
+      "flag": "-o",
+      "description": "输出文件路径",
+      "required": false,
+      "default": "stdout",
+      "scope": "tool",
+      "evidence_quote": "| 输出文件 | -o | --output | 文件路径 | 输出文件路径 | stdout | - | 推荐 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 25,
+      "_end_line": 25
+    },
+    {
+      "name": "输入格式",
+      "flag": "-f",
+      "description": "输入文件格式",
+      "required": false,
+      "default": "auto",
+      "scope": "tool",
+      "evidence_quote": "| 输入格式 | -f | --format | 字符串 | 输入文件格式 | auto | vcf/bcf/vcf.gz | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 26,
+      "_end_line": 26
+    },
+    {
+      "name": "输出格式",
+      "flag": "-O",
+      "description": "输出文件格式",
+      "required": false,
+      "default": "v",
+      "scope": "tool",
+      "evidence_quote": "| 输出格式 | -O | --output-type | 字符串 | 输出文件格式 | v | v/b/z/B | 推荐 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 27,
+      "_end_line": 27
+    },
+    {
+      "name": "线程数",
+      "flag": "-@",
+      "description": "线程数",
+      "required": false,
+      "default": "1",
+      "scope": "tool",
+      "evidence_quote": "| 线程数 | -@ | --threads | 整数 | 线程数 | 1 | 1-32 | 推荐 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 28,
+      "_end_line": 28
+    },
+    {
+      "name": "区域",
+      "flag": "-r",
+      "description": "目标区域(如\"chr1:1000-2000\")",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 区域 | -r | --regions | 字符串 | 目标区域(如\"chr1:1000-2000\") | 无 | - | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 29,
+      "_end_line": 29
+    },
+    {
+      "name": "过滤表达式",
+      "flag": "-i",
+      "description": "包含变异的过滤表达式",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 过滤表达式 | -i | --include | 字符串 | 包含变异的过滤表达式 | 无 | - | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 30,
+      "_end_line": 30
+    },
+    {
+      "name": "排除表达式",
+      "flag": "-e",
+      "description": "排除变异的过滤表达式",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 排除表达式 | -e | --exclude | 字符串 | 排除变异的过滤表达式 | 无 | - | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 31,
+      "_end_line": 31
+    },
+    {
+      "name": "样本列表",
+      "flag": "-s",
+      "description": "包含的样本列表",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 样本列表 | -s | --samples | 字符串 | 包含的样本列表 | 无 | - | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 32,
+      "_end_line": 32
+    },
+    {
+      "name": "参考基因组",
+      "flag": "-f",
+      "description": "参考基因组FASTA文件",
+      "required": false,
+      "default": "无",
+      "scope": "tool",
+      "evidence_quote": "| 参考基因组 | -f | --fasta-ref | 文件路径 | 参考基因组FASTA文件 | 无 | - | 推荐 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 33,
+      "_end_line": 33
+    },
+    {
+      "name": "索引",
+      "flag": "-t",
+      "description": "创建CSI索引",
+      "required": false,
+      "default": "0",
+      "scope": "tool",
+      "evidence_quote": "| 索引 | -t | --tidx | 布尔值 | 创建CSI索引 | 0 | 1 | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 34,
+      "_end_line": 34
+    },
+    {
+      "name": "压缩级别",
+      "flag": "-l",
+      "description": "压缩级别(0-9)",
+      "required": false,
+      "default": "6",
+      "scope": "tool",
+      "evidence_quote": "| 压缩级别 | -l | --compression-level | 整数 | 压缩级别(0-9) | 6 | 0-9 | 可选 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 2. 输入参数规范 / 2.2 可选参数",
+      "_start_line": 35,
+      "_end_line": 35
+    }
+  ],
+  "operations": [
+    {
+      "name": "bcftools filter",
+      "description": "过滤VCF文件中的变异，保留符合条件的变异",
+      "task_name": "VCF文件过滤",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "变异检测生成的VCF文件",
+          "role": "input_variants",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "vcf_filter",
+          "scenario_name": "VCF文件过滤",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "input.vcf.gz"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 变异检测生成的VCF文件",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "bcftools工具Skill / 7. 使用场景模板 / 7.1 场景1: VCF文件过滤",
+          "_start_line": 127,
+          "_end_line": 127,
+          "_source_line_start": 127,
+          "_source_line_end": 127
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "过滤后的变异",
+          "description": "过滤后的SNV变异文件(filtered_snvs.vcf.gz)",
+          "role": "filtered_variants",
+          "flag": "-o",
+          "flag_evidence_quote": "-o filtered_snvs.vcf.gz",
+          "required": false,
+          "condition": null,
+          "scenario_id": "vcf_filter",
+          "scenario_name": "VCF文件过滤",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "filtered_snvs.vcf.gz"
+            }
+          ],
+          "evidence_quote": "过滤后的SNV变异文件(filtered_snvs.vcf.gz)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "索引输出文件",
+          "_start_line": 141,
+          "_end_line": 141,
+          "_source_line_start": 141,
+          "_source_line_end": 141
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "vcf_filter",
+          "name": "VCF文件过滤",
+          "description": "过滤VCF文件中的变异，保留符合条件的变异",
+          "evidence_quote": "**适用场景**: 过滤VCF文件中的变异，保留符合条件的变异",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "bcftools工具Skill / 7. 使用场景模板 / 7.1 场景1: VCF文件过滤",
+          "_start_line": 126,
+          "_end_line": 126,
+          "_source_line_start": 126,
+          "_source_line_end": 126
+        }
+      ],
+      "parameters": [
+        {
+          "name": "过滤表达式",
+          "flag": "-i",
+          "description": "包含变异的过滤表达式",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "-i 'QUAL>30 && DP>10 && AF>0.01 && TYPE=\"snp\"'",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "过滤高质量SNV变异",
+          "_start_line": 132,
+          "_end_line": 132,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "输出格式",
+          "flag": "-O",
+          "description": "输出文件格式",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "-O z",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "过滤高质量SNV变异",
+          "_start_line": 134,
+          "_end_line": 134,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bcftools filter \\\n  -i 'QUAL>30 && DP>10 && AF>0.01 && TYPE=\"snp\"' \\\n  -o filtered_snvs.vcf.gz \\\n  -O z \\\n  input.vcf.gz",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "过滤高质量SNV变异",
+      "_start_line": 131,
+      "_end_line": 135,
+      "_source_line_start": 131,
+      "_source_line_end": 135
+    },
+    {
+      "name": "bcftools stats",
+      "description": "对VCF文件中的变异进行统计分析",
+      "task_name": "变异统计分析",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "变异检测生成的VCF文件",
+          "role": "input_variants",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "variant_stats",
+          "scenario_name": "变异统计分析",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "input.vcf.gz"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 变异检测生成的VCF文件",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "bcftools工具Skill / 7. 使用场景模板 / 7.1 场景1: VCF文件过滤",
+          "_start_line": 127,
+          "_end_line": 127,
+          "_source_line_start": 127,
+          "_source_line_end": 127
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "变异统计结果",
+          "description": "变异统计结果文件(variants.stats)",
+          "role": "stats_output",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": false,
+          "condition": null,
+          "scenario_id": "variant_stats",
+          "scenario_name": "变异统计分析",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "| o2 | 统计结果 | TXT | {prefix}.stats | 变异统计结果 |"
+            }
+          ],
+          "evidence_quote": "变异统计结果文件(variants.stats)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "生成质量分布图",
+          "_start_line": 168,
+          "_end_line": 168,
+          "_source_line_start": 168,
+          "_source_line_end": 168
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "variant_stats",
+          "name": "变异统计分析",
+          "description": "对VCF文件中的变异进行统计分析",
+          "evidence_quote": "**适用场景**: 对VCF文件中的变异进行统计分析",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "索引输出文件 / 7.2 场景2: 变异统计分析",
+          "_start_line": 147,
+          "_end_line": 147,
+          "_source_line_start": 147,
+          "_source_line_end": 147
+        }
+      ],
+      "parameters": [
+        {
+          "name": "样本",
+          "flag": "-s",
+          "description": "样本选择，-表示所有样本",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "bcftools stats \\\n  -s - \\\n  input.vcf.gz > variants.stats",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "生成详细的变异统计信息",
+          "_start_line": 152,
+          "_end_line": 154,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bcftools stats \\\n  -s - \\\n  input.vcf.gz > variants.stats",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "生成详细的变异统计信息",
+      "_start_line": 152,
+      "_end_line": 154,
+      "_source_line_start": 152,
+      "_source_line_end": 154
+    },
+    {
+      "name": "bcftools plot",
+      "description": "生成质量分布图",
+      "task_name": "质量分布图生成",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "变异检测生成的VCF文件",
+          "role": "input_variants",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "variant_stats",
+          "scenario_name": "变异统计分析",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "input.vcf.gz"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 变异检测生成的VCF文件",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "bcftools工具Skill / 7. 使用场景模板 / 7.1 场景1: VCF文件过滤",
+          "_start_line": 127,
+          "_end_line": 127,
+          "_source_line_start": 127,
+          "_source_line_end": 127
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "质量分布图",
+          "description": "质量分布图表(depth_distribution.pdf)",
+          "role": "plot_output",
+          "flag": "-o",
+          "flag_evidence_quote": "-o depth_distribution.pdf",
+          "required": false,
+          "condition": null,
+          "scenario_id": "variant_stats",
+          "scenario_name": "变异统计分析",
+          "formats": [
+            "PDF"
+          ],
+          "format_evidence": [
+            {
+              "format": "PDF",
+              "evidence_quote": "depth_distribution.pdf"
+            }
+          ],
+          "evidence_quote": "质量分布图表(depth_distribution.pdf)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "生成质量分布图",
+          "_start_line": 170,
+          "_end_line": 170,
+          "_source_line_start": 170,
+          "_source_line_end": 170
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "variant_stats",
+          "name": "变异统计分析",
+          "description": "对VCF文件中的变异进行统计分析",
+          "evidence_quote": "**适用场景**: 对VCF文件中的变异进行统计分析",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "索引输出文件 / 7.2 场景2: 变异统计分析",
+          "_start_line": 147,
+          "_end_line": 147,
+          "_source_line_start": 147,
+          "_source_line_end": 147
+        }
+      ],
+      "parameters": [
+        {
+          "name": "深度范围",
+          "flag": "-d",
+          "description": "深度范围",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "-d depth:1,100",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "生成质量分布图",
+          "_start_line": 163,
+          "_end_line": 163,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bcftools plot \\\n  -d depth:1,100 \\\n  -o depth_distribution.pdf \\\n  input.vcf.gz",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "生成质量分布图",
+      "_start_line": 162,
+      "_end_line": 165,
+      "_source_line_start": 162,
+      "_source_line_end": 165
+    },
+    {
+      "name": "bcftools view",
+      "description": "提取特定样本",
+      "task_name": "多样本VCF文件处理",
+      "inputs": [
+        {
+          "data_type": "多样本变异检测结果",
+          "description": "包含多个样本的变异调用数据",
+          "role": "input_variants",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "sample_subset",
+          "scenario_name": "提取特定样本",
+          "formats": [
+            "VCF_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF_GZ",
+              "evidence_quote": "| VCF.gz | 支持 | .vcf.gz | 压缩的VCF文件 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 多样本变异检测生成的VCF文件",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 175,
+          "_source_line_end": 175
+        },
+        {
+          "data_type": "多样本变异检测结果",
+          "description": "包含多个样本的变异调用数据",
+          "role": "input_variants",
+          "flag": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "single_sample_split",
+          "scenario_name": "按单样本拆分",
+          "formats": [
+            "VCF_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF_GZ",
+              "evidence_quote": "| VCF.gz | 支持 | .vcf.gz | 压缩的VCF文件 |"
+            }
+          ],
+          "evidence_quote": "**输入数据**: 多样本变异检测生成的VCF文件",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 175,
+          "_source_line_end": 175
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "样本或区域子集变异数据",
+          "description": "从多样本变异文件中提取指定样本",
+          "role": "subset_variants",
+          "flag": "-o",
+          "flag_evidence_quote": "bcftools view \\\n  -s sample1,sample2 \\\n  -o samples_subset.vcf.gz \\\n  -O z \\\n  input.vcf.gz",
+          "required": true,
+          "scenario_id": "sample_subset",
+          "scenario_name": "提取特定样本",
+          "formats": [
+            "VCF_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF_GZ",
+              "evidence_quote": "- 特定样本的VCF文件(samples_subset.vcf.gz)"
+            }
+          ],
+          "evidence_quote": "- 特定样本的VCF文件(samples_subset.vcf.gz)",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 199,
+          "_source_line_end": 199
+        },
+        {
+          "data_type": "单样本变异检测结果",
+          "description": "从多样本文件中提取单个样本的变异数据",
+          "role": "single_sample_variants",
+          "flag": "-o",
+          "flag_evidence_quote": "bcftools view \\\n  -s sample1 \\\n  -o sample1.vcf.gz \\\n  -O z \\\n  input.vcf.gz",
+          "required": true,
+          "scenario_id": "single_sample_split",
+          "scenario_name": "按单样本拆分",
+          "formats": [
+            "VCF_GZ"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF_GZ",
+              "evidence_quote": "- 单个样本的VCF文件(sample1.vcf.gz)"
+            }
+          ],
+          "evidence_quote": "- 单个样本的VCF文件(sample1.vcf.gz)",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 200,
+          "_source_line_end": 200
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "sample_subset",
+          "name": "提取特定样本",
+          "description": "从多样本VCF中提取指定的多个样本",
+          "evidence_quote": "bcftools view \\\n  -s sample1,sample2 \\\n  -o samples_subset.vcf.gz \\\n  -O z \\\n  input.vcf.gz",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 179,
+          "_source_line_end": 183
+        },
+        {
+          "scenario_id": "single_sample_split",
+          "name": "按单样本拆分",
+          "description": "从多样本VCF中提取单个样本",
+          "evidence_quote": "bcftools view \\\n  -s sample1 \\\n  -o sample1.vcf.gz \\\n  -O z \\\n  input.vcf.gz",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 186,
+          "_source_line_end": 190
+        }
+      ],
+      "parameters": [
+        {
+          "name": "样本列表",
+          "flag": "-s",
+          "description": "包含的样本列表",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "-s sample1,sample2",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "提取特定样本",
+          "_start_line": 180,
+          "_end_line": 180,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "输出格式",
+          "flag": "-O",
+          "description": "输出文件格式",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "-O z",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "过滤高质量SNV变异",
+          "_start_line": 134,
+          "_end_line": 134,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bcftools view \\\n  -s sample1,sample2 \\\n  -o samples_subset.vcf.gz \\\n  -O z \\\n  input.vcf.gz",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "提取特定样本",
+      "_start_line": 179,
+      "_end_line": 183,
+      "_source_line_start": 179,
+      "_source_line_end": 183
+    },
+    {
+      "name": "bcftools merge",
+      "description": "合并多个VCF文件",
+      "task_name": "多样本VCF文件处理",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "待合并的VCF文件",
+          "role": "variant_files",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 2,
+          "max_occurs": null,
+          "scenario_id": "merge_vcfs",
+          "scenario_name": "合并多个VCF文件",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "sample1.vcf.gz sample2.vcf.gz"
+            }
+          ],
+          "evidence_quote": "sample1.vcf.gz sample2.vcf.gz",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "合并多个VCF文件",
+          "_start_line": 196,
+          "_end_line": 196,
+          "_source_line_start": 196,
+          "_source_line_end": 196
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "合并后的变异",
+          "description": "合并后的VCF文件(merged.vcf.gz)",
+          "role": "merged_variants",
+          "flag": "-o",
+          "flag_evidence_quote": "-o merged.vcf.gz",
+          "required": false,
+          "condition": null,
+          "scenario_id": "merge_vcfs",
+          "scenario_name": "合并多个VCF文件",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "merged.vcf.gz"
+            }
+          ],
+          "evidence_quote": "合并后的VCF文件(merged.vcf.gz)",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "合并多个VCF文件",
+          "_start_line": 201,
+          "_end_line": 201,
+          "_source_line_start": 201,
+          "_source_line_end": 201
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "merge_vcfs",
+          "name": "合并多个VCF文件",
+          "description": "合并多个VCF文件",
+          "evidence_quote": "# 合并多个VCF文件",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "按样本拆分VCF文件",
+          "_start_line": 192,
+          "_end_line": 192,
+          "_source_line_start": 192,
+          "_source_line_end": 192
+        }
+      ],
+      "parameters": [
+        {
+          "name": "输出格式",
+          "flag": "-O",
+          "description": "输出文件格式",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "-O z",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "过滤高质量SNV变异",
+          "_start_line": 134,
+          "_end_line": 134,
+          "formats": [],
+          "format_evidence": []
+        },
+        {
+          "name": "线程数",
+          "flag": "--threads",
+          "description": "线程数",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "--threads 4",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "按样本拆分",
+          "_start_line": 296,
+          "_end_line": 296,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 2,
+      "evidence_quote": "bcftools merge \\\n  -o merged.vcf.gz \\\n  -O z \\\n  sample1.vcf.gz sample2.vcf.gz",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件",
+      "_start_line": 193,
+      "_end_line": 196,
+      "_source_line_start": 193,
+      "_source_line_end": 196
+    },
+    {
+      "name": "bcftools query",
+      "description": "提取样本列表",
+      "task_name": "样本列表提取",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "输入VCF文件",
+          "role": "input_variants",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "input.vcf.gz"
+            }
+          ],
+          "evidence_quote": "bcftools query -l input.vcf.gz > samples.txt",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "提取样本列表",
+          "_start_line": 281,
+          "_end_line": 281,
+          "_source_line_start": 281,
+          "_source_line_end": 281
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "样本列表",
+          "description": "样本列表文件(samples.txt)",
+          "role": "sample_list",
+          "flag": null,
+          "flag_evidence_quote": null,
+          "required": false,
+          "condition": null,
+          "scenario_id": null,
+          "scenario_name": null,
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "samples.txt"
+            }
+          ],
+          "evidence_quote": "bcftools query -l input.vcf.gz > samples.txt",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "提取样本列表",
+          "_start_line": 281,
+          "_end_line": 281,
+          "_source_line_start": 281,
+          "_source_line_end": 281
+        }
+      ],
+      "scenarios": [],
+      "parameters": [
+        {
+          "name": "列出样本",
+          "flag": "-l",
+          "description": "列出样本",
+          "required": false,
+          "default": null,
+          "scope": "operation",
+          "evidence_quote": "bcftools query -l input.vcf.gz",
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "提取样本列表",
+          "_start_line": 281,
+          "_end_line": 281,
+          "formats": [],
+          "format_evidence": []
+        }
+      ],
+      "min_input_files": 1,
+      "evidence_quote": "bcftools query -l input.vcf.gz > samples.txt",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "提取样本列表",
+      "_start_line": 281,
+      "_end_line": 281,
+      "_source_line_start": 281,
+      "_source_line_end": 281
+    },
+    {
+      "name": "bcftools gtcheck",
+      "description": "基因型分析",
+      "task_name": "基因型分析",
+      "inputs": [
+        {
+          "data_type": "变异检测结果",
+          "description": "输入VCF文件",
+          "role": "variant_data",
+          "flag": "-g",
+          "flag_evidence_quote": "bcftools gtcheck \\\n  -g input.vcf.gz \\\n  -s samples.txt \\\n  -o genotype_check.txt",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "genotype_check",
+          "scenario_name": "基因型检查",
+          "formats": [
+            "VCF.gz"
+          ],
+          "format_evidence": [
+            {
+              "format": "VCF.gz",
+              "evidence_quote": "input.vcf.gz"
+            }
+          ],
+          "evidence_quote": "-g input.vcf.gz",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "按样本拆分",
+          "_start_line": 303,
+          "_end_line": 303,
+          "_source_line_start": 303,
+          "_source_line_end": 303
+        },
+        {
+          "data_type": "样本列表",
+          "description": "样本列表文件",
+          "role": "sample_list",
+          "flag": "-s",
+          "flag_evidence_quote": "bcftools gtcheck \\\n  -g input.vcf.gz \\\n  -s samples.txt \\\n  -o genotype_check.txt",
+          "required": true,
+          "min_occurs": 1,
+          "max_occurs": 1,
+          "scenario_id": "genotype_check",
+          "scenario_name": "基因型检查",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "samples.txt"
+            },
+            {
+              "format": "TXT",
+              "evidence_quote": "| TXT | 支持 | .txt | 样本列表、区域列表等 |"
+            }
+          ],
+          "evidence_quote": "-s samples.txt",
+          "condition": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "按样本拆分",
+          "_start_line": 304,
+          "_end_line": 304,
+          "evidence_quotes": [
+            "-s samples.txt",
+            "bcftools gtcheck \\\n  -g input.vcf.gz \\\n  -s samples.txt \\\n  -o genotype_check.txt"
+          ],
+          "source_files": [],
+          "source_sections": [],
+          "_source_line_start": 304,
+          "_source_line_end": 304
+        }
+      ],
+      "outputs": [
+        {
+          "data_type": "基因型检查结果",
+          "description": "基因型检查结果文件(genotype_check.txt)",
+          "role": "genotype_check_output",
+          "flag": "-o",
+          "flag_evidence_quote": "-o genotype_check.txt",
+          "required": false,
+          "condition": null,
+          "scenario_id": "genotype_check",
+          "scenario_name": "基因型检查",
+          "formats": [
+            "TXT"
+          ],
+          "format_evidence": [
+            {
+              "format": "TXT",
+              "evidence_quote": "genotype_check.txt"
+            }
+          ],
+          "evidence_quote": "-o genotype_check.txt",
+          "min_occurs": null,
+          "max_occurs": null,
+          "_source_file": "bcftools_skill.md",
+          "_source_section": "按样本拆分",
+          "_start_line": 305,
+          "_end_line": 305,
+          "_source_line_start": 305,
+          "_source_line_end": 305
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "genotype_check",
+          "name": "基因型检查",
+          "description": "根据变异文件和样本列表执行基因型检查",
+          "evidence_quote": "bcftools gtcheck \\\n  -g input.vcf.gz \\\n  -s samples.txt \\\n  -o genotype_check.txt",
+          "_source_file": "bcftools_skill.md",
+          "_source_line_start": 302,
+          "_source_line_end": 305
+        }
+      ],
+      "parameters": [],
+      "min_input_files": 1,
+      "evidence_quote": "bcftools gtcheck \\\n  -g input.vcf.gz \\\n  -s samples.txt \\\n  -o genotype_check.txt",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "按样本拆分",
+      "_start_line": 302,
+      "_end_line": 305,
+      "_source_line_start": 302,
+      "_source_line_end": 305
+    }
+  ],
+  "data_types": [
+    {
+      "name": "变异检测结果",
+      "description": "文本格式变异文件",
+      "formats": [
+        "VCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF",
+          "evidence_quote": "| VCF | 支持 | .vcf | 文本格式变异文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| VCF | 支持 | .vcf | 文本格式变异文件 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 86,
+      "_end_line": 86,
+      "_source_line_start": 86,
+      "_source_line_end": 86
+    },
+    {
+      "name": "压缩的变异检测结果",
+      "description": "压缩的VCF文件",
+      "formats": [
+        "VCF.gz"
+      ],
+      "format_evidence": [
+        {
+          "format": "VCF.gz",
+          "evidence_quote": "| VCF.gz | 支持 | .vcf.gz | 压缩的VCF文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| VCF.gz | 支持 | .vcf.gz | 压缩的VCF文件 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 87,
+      "_end_line": 87,
+      "_source_line_start": 87,
+      "_source_line_end": 87
+    },
+    {
+      "name": "二进制变异检测结果",
+      "description": "二进制格式变异文件",
+      "formats": [
+        "BCF"
+      ],
+      "format_evidence": [
+        {
+          "format": "BCF",
+          "evidence_quote": "| BCF | 支持 | .bcf | 二进制格式变异文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| BCF | 支持 | .bcf | 二进制格式变异文件 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 88,
+      "_end_line": 88,
+      "_source_line_start": 88,
+      "_source_line_end": 88
+    },
+    {
+      "name": "参考基因组序列",
+      "description": "参考基因组文件",
+      "formats": [
+        "FASTA"
+      ],
+      "format_evidence": [
+        {
+          "format": "FASTA",
+          "evidence_quote": "| FASTA | 支持 | .fa, .fasta | 参考基因组文件 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| FASTA | 支持 | .fa, .fasta | 参考基因组文件 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 89,
+      "_end_line": 89,
+      "_source_line_start": 89,
+      "_source_line_end": 89
+    },
+    {
+      "name": "样本列表",
+      "description": "样本列表、区域列表等",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| TXT | 支持 | .txt | 样本列表、区域列表等 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| TXT | 支持 | .txt | 样本列表、区域列表等 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 90,
+      "_end_line": 90,
+      "_source_line_start": 90,
+      "_source_line_end": 90
+    },
+    {
+      "name": "区域列表",
+      "description": "样本列表、区域列表等",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| TXT | 支持 | .txt | 样本列表、区域列表等 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| TXT | 支持 | .txt | 样本列表、区域列表等 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 5. 数据类型兼容性 / 5.1 输入数据类型",
+      "_start_line": 90,
+      "_end_line": 90,
+      "_source_line_start": 90,
+      "_source_line_end": 90
+    },
+    {
+      "name": "变异统计结果",
+      "description": "变异统计结果",
+      "formats": [
+        "TXT"
+      ],
+      "format_evidence": [
+        {
+          "format": "TXT",
+          "evidence_quote": "| o2 | 统计结果 | TXT | {prefix}.stats | 变异统计结果 |"
+        }
+      ],
+      "parent": null,
+      "evidence_quote": "| o2 | 统计结果 | TXT | {prefix}.stats | 变异统计结果 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 3. 输出文件定义 / 3.1 标准输出文件",
+      "_start_line": 44,
+      "_end_line": 44,
+      "_source_line_start": 44,
+      "_source_line_end": 44
+    }
+  ],
+  "tool_relations": [
+    {
+      "target_tool": "GATK",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "**推荐前置工具**: GATK, Strelka, Mutect2等变异检测工具（生成输入VCF文件）",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "Strelka",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "**推荐前置工具**: GATK, Strelka, Mutect2等变异检测工具（生成输入VCF文件）",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "Mutect2",
+      "relation_type": "RECOMMENDED_BEFORE",
+      "direction": "target_to_focal",
+      "evidence_quote": "**推荐前置工具**: GATK, Strelka, Mutect2等变异检测工具（生成输入VCF文件）",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.1 前置工具",
+      "_start_line": 106,
+      "_end_line": 106,
+      "_source_line_start": 106,
+      "_source_line_end": 106
+    },
+    {
+      "target_tool": "annovar",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| annovar | 变异注释类 | 变异注释 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 112,
+      "_end_line": 112,
+      "_source_line_start": 112,
+      "_source_line_end": 112
+    },
+    {
+      "target_tool": "VEP",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| VEP | 变异注释类 | 变异注释 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 113,
+      "_end_line": 113,
+      "_source_line_start": 113,
+      "_source_line_end": 113
+    },
+    {
+      "target_tool": "IGV",
+      "relation_type": "DOCUMENTED_DOWNSTREAM",
+      "direction": "focal_to_target",
+      "evidence_quote": "| IGV | 可视化类 | 变异结果可视化 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.2 后置工具",
+      "_start_line": 115,
+      "_end_line": 115,
+      "_source_line_start": 115,
+      "_source_line_end": 115
+    },
+    {
+      "target_tool": "vcftools",
+      "relation_type": "PARTIALLY_ALTERNATIVE_TO",
+      "direction": "focal_to_target",
+      "evidence_quote": "**互斥工具**: vcftools（功能部分重叠，可根据需求选择）",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "bcftools工具Skill / 6. 依赖关系约束 / 6.3 互斥工具",
+      "_start_line": 119,
+      "_end_line": 119,
+      "_source_line_start": 119,
+      "_source_line_end": 119
+    }
+  ],
+  "quality_controls": [
+    {
+      "name": "输入文件格式正确",
+      "description": "输入文件必须符合VCF/BCF格式规范",
+      "evidence_quote": "| VCF/BCF文件 | 格式正确 | 输入文件必须符合VCF/BCF格式规范 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 209,
+      "_end_line": 209
+    },
+    {
+      "name": "输入索引文件完整",
+      "description": "输入文件必须有对应的索引文件(.tbi或.csi)",
+      "evidence_quote": "| 索引文件 | 完整 | 输入文件必须有对应的索引文件(.tbi或.csi) |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 210,
+      "_end_line": 210
+    },
+    {
+      "name": "参考基因组一致",
+      "description": "若使用参考基因组，必须与变异检测时使用的一致",
+      "evidence_quote": "| 参考基因组 | 与变异一致 | 若使用参考基因组，必须与变异检测时使用的一致 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 211,
+      "_end_line": 211
+    },
+    {
+      "name": "输入文件完整性",
+      "description": "输入文件完整，无损坏",
+      "evidence_quote": "| 文件完整性 | 完整 | 输入文件完整，无损坏 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.1 输入数据要求",
+      "_start_line": 212,
+      "_end_line": 212
+    },
+    {
+      "name": "输出文件完整性检查",
+      "description": "检查文件大小和格式，合格标准为文件大小合理，格式正确",
+      "evidence_quote": "| 文件完整性 | 检查文件大小和格式 | 文件大小合理，格式正确 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 218,
+      "_end_line": 218
+    },
+    {
+      "name": "输出索引文件检查",
+      "description": "检查输出文件是否有对应的索引文件",
+      "evidence_quote": "| 索引文件 | 检查索引文件 | 输出文件有对应的索引文件 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 219,
+      "_end_line": 219
+    },
+    {
+      "name": "变异数量检查",
+      "description": "统计变异数量，变异数量符合预期",
+      "evidence_quote": "| 变异数量 | 统计变异数量 | 变异数量符合预期 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 220,
+      "_end_line": 220
+    },
+    {
+      "name": "变异质量检查",
+      "description": "查看质量统计，变异质量符合预期",
+      "evidence_quote": "| 变异质量 | 查看质量统计 | 变异质量符合预期 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 221,
+      "_end_line": 221
+    },
+    {
+      "name": "样本信息检查",
+      "description": "检查样本信息完整",
+      "evidence_quote": "| 样本信息 | 检查样本信息 | 样本信息完整 |",
+      "_source_file": "bcftools_skill.md",
+      "_source_section": "合并多个VCF文件 / 8. 质量控制指标 / 8.2 输出质量检查",
+      "_start_line": 222,
+      "_end_line": 222
+    }
+  ],
+  "review": [],
+  "metadata": {
+    "file": "bcftools_skill.md",
+    "doc_id": "3841afd167477ae6",
+    "model": "deepseek-flash",
+    "prompt_version": "bioskillkg-extract-v1.6",
+    "chunk_count": 1,
+    "chunk_ranges": [
+      {
+        "section": "bcftools工具Skill / 1. 工具基本信息 / 2. 输入参数规范 / 2.1 必需参数 / 2.2 可选参数 / 3. 输出文件定义 / 3.1 标准输出文件 / 3.2 日志文件 / 4. 资源需求配置 / 4.1 CPU需求 / 4.2 内存需求 / 4.3 磁盘需求 / 4.4 运行时间预估 / 5. 数据类型兼容性 / 5.1 输入数据类型 / 5.2 输出数据类型 / 6. 依赖关系约束 / 6.1 前置工具 / 6.2 后置工具 / 6.3 互斥工具 / 7. 使用场景模板 / 7.1 场景1: VCF文件过滤 / 过滤高质量SNV变异 / 索引输出文件 / 7.2 场景2: 变异统计分析 / 生成详细的变异统计信息 / 查看统计结果 / 生成质量分布图 / 7.3 场景3: 多样本VCF文件处理 / 提取特定样本 / 按样本拆分VCF文件 / 合并多个VCF文件 / 8. 质量控制指标 / 8.1 输入数据要求 / 8.2 输出质量检查 / 8.3 常见错误处理 / 9. 工具执行示例 / 9.1 基本用法 / 9.2 高级用法 / 提取样本列表 / 按样本拆分 / 10. 工具优势与局限性 / 10.1 优势 / 10.2 局限性 / 11. 版本更新记录 / 12. 联系方式与支持 / 13. 引用信息",
+        "start_line": 1,
+        "end_line": 360,
+        "chunk_id": "3841afd167477ae6_llm_0001"
+      }
+    ]
+  }
+}

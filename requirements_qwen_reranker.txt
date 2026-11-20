@@ -1,0 +1,5 @@
+# Install separately in your existing SciToolAgent conda env; use a CUDA-enabled PyTorch.
+# Read README_Qwen3_Reranker_本地接入.md before upgrading dependencies.
+transformers>=4.51.0,<5
+accelerate>=1.0,<2
+safetensors>=0.4
